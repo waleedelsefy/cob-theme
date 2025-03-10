@@ -1,0 +1,28 @@
+{
+    "name": "waleed/cob-theme",
+    "description": "Capital of Business is a premium, responsive WordPress theme designed specifically for real estate businesses. Built with Bootstrap and optimized for PHP 8.2, it offers seamless performance and a sleek user experience. Featuring advanced search filters, interactive maps, and customizable property listings, the theme enables real estate agencies, developers, and agents to showcase properties effectively. Its powerful admin panel allows for effortless customization, making it the ideal choice for professionals looking to enhance their online presence with a modern, feature-rich website.",
+    "type": "project",
+    "require": {
+        "redux-framework/redux-framework": "^4.5",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "license": "MTI",
+    "autoload": {
+        "psr-4": {
+            "Waleed\\CobTheme\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "waleed elsefy",
+            "email": "waleedelsefy@gmail.com"
+        }
+    ],
+    "minimum-stability": "RC",
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
+        }
+    }
+}

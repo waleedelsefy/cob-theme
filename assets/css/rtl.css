@@ -1,0 +1,91 @@
+/* ul.social li{
+    margin-right: 15px;
+} */
+.breadcrumb-item{
+	float: right;
+}
+.page-item:first-child .page-link {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.sidenav .overlay {
+    right: 0;
+}
+.sidenav .overlay .closebtn {
+    right: 45px;
+}
+.sidenav .nav-icon{
+    float:right;
+    margin-right:50px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav .overlay .closebtn {
+    left: 35px;
+  }
+}
+
+.top-header ul.contact-info li svg{
+    margin-left: 5px;
+}
+.top-header ul li{
+    float: right;
+    margin-left: 20px;
+}
+.home-intro .content{
+    text-align: right;
+    float: right;
+}
+.home-intro .content img {
+    margin-left: 30px;
+}
+.hotline .btn svg{
+    margin-left: 5px;
+}
+.branches .row:nth-child(even) {
+    direction: ltr;
+    text-align: right;
+}
+.branches .row:nth-child(even) .content{
+    direction: rtl;
+}
+.branches .branch-info li svg{
+    margin-left: 5px;
+}
+.archive-products .product:nth-child(even){
+    direction: ltr;
+    text-align: right;
+}
+.archive-products .product:nth-child(odd) .info{
+    padding-right: 80px !important;
+}
+.archive-products .product:nth-child(even) .info{
+    padding-left: 80px !important;
+    direction: rtl;
+}
+.archive-products .product:nth-child(odd) figure{
+    border-right: 0;
+}
+.archive-products .product:nth-child(even) figure{
+    border-left: 0;
+}
+/************* Responsive *************/
+@media(max-width: 1024px){
+}
+@media(max-width: 768px){
+
+}
+@media(max-width: 640px){
+
+}
+@media(max-width: 480px){
+    
+}
+@media(max-width: 360px){
+    
+}
+/************* Responsive *************/
