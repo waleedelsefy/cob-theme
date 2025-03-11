@@ -89,7 +89,7 @@ if ( ! empty( $city_name_output ) ) {
     $taxonomy_output[] = esc_html( $city_name_output );
 }
 $taxonomy_string = ! empty( $taxonomy_output ) ? implode( ', ', $taxonomy_output ) : '';
-$placeholder = get_template_directory_uri() . '/assets/imgs/placeholder.jpg';
+$placeholder = get_template_directory_uri() . '/assets/imgs/default.jpg';
 
 ?>
 <a href="<?php the_permalink(); ?>" class="properties-card">
