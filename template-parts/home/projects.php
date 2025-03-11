@@ -45,7 +45,7 @@ $theme_dir = get_template_directory_uri();
 									// The meta field 'compound_image' stores the image URL directly.
 									$thumbnail = get_term_meta( $compound->term_id, 'compound_image', true );
 									$dev_logo = get_term_meta( $compound->term_id, 'dev_logo', true );
-									$image_url = $thumbnail ? $thumbnail : $theme_dir . '/assets/imgs/default.webp';
+									$image_url = $thumbnail ? $thumbnail : $theme_dir . '/assets/imgs/default.jpg';
 									$dev_image_ = $dev_logo ? $dev_logo : $theme_dir . '/assets/imgs/developer-default.png';
 									?>
                                     <img data-src="<?php echo esc_url( $dev_image_ ); ?>" alt="<?php echo esc_attr( $compound->name ); ?>" class="lazyload">

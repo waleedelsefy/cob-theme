@@ -82,7 +82,7 @@ if ( ! empty( $compounds ) && ! is_wp_error( $compounds ) ) {
 
                                 <?php
                                 $thumbnail_id = get_term_meta( $compound->term_id, 'compound_image', true );
-                                $image_url = $thumbnail_id ? $thumbnail_id : $theme_dir . '/assets/imgs/default.webp';
+                                $image_url = $thumbnail_id ? $thumbnail_id : $theme_dir . '/assets/imgs/default.jpg';
                                 ?>
                                 <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $compound->name ); ?>" class="lazyload">
                             </a>

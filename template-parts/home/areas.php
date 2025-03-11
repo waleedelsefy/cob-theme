@@ -41,7 +41,7 @@
                         $thumbnail_id = absint( get_term_meta( $city->term_id, 'thumbnail_id', true ) );
                         $city_image_url = $thumbnail_id
                             ? wp_get_attachment_url( $thumbnail_id )
-                            : get_template_directory_uri() . '/assets/imgs/default.webp';
+                            : get_template_directory_uri() . '/assets/imgs/default.jpg';
 
                         // Count posts for a specific post type ("compound") that belong to this city.
                         $compound_query = new WP_Query([
