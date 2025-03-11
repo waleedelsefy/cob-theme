@@ -48,14 +48,6 @@ $unit_id = get_the_ID();
                     }
                     ?>
                 </h3>
-                <h5>
-                    <?php
-                    if ( get_queried_object() && ! is_wp_error( get_queried_object() ) ) {
-                        $city_name = get_queried_object()->name;
-                        echo '<p>' . sprintf( esc_html__( '%d Results in %s', 'cob_theme' ), $properties_query->found_posts, $city_name ) . '</p>';
-                    }
-                    ?>
-                </h5>
             </div>
 
         </div>
