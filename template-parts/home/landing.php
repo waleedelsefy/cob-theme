@@ -122,7 +122,6 @@ $slider_query = new WP_Query( $args );
                               d="M12.8027 12.8027C13.0956 12.5098 13.5704 12.5098 13.8633 12.8027L15.1967 14.136C15.4896 14.4289 15.4896 14.9038 15.1967 15.1967C14.9038 15.4896 14.4289 15.4896 14.136 15.1967L12.8027 13.8633C12.5098 13.5704 12.5098 13.0956 12.8027 12.8027Z"
                               fill="#081945" />
                     </svg>
-                    <!-- حقل البحث المفصل مع ميزة الاقتراح وتعبئة القيم السابقة -->
                     <input type="text" id="searchAutocomplete" name="s" placeholder="<?php esc_attr_e( 'Search by keywords, location, real estate photos', 'cob_theme' ); ?>" value="<?php echo isset($_GET['s']) ? esc_attr($_GET['s']) : ''; ?>">
                     <button id="toggleButton" type="button">
                         <svg id="sliderIcon" width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -146,7 +145,7 @@ $slider_query = new WP_Query( $args );
 
                 <!-- Detailed Search Form (Hidden Content) -->
                 <div class="hidden-content" id="hiddenContent" style="display: none;">
-                    <form method="get" action="<?php echo esc_url( home_url( '/search-results/' ) ); ?>">
+                    <form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>>
                         <?php wp_nonce_field( 'save_search', 'search_nonce' ); ?>
                         <input type="hidden" name="search_type" value="detailed">
                         <label>
