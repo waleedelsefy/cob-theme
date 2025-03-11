@@ -27,7 +27,6 @@ function cob_edit_compound_taxonomy_description($term) {
 }
 add_action('compound_edit_form_fields', 'cob_edit_compound_taxonomy_description');
 
-// تعديل حقل الوصف عند إضافة تصنيف جديد
 function cob_add_compound_taxonomy_description() {
 	if (isset($_GET['taxonomy']) && $_GET['taxonomy'] === 'compound') {
 		?>

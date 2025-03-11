@@ -52,10 +52,10 @@ if ( false === $factories_query ) {
                     <?php while ( $factories_query->have_posts() ) : $factories_query->the_post(); ?>
                         <?php
                         $post_id      = get_the_ID();
-                        $price        = get_property_details( 'price', $post_id );
-                        $down_payment = get_property_details( 'down_payment', $post_id );
+                        $price        = get_post_meta( 'price', $post_id );
+                        $down_payment = get_post_meta( 'down_payment', $post_id );
                         $location     = get_post_city( $post_id );
-                        $area         = get_property_details( 'area', $post_id );
+                        $area         = get_post_meta( 'area', $post_id );
 
                         // Get gallery image IDs from cache or meta (if not already cached)
 

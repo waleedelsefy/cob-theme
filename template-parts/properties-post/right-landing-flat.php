@@ -6,12 +6,10 @@
     </div>
 	<?php
 	$post_id = get_the_ID();
-	// جلب خطط الدفع من post meta
 	$payment_plans = get_post_meta( $post_id, 'cob_payment_plans', true );
 	if ( ! is_array( $payment_plans ) ) {
 		$payment_plans = array();
 	}
-	// عرض قسم Payment systems فقط في حالة وجود خطط دفع
 	if ( ! empty( $payment_plans ) ) :
 		?>
         <h5><?php echo esc_html__( 'Payment systems', 'cob_theme' ); ?></h5>

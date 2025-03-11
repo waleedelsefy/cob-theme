@@ -9,21 +9,16 @@ if ( $city_terms && ! is_wp_error( $city_terms ) ) {
     $city_name = esc_html( $city_terms[0]->name );
     $city_link = get_term_link( $city_terms[0] );
 }
+$area             = !empty( get_post_meta( $post_id, 'area', true ) ) ? intval( get_post_meta( $post_id, 'area', true ) ) : ' - ';
+$price            = !empty( get_post_meta( $post_id, 'price', true ) ) ? floatval( get_post_meta( $post_id, 'price', true ) ) : ' - ';
+$max_price        = !empty( get_post_meta( $post_id, 'max_price', true ) ) ? floatval( get_post_meta( $post_id, 'max_price', true ) ) : ' - ';
+$min_price        = !empty( get_post_meta( $post_id, 'min_price', true ) ) ? floatval( get_post_meta( $post_id, 'min_price', true ) ) : ' - ';
+$rooms            = !empty( get_post_meta( $post_id, 'bedrooms', true ) ) ? intval( get_post_meta( $post_id, 'bedrooms', true ) ) : ' - ';
+$bathrooms        = !empty( get_post_meta( $post_id, 'bathrooms', true ) ) ? intval( get_post_meta( $post_id, 'bathrooms', true ) ) : ' - ';
+$delivery_year    = !empty( get_post_meta( $post_id, 'delivery', true ) ) ? get_post_meta( $post_id, 'delivery', true ) : ' - ';
+$installments     = get_post_meta( $post_id, 'unit_installments', true );
+$unit_down_payment = get_post_meta( $post_id, 'unit_down_payment', true );
 
-$table_property_details = $wpdb->prefix . 'property_details';
-$property = $wpdb->get_row(
-    $wpdb->prepare( "SELECT * FROM $table_property_details WHERE post_id = %d", $post_id ),
-    ARRAY_A
-) ?: [];
-$area  = $property['area'] ?? ' - ';
-$price = $property['price'] ?? ' - ';
-$max_price = $property['max_price'] ?? ' - ';
-$min_price = $property['min_price'] ?? ' - ';
-$rooms = $property['rooms'] ?? ' - ';
-$bathrooms = $property['bathrooms'] ?? ' - ';
-$delivery_year = $property['delivery_year'] ?? ' - ';
-$installments      = get_post_meta( $post_id, 'propertie_installments', true );
-$propertie_down_payment = get_post_meta( $post_id, 'propertie_down_payment', true );
 $propertie_type = get_the_terms( $post_id, 'type' );
 
 if ( $propertie_type && ! is_wp_error( $propertie_type ) ) {
@@ -113,7 +108,6 @@ if ( $finishing_type && ! is_wp_error( $finishing_type ) ) {
             </div>
         </li>
         <li>
-            <h6><?php echo esc_html( $propertie_type_name );?></h6>
             <div class="table-container">
                 <table>
                     <tr>

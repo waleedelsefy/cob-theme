@@ -20,11 +20,11 @@ $theme_dir = get_template_directory_uri();
     </div>
 </div>
 <?php
-get_template_part( 'template-parts/factories-post/main-flat.php' );
-get_template_part( 'template-parts/factories-post/landing-flat.php' );
+get_template_part( 'template-parts/factories-post/main-flat' );
+get_template_part( 'template-parts/factories-post/landing-flat' );
 
-get_template_part( 'template-parts/factories-post/factories-related.php' );
-get_template_part( 'template-parts/contact-section.php' );
+get_template_part( 'template-parts/factories-post/factories-related' );
+get_template_part( 'template-parts/contact-section' );
 ?>
 <script src="<?php echo $theme_dir ?>/assets/js/single-properties.js"></script>
 

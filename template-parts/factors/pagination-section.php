@@ -25,10 +25,10 @@ $projects_query = new WP_Query( array(
                                         <?php
                                         $post_id = get_the_ID();
                                         // استرجاع البيانات الخاصة بالعقار
-                                        $price        = get_property_details( 'price', $post_id );
-                                        $down_payment = get_property_details( 'down_payment', $post_id );
+                                        $price        = get_post_meta( 'price', $post_id );
+                                        $down_payment = get_post_meta( 'down_payment', $post_id );
                                         $location     = get_post_city( $post_id );
-                                        $area         = get_property_details( 'area', $post_id )?: '---';
+                                        $area         = get_post_meta( 'area', $post_id )?: '---';
 
                                         // جلب معرّفات الصور من المعرض
                                         $gallery_ids = get_post_meta( $post_id, '_gallery_image_ids', true );

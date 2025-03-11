@@ -20,8 +20,8 @@ $required_files = array(
 	'inc/theme-setup/akMinifyHtmlOutput.php',                      // Minify HTML output.
 	'inc/redux/config.php',                                        // Redux framework configuration.
 	'inc/properties/cob_property_metabox.php',                     // Register property metabox.
-	'inc/properties/get_property_details.php',                     // Get property details.
-	'inc/properties/cob_create_cob_tables.php',                    // Create custom tables.
+	'inc/search/create_search_table.php',                     // Register property metabox.
+	'inc/theme-setup/cob_register_company_settings.php',                     // Register property metabox.
 	'inc/properties/get_post_city.php',                            // Retrieve post city information.
 	'inc/properties/cob_property_gallery.php',                     // Property gallery functionality.
 	'inc/services/cob_register_services_post_type.php',            // Register services post type.

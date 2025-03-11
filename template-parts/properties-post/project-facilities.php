@@ -1,28 +1,37 @@
 <?php
-$stored_facilities = get_post_meta(get_the_ID(), '_project_facilities', true);
-$stored_facilities = maybe_unserialize($stored_facilities);
+$stored_facilities = get_post_meta( get_the_ID(), '_project_facilities', true );
+$stored_facilities = maybe_unserialize( $stored_facilities );
+
 $facilities = [
-    'water_games' => __('Water Games', 'cob_theme'),
-    'security' => __('Security', 'cob_theme'),
-    'sports_clubs' => __('Sports Clubs', 'cob_theme'),
-    'electronic_gates' => __('Electronic Gates', 'cob_theme'),
-    'car_garages' => __('Car Garages', 'cob_theme'),
-    'maintenance_cleaning' => __('Maintenance and Cleaning', 'cob_theme'),
-    'internet_networks' => __('Internet Networks', 'cob_theme'),
-    'cafes_restaurants' => __('Cafes and Restaurants', 'cob_theme'),
-    'kids_area' => __('Kids Area', 'cob_theme'),
-    'shopping_center' => __('Shopping Center', 'cob_theme'),
-    'green_spaces' => __('Green Spaces', 'cob_theme'),
-    'cycling_lanes' => __('Cycling Lanes', 'cob_theme'),
-    'power_generators' => __('Power Generators', 'cob_theme'),
+    'water_games'         => __('Water Games', 'cob_theme'),
+    'security'            => __('Security', 'cob_theme'),
+    'sports_clubs'        => __('Sports Clubs', 'cob_theme'),
+    'electronic_gates'    => __('Electronic Gates', 'cob_theme'),
+    'car_garages'         => __('Car Garages', 'cob_theme'),
+    'maintenance_cleaning'=> __('Maintenance and Cleaning', 'cob_theme'),
+    'internet_networks'   => __('Internet Networks', 'cob_theme'),
+    'cafes_restaurants'   => __('Cafes and Restaurants', 'cob_theme'),
+    'kids_area'           => __('Kids Area', 'cob_theme'),
+    'shopping_center'     => __('Shopping Center', 'cob_theme'),
+    'green_spaces'        => __('Green Spaces', 'cob_theme'),
+    'cycling_lanes'       => __('Cycling Lanes', 'cob_theme'),
+    'power_generators'    => __('Power Generators', 'cob_theme'),
 ];
 
-if ($stored_facilities && is_array($stored_facilities)) {
-    foreach ($stored_facilities as $facility_key) {
+
+if ( is_array( $stored_facilities ) && ! empty( $stored_facilities ) ) {
+    $facilities_to_show = $stored_facilities;
+} else {
+    $facilities_keys = array_keys( $facilities );
+    shuffle( $facilities_keys );
+    $facilities_to_show = array_slice( $facilities_keys, 0, 5 );
+}
+
+if ( $facilities_to_show && is_array( $facilities_to_show ) ) {
+    foreach ( $facilities_to_show as $facility_key ) {
         echo '<div class="tag">';
         echo '<div class="facility-img">';
-        
-        switch ($facility_key) {
+        switch ( $facility_key ) {
             case 'water_games':
                 echo '<i class="fa-solid fa-water"></i>';
                 break;
@@ -66,11 +75,9 @@ if ($stored_facilities && is_array($stored_facilities)) {
                 echo '';
                 break;
         }
-
         echo '</div>';
-        echo '<div class="facility-txt">' . esc_html($facilities[$facility_key] ?? '') . '</div>';
+        echo '<div class="facility-txt">' . esc_html( $facilities[ $facility_key ] ?? '' ) . '</div>';
         echo '</div>';
     }
-
 }
 ?>

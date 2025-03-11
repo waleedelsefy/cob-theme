@@ -1,9 +1,10 @@
 <?php
 /**
- * Template part for Dynamic Landing & Search Section.
+ * Template Name: Landing & Search Template
  *
  * @package cob_theme
  */
+
 
 $theme_dir = get_template_directory_uri();
 
@@ -52,9 +53,8 @@ $slider_query = new WP_Query( $args );
             <div class="search-bar">
                 <h3 id="SearchTitle2" class="head"><?php esc_html_e( 'Find your property', 'cob_theme' ); ?></h3>
 
-                <form method="post" action="">
-                    <?php wp_nonce_field( 'save_search', 'search_nonce' ); ?>
-                    <input type="hidden" name="search_type" value="basic">
+                <!-- Basic Search Form -->
+                <form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <div class="search-bar-content">
                         <div class="search-form">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +65,7 @@ $slider_query = new WP_Query( $args );
                                       d="M12.8027 12.8027C13.0956 12.5098 13.5704 12.5098 13.8633 12.8027L15.1967 14.136C15.4896 14.4289 15.4896 14.9038 15.1967 15.1967C14.9038 15.4896 14.4289 15.4896 14.136 15.1967L12.8027 13.8633C12.5098 13.5704 12.5098 13.0956 12.8027 12.8027Z"
                                       fill="#081945" />
                             </svg>
-                            <input type="text" name="basic_search_keyword" placeholder="<?php esc_attr_e( 'البحث بالكومبوند، الموقع، الصور العقاري', 'cob_theme' ); ?>" />
+                            <input type="text" id="basicSearchInput" name="s" placeholder="<?php esc_attr_e( 'Search by compound, location, real estate', 'cob_theme' ); ?>" value="<?php echo isset($_GET['s']) ? esc_attr($_GET['s']) : get_search_query(); ?>" />
                         </div>
                         <ul class="nav-menu2">
                             <li>
@@ -79,26 +79,28 @@ $slider_query = new WP_Query( $args );
                                     <option value=""><?php esc_html_e( 'Select Property Type', 'cob_theme' ); ?></option>
                                     <?php if ( ! empty( $propertie_types ) && ! is_wp_error( $propertie_types ) ) : ?>
                                         <?php foreach ( $propertie_types as $term ) : ?>
-                                            <option value="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
+                                            <option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( isset($_GET['basic_propertie_type']) ? $_GET['basic_propertie_type'] : '', $term->slug ); ?>>
+                                                <?php echo esc_html( $term->name ); ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 </select>
                             </li>
                             <li>
-                                <select name="basic_bedrooms">
+                                <select name="bedrooms">
                                     <option value=""><?php esc_html_e( 'Bedrooms', 'cob_theme' ); ?></option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    <option value="1" <?php selected( isset($_GET['bedrooms']) ? $_GET['bedrooms'] : '', '1' ); ?>>1</option>
+                                    <option value="2" <?php selected( isset($_GET['bedrooms']) ? $_GET['bedrooms'] : '', '2' ); ?>>2</option>
                                 </select>
                             </li>
                             <li>
-                                <select name="basic_price">
+                                <select name="price">
                                     <option value=""><?php esc_html_e( 'Price', 'cob_theme' ); ?></option>
-                                    <option value="1000000">1,000,000</option>
-                                    <option value="1500000">1,500,000</option>
-                                    <option value="2000000">2,000,000</option>
-                                    <option value="2500000">2,500,000</option>
-                                    <option value="3000000">3,000,000</option>
+                                    <option value="1000000" <?php selected( isset($_GET['price']) ? $_GET['price'] : '', '1000000' ); ?>>1,000,000</option>
+                                    <option value="1500000" <?php selected( isset($_GET['price']) ? $_GET['price'] : '', '1500000' ); ?>>1,500,000</option>
+                                    <option value="2000000" <?php selected( isset($_GET['price']) ? $_GET['price'] : '', '2000000' ); ?>>2,000,000</option>
+                                    <option value="2500000" <?php selected( isset($_GET['price']) ? $_GET['price'] : '', '2500000' ); ?>>2,500,000</option>
+                                    <option value="3000000" <?php selected( isset($_GET['price']) ? $_GET['price'] : '', '3000000' ); ?>>3,000,000</option>
                                 </select>
                             </li>
                             <li>
@@ -108,6 +110,7 @@ $slider_query = new WP_Query( $args );
                     </div>
                 </form>
 
+                <!-- Detailed Search Form -->
                 <div class="search-container">
                     <h2 style="display: none;" id="searchTitle"><?php esc_html_e( 'Detailed search', 'cob_theme' ); ?></h2>
                     <svg class="search-icon" id="searchIcon" width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -119,7 +122,8 @@ $slider_query = new WP_Query( $args );
                               d="M12.8027 12.8027C13.0956 12.5098 13.5704 12.5098 13.8633 12.8027L15.1967 14.136C15.4896 14.4289 15.4896 14.9038 15.1967 15.1967C14.9038 15.4896 14.4289 15.4896 14.136 15.1967L12.8027 13.8633C12.5098 13.5704 12.5098 13.0956 12.8027 12.8027Z"
                               fill="#081945" />
                     </svg>
-                    <input type="text" id="searchButton" name="detailed_keyword" placeholder="<?php esc_attr_e( 'Search by keywords, location, real estate photos', 'cob_theme' ); ?>">
+                    <!-- حقل البحث المفصل مع ميزة الاقتراح وتعبئة القيم السابقة -->
+                    <input type="text" id="searchAutocomplete" name="s" placeholder="<?php esc_attr_e( 'Search by keywords, location, real estate photos', 'cob_theme' ); ?>" value="<?php echo isset($_GET['s']) ? esc_attr($_GET['s']) : ''; ?>">
                     <button id="toggleButton" type="button">
                         <svg id="sliderIcon" width="16" height="16" viewBox="0 0 16 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -140,8 +144,9 @@ $slider_query = new WP_Query( $args );
                     </button>
                 </div>
 
+                <!-- Detailed Search Form (Hidden Content) -->
                 <div class="hidden-content" id="hiddenContent" style="display: none;">
-                    <form method="post" action="">
+                    <form method="get" action="<?php echo esc_url( home_url( '/search-results/' ) ); ?>">
                         <?php wp_nonce_field( 'save_search', 'search_nonce' ); ?>
                         <input type="hidden" name="search_type" value="detailed">
                         <label>
@@ -155,7 +160,7 @@ $slider_query = new WP_Query( $args );
                                       fill="#081945" />
                             </svg> <?php esc_html_e( 'Search words', 'cob_theme' ); ?>
                         </label>
-                        <input type="text" name="detailed_keyword" placeholder="<?php esc_attr_e( 'Search by keywords, location, real estate photos', 'cob_theme' ); ?>">
+                        <input type="text" id="searchAutocomplete" name="s" placeholder="<?php esc_attr_e( 'Search by keywords, location, real estate photos', 'cob_theme' ); ?>" value="<?php echo isset($_GET['s']) ? esc_attr($_GET['s']) : ''; ?>">
                         <label>
                             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -185,7 +190,9 @@ $slider_query = new WP_Query( $args );
                             <option value=""><?php esc_html_e( 'Select Property Type', 'cob_theme' ); ?></option>
                             <?php if ( ! empty( $propertie_types ) && ! is_wp_error( $propertie_types ) ) : ?>
                                 <?php foreach ( $propertie_types as $term ) : ?>
-                                    <option value="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
+                                    <option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( isset($_GET['detailed_propertie_type']) ? $_GET['detailed_propertie_type'] : '', $term->slug ); ?>>
+                                        <?php echo esc_html( $term->name ); ?>
+                                    </option>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </select>
@@ -197,7 +204,7 @@ $slider_query = new WP_Query( $args );
                                         d="M15.1663 14V10.6667C15.1663 9.4096 15.1663 8.78107 14.7758 8.39053C14.3853 8 13.7567 8 12.4997 8H4.49967C3.24259 8 2.61405 8 2.22353 8.39053C1.83301 8.78107 1.83301 9.4096 1.83301 10.6667V14"
                                         stroke="#081945" stroke-linecap="round" stroke-linejoin="round" />
                                 <path
-                                        d="M7.83333 8V6.80893C7.83333 6.55515 7.7952 6.47027 7.5998 6.37025C7.193 6.16195 6.6991 6 6.16667 6C5.63423 6 5.14037 6.16195 4.7335 6.37025C4.53814 6.47027 4.5 6.55515 4.5 6.80893V8"
+                                        d="M7.83333 8V6.80893C7.83333 6.55515 7.7952 6.47027 7.5998 6.37025C7.193 6.16195 6.6991 6 6.16667 6C6.62125 6 6.93187 6 7.17693 6.37025C7.5036 6.55515 7.7632 6.55515 7.89853 6.80893C8 7.062 8 7.247 8 7.33301Z"
                                         stroke="#081945" stroke-linecap="round" />
                                 <path
                                         d="M12.5003 8V6.80893C12.5003 6.55515 12.4622 6.47027 12.2668 6.37025C11.86 6.16195 11.3661 6 10.8337 6C10.3012 6 9.80733 6.16195 9.40053 6.37025C9.20513 6.47027 9.16699 6.55515 9.16699 6.80893V8"
@@ -210,12 +217,12 @@ $slider_query = new WP_Query( $args );
                         </label>
                         <select name="detailed_bedrooms">
                             <option value=""><?php esc_html_e( 'Bedrooms', 'cob_theme' ); ?></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
+                            <option value="1" <?php selected( isset($_GET['detailed_bedrooms']) ? $_GET['detailed_bedrooms'] : '', '1' ); ?>>1</option>
+                            <option value="2" <?php selected( isset($_GET['detailed_bedrooms']) ? $_GET['detailed_bedrooms'] : '', '2' ); ?>>2</option>
+                            <option value="3" <?php selected( isset($_GET['detailed_bedrooms']) ? $_GET['detailed_bedrooms'] : '', '3' ); ?>>3</option>
+                            <option value="4" <?php selected( isset($_GET['detailed_bedrooms']) ? $_GET['detailed_bedrooms'] : '', '4' ); ?>>4</option>
+                            <option value="5" <?php selected( isset($_GET['detailed_bedrooms']) ? $_GET['detailed_bedrooms'] : '', '5' ); ?>>5</option>
+                            <option value="6" <?php selected( isset($_GET['detailed_bedrooms']) ? $_GET['detailed_bedrooms'] : '', '6' ); ?>>6</option>
                         </select>
                         <label>
                             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -229,15 +236,14 @@ $slider_query = new WP_Query( $args );
                             <?php esc_html_e( 'Price (EGP)', 'cob_theme' ); ?>
                         </label>
                         <div class="prices">
-                            <input type="number" name="price_from" placeholder="<?php esc_attr_e( 'From', 'cob_theme' ); ?>">
-                            <input type="number" name="price_to" placeholder="<?php esc_attr_e( 'To', 'cob_theme' ); ?>">
+                            <input type="number" name="price_from" placeholder="<?php esc_attr_e( 'From', 'cob_theme' ); ?>" value="<?php echo isset($_GET['price_from']) ? esc_attr($_GET['price_from']) : ''; ?>">
+                            <input type="number" name="price_to" placeholder="<?php esc_attr_e( 'To', 'cob_theme' ); ?>" value="<?php echo isset($_GET['price_to']) ? esc_attr($_GET['price_to']) : ''; ?>">
                         </div>
                         <div class="buttons">
                             <button type="submit" class="firstbtn">
                                 <?php
                                 $count_posts   = wp_count_posts( 'post' );
                                 $published     = isset( $count_posts->publish ) ? $count_posts->publish : 0;
-
                                 printf( esc_html__( 'Search (%s results)', 'cob_theme' ), $published );
                                 ?>
                             </button>
@@ -249,3 +255,27 @@ $slider_query = new WP_Query( $args );
         </div>
     </div>
 </div>
+
+<script>
+    jQuery(document).ready(function($) {
+        $("#searchAutocomplete").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                    dataType: "json",
+                    data: {
+                        action: "ase_search_suggestions_from_views",
+                        term: request.term
+                    },
+                    success: function(data) {
+                        response(data);
+                    }
+                });
+            },
+            minLength: 2
+        });
+    });
+
+
+</script>
+

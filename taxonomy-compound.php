@@ -15,6 +15,8 @@ get_template_part('template-parts/taxonomy-compound/head');
 get_template_part('template-parts/taxonomy-compound/featured');
 //get_template_part('template-parts/taxonomy-compound/top-trend');
 get_template_part('template-parts/contact-section');
+
+
 get_template_part('template-parts/taxonomy-compound/sup-taxonomy');
 
 ?>

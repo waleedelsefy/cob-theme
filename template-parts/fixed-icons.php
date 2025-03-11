@@ -27,7 +27,7 @@ $theme_dir = get_template_directory_uri();
         <path d="M28.2861 14.7148H38.2861M33.2861 9.71484V19.7148" stroke="white" stroke-width="2.14286"
               stroke-linecap="round" stroke-linejoin="round" />
     </svg>
-<!--    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="#357CDC" />
         <path d="M22.5713 18.2861H25.4284" stroke="white" stroke-width="2.14286" stroke-linecap="round" />
         <path
@@ -37,5 +37,4 @@ $theme_dir = get_template_directory_uri();
             d="M31.1436 19.5805L31.3234 19.4321C34.346 16.9382 35.8573 15.6912 37.0718 16.2933C38.2864 16.8954 38.2864 18.8915 38.2864 22.8837V25.1177C38.2864 29.11 38.2864 31.106 37.0718 31.7081C35.8573 32.3101 34.346 31.0633 31.3234 28.5693L31.1436 28.4208"
             stroke="white" stroke-width="2.14286" stroke-linecap="round" />
     </svg>
--->
 </div>
