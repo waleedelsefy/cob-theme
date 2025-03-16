@@ -48,10 +48,7 @@ if ( false === $properties_query ) {
                 <?php if ( $properties_query->have_posts() ) : ?>
                     <?php while ( $properties_query->have_posts() ) : $properties_query->the_post(); ?>
                         <?php
-                        // Make sure to use global $wpdb inside the loop.
                         global $wpdb;
-
-                        // Set the post ID before using it in queries.
                         $post_id = get_the_ID();
                         $city_name = esc_html__( 'Not known', 'cob_theme' );
                         $city_link = '';

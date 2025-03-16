@@ -1,31 +1,39 @@
 <?php
-// Get current property ID.
-$post_id = get_the_ID();
-$project_id = (int) get_post_field( 'post_parent', $post_id );
+$post_id       = get_the_ID();
+$project_id    = (int) get_post_field( 'post_parent', $post_id );
 $project_title = get_the_title( $project_id ) ?: '--';
+$location       = get_post_meta( $post_id, 'propertie_location', true );
+$area = !empty( get_post_meta( $post_id, 'area', true ) )
+    ? intval( get_post_meta( $post_id, 'area', true ) )
+    : ' - ';
 
-// Retrieve property details from post meta.
-$area             = get_post_meta( $post_id, 'area', true ) ?: '-';
-$price            = get_post_meta( $post_id, 'price', true ) ?: '-';
-$max_price        = get_post_meta( $post_id, 'max_price', true ) ?: '-';
-$min_price        = get_post_meta( $post_id, 'min_price', true ) ?: '-';
-$rooms            = get_post_meta( $post_id, 'rooms', true ) ?: '-';
-$bathrooms        = get_post_meta( $post_id, 'bathrooms', true ) ?: '-';
-$reference_number = get_post_meta( $post_id, 'reference_number', true ) ?: '-';
-$delivery_year    = get_post_meta( $post_id, 'delivery_year', true ) ?: '-';
-$installments     = get_post_meta( $post_id, 'propertie_installments', true );
-$location         = get_post_meta( $post_id, 'propertie_location', true );
-$propertie_type   = get_post_meta( $post_id, 'propertie_type', true );
+$price_meta     = get_post_meta( $post_id, 'price', true );
+$max_price_meta = get_post_meta( $post_id, 'max_price', true );
+$price = !empty( $price_meta )
+    ? floatval( $price_meta )
+    : ( !empty( $max_price_meta ) ? floatval( $max_price_meta ) : ' - ' );
+$max_price = !empty( $max_price_meta ) ? floatval( $max_price_meta ) : ' - ';
+$min_price = !empty( get_post_meta( $post_id, 'min_price', true ) )
+    ? floatval( get_post_meta( $post_id, 'min_price', true ) )
+    : ' - ';
 
-/**
- * Retrieve gallery images with priority:
- * 1. Use gallery images stored in _gallery_image_ids meta.
- * 2. If empty, get attached images.
- * 3. Fallback to featured image.
- */
+$rooms     = !empty( get_post_meta( $post_id, 'bedrooms', true ) )
+    ? intval( get_post_meta( $post_id, 'bedrooms', true ) )
+    : ' - ';
+$bathrooms = !empty( get_post_meta( $post_id, 'bathrooms', true ) )
+    ? intval( get_post_meta( $post_id, 'bathrooms', true ) )
+    : ' - ';
+
+$delivery_year = !empty( get_post_meta( $post_id, 'delivery', true ) )
+    ? get_post_meta( $post_id, 'delivery', true )
+    : ' - ';
+
+$installments      = get_post_meta( $post_id, 'unit_installments', true );
+$unit_down_payment = get_post_meta( $post_id, 'unit_down_payment', true );
+
 $gallery_images = [];
+$gallery_ids    = get_post_meta( $post_id, '_gallery_image_ids', true );
 
-$gallery_ids = get_post_meta( $post_id, '_gallery_image_ids', true );
 if ( ! empty( $gallery_ids ) ) {
     if ( ! is_array( $gallery_ids ) ) {
         $gallery_ids = explode( ',', $gallery_ids );
@@ -37,9 +45,8 @@ if ( ! empty( $gallery_ids ) ) {
         }
     }
 }
-
 if ( empty( $gallery_images ) ) {
-    $attachments = get_attached_media('image', $post_id);
+    $attachments = get_attached_media( 'image', $post_id );
     if ( ! empty( $attachments ) ) {
         foreach ( $attachments as $attachment ) {
             $image_url = wp_get_attachment_image_url( $attachment->ID, 'large' );
@@ -49,7 +56,6 @@ if ( empty( $gallery_images ) ) {
         }
     }
 }
-
 if ( empty( $gallery_images ) ) {
     $thumbnail = get_the_post_thumbnail_url( $post_id, 'large' );
     if ( $thumbnail ) {
@@ -67,13 +73,17 @@ if ( $developers && ! is_wp_error( $developers ) ) {
         $developer_image_url = wp_get_attachment_url( $developer_thumbnail_id );
     }
 }
-
-// Get compound and city taxonomy terms.
 $compound_terms = get_the_terms( $post_id, 'compound' );
 $compound_name  = '';
 if ( $compound_terms && ! is_wp_error( $compound_terms ) ) {
     $compound_term = reset( $compound_terms );
     $compound_name = $compound_term->name;
+}
+$propertie_type_terms = get_the_terms( $post_id, 'type' );
+$propertie_type  = '';
+if ( $propertie_type_terms && ! is_wp_error( $propertie_type_terms ) ) {
+    $propertie_type_term = reset( $propertie_type_terms );
+    $propertie_type = $propertie_type_term->name;
 }
 $city_terms = get_the_terms( $post_id, 'city' );
 $city_name_output = '';
@@ -90,7 +100,6 @@ if ( ! empty( $city_name_output ) ) {
 }
 $taxonomy_string = ! empty( $taxonomy_output ) ? implode( ', ', $taxonomy_output ) : '';
 $placeholder = get_template_directory_uri() . '/assets/imgs/default.jpg';
-
 ?>
 <a href="<?php the_permalink(); ?>" class="properties-card">
     <ul class="big-ul">
@@ -118,7 +127,6 @@ $placeholder = get_template_directory_uri() . '/assets/imgs/default.jpg';
                 <div class="swiper-pagination"></div>
             </div>
         </li>
-
         <li>
             <div class="bottom-properties-swiper">
                 <ul>
@@ -128,25 +136,26 @@ $placeholder = get_template_directory_uri() . '/assets/imgs/default.jpg';
                                 <span style="font-weight:bold"><?php echo esc_html( $price ); ?> <?php esc_html_e( 'EGP', 'cob_theme' ); ?></span>
                             </p>
                             <span>
-                                                    <?php esc_html_e( 'Down Payment:', 'cob_theme' ); ?>
+                                <?php esc_html_e( 'Down Payment:', 'cob_theme' ); ?>
                                 <?php echo esc_html( get_post_meta( $post_id, 'propertie_down_payment', true ) ); ?> /
-                                                    <?php echo esc_html( $installments ); ?> <?php esc_html_e( 'Years', 'cob_theme' ); ?>
-                                                </span>
+                                <?php echo esc_html( $installments ); ?> <?php esc_html_e( 'Years', 'cob_theme' ); ?>
+                            </span>
                         </div>
                     </li>
                     <li>
                         <h6><?php echo esc_html( $propertie_type ); ?></h6>
                         <div class="info">
-                                                <span>
-                                                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <mask id="mask0_601_5318" style="mask-type:alpha" maskProperties="userSpaceOnUse" x="0" y="0" width="21" height="20">
-                                                            <rect x="0.5" width="20" height="20" fill="#D9D9D9"></rect>
-                                                        </mask>
-                                                        <g mask="url(#mask0_601_5318)">
-                                                            <path d="M1.5 17H3.3M3.3 17H10.5M3.3 17V5.00019C3.3 3.95008 3.3 3.42464 3.49619 3.02356C3.66876 2.67075 3.94392 2.38412 4.28262 2.20437C4.66766 2 5.17208 2 6.18018 2H7.62018C8.62827 2 9.13209 2 9.51711 2.20437C9.85578 2.38412 10.1314 2.67075 10.304 3.02356C10.5 3.42425 10.5 3.94905 10.5 4.9971V7.85572M10.5 17H17.7M10.5 17V7.85572M10.5 7.85572L10.8253 7.5513C11.5056 6.9147 11.8458 6.59631 12.2303 6.47556C12.5691 6.36917 12.9306 6.36917 13.2694 6.47556C13.654 6.59633 13.9944 6.91456 14.6748 7.5513L16.7448 9.48847C17.0965 9.81763 17.272 9.98244 17.3982 10.1799C17.51 10.3548 17.5931 10.5479 17.6433 10.7516C17.7 10.9812 17.7 11.2278 17.7 11.7202V17M17.7 17H19.5" stroke="#707070" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                    </svg>
-                                                   <?php echo esc_html( $project_title ); ?>
-                                                </span>
+                            <span>
+                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="mask0_601_5318" style="mask-type:alpha" maskProperties="userSpaceOnUse" x="0" y="0" width="21" height="20">
+                                        <rect x="0.5" width="20" height="20" fill="#D9D9D9"></rect>
+                                    </mask>
+                                    <g mask="url(#mask0_601_5318)">
+                                        <path d="M1.5 17H3.3M3.3 17H10.5M3.3 17V5.00019C3.3 3.95008 3.3 3.42464 3.49619 3.02356C3.66876 2.67075 3.94392 2.38412 4.28262 2.20437C4.66766 2 5.17208 2 6.18018 2H7.62018C8.62827 2 9.13209 2 9.51711 2.20437C9.85578 2.38412 10.1314 2.67075 10.304 3.02356C10.5 3.42425 10.5 3.94905 10.5 4.9971V7.85572M10.5 17H17.7M10.5 17V7.85572M10.5 7.85572L10.8253 7.5513C11.5056 6.9147 11.8458 6.59631 12.2303 6.47556C12.5691 6.36917 12.9306 6.36917 13.2694 6.47556C13.654 6.59633 13.9944 6.91456 14.6748 7.5513L16.7448 9.48847C17.0965 9.81763 17.272 9.98244 17.3982 10.1799C17.51 10.3548 17.5931 10.5479 17.6433 10.7516C17.7 10.9812 17.7 11.2278 17.7 11.7202V17M17.7 17H19.5" stroke="#707070" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                                <?php echo esc_html( $project_title ); ?>
+                            </span>
                             <div class="left-icons">
                                 <div>
                                     <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,12 +173,7 @@ $placeholder = get_template_directory_uri() . '/assets/imgs/default.jpg';
                         <span><?php echo $taxonomy_string; ?></span>
                     </li>
                     <li>
-                        <?php
-                        $area         = get_post_meta( 'area', $post_id );
-                        $rooms         = get_post_meta( 'bedrooms ', $post_id );
-                        $bathrooms         = get_post_meta( 'bathrooms', $post_id );
-
-                        ?>  <div class="bottom-icons">
+                        <div class="bottom-icons">
                             <div>
                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20.5 6V18M18.5 4H6.5M18.5 20H6.5M4.5 18V6" stroke="#707070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -206,3 +210,6 @@ $placeholder = get_template_directory_uri() . '/assets/imgs/default.jpg';
         </li>
     </ul>
 </a>
+<?php
+wp_reset_postdata();
+?>

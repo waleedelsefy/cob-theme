@@ -58,7 +58,6 @@ $args['tax_query'] = [
 $properties_query = new WP_Query( $args );
 $total_results    = $properties_query->found_posts;
 
-// تعيين صورة placeholder افتراضية (تأكد من وجود الصورة في المسار المحدد)
 $placeholder = get_template_directory_uri() . '/assets/imgs/placeholder.jpg';
 ?>
 <section class="pagination-section pagination-city pagination-brand">
