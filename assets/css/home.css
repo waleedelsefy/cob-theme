@@ -1271,9 +1271,11 @@ a:hover {
 .swiper-in .swiper-in-img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  object-position: center;
+
 }
 /* End swiper-in*/
 /*Start Contact*/
