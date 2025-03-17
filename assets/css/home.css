@@ -1067,6 +1067,17 @@ a:hover {
   border: 1px solid #00000033;
   border-radius: 8px;
 }
+.properties-card .bottom-properties-swiper .info .left-icons a {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 3px;
+  border: 1px solid #00000033;
+  border-radius: 8px;
+}
 .properties-card .bottom-properties-swiper .bottom-icons {
   display: flex;
   justify-content: space-between;
