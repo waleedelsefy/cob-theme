@@ -11,7 +11,7 @@
 
 body {
   font-family: "Almarai", serif;
-  direction: rtl;
+  direction: ltr;
 }
 
 html {
@@ -92,7 +92,7 @@ nav {
   align-items: center;
   gap: 20px;
 }
-.nav-links li a svg:not(.mazed svg) {
+.nav-links li a svg {
   display: none;
 }
 .nav-links .more-details {
@@ -107,11 +107,11 @@ nav {
     z-index: 100000000 !important;
     width: 100%;
     z-index: 1;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     background-color: #fff;
     width: 99vw;
   }
-  .nav-links li a svg:not(.mazed svg) {
+  .nav-links li a svg {
     display: block;
   }
   .language-contact {
@@ -216,7 +216,7 @@ nav {
 .active2 .mazed svg {
   transform: rotate(180deg);
 }
-.nav-links li a:hover:not(.mazed) {
+.nav-links li a:hover {
   border-bottom: 2px solid var(--mainColor);
   font-weight: bold;
 }
@@ -243,7 +243,9 @@ nav {
 /* Start hamburger menu */
 .hamburger {
   cursor: pointer;
+  display: none; /* Hide by default, show on mobile */
 }
+
 .hamburger.active {
   background: var(--mainColor);
   border-radius: 50%;
@@ -258,21 +260,12 @@ nav {
   margin: 6px auto;
   transition: all 300ms ease-in-out;
 }
+
 .bar:nth-child(2) {
   width: 12px;
   margin: 6px 0px;
 }
-.hamburger.active .navbar {
-  flex-direction: row-reverse;
-  position: fixed;
-  top: 0;
-  width: 90%;
-  z-index: 10000;
-  margin-bottom: 25px;
-}
-.hamburger.active .language-selector {
-  display: none;
-}
+
 .hamburger.active .bar:nth-child(2) {
   opacity: 0;
 }
@@ -286,21 +279,34 @@ nav {
   transform: translateY(-8px) rotate(-45deg);
   background-color: #fff;
 }
+
 .nav-menu {
   position: fixed;
   left: -100%;
-  top: 3.375em;
+  /* top: 3.375em; */
   flex-direction: column;
   width: 100%;
   height: 100%;
   text-align: center;
   transition: 750ms;
   z-index: 1000;
-}
-.nav-menu.active {
-  left: 0;
   background-color: #fff;
 }
+
+.nav-menu.active {
+  left: 0;
+}
+
+@media (max-width: 767px) {
+  .hamburger {
+    display: block; /* Show hamburger on mobile */
+  }
+
+  .nav-menu {
+    display: flex;
+  }
+}
+
 @media (min-width: 768px) {
   .nav-menu {
     position: static;
@@ -310,11 +316,11 @@ nav {
     align-items: center;
     gap: 1em;
     width: auto;
+    background-color: transparent;
   }
 
   .hamburger {
-    display: none;
+    display: none; /* Hide hamburger on desktop */
   }
 }
-
 /* End hamburger menu */

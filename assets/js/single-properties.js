@@ -43,9 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  // ====================================================
-  // Date Swiper with Pagination and Breakpoints
-  // ====================================================
+  // Date Swiper for main page
   let dateSwiper = new Swiper(".date-swiper", {
     slidesPerView: 3,
     spaceBetween: 10,
@@ -60,6 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  // Date Swiper for popup
+  let dateSwiperZoom = new Swiper(".date-swiper-zoom", {
+    slidesPerView: 4,
+    spaceBetween: 10,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 4, spaceBetween: 10 },
+      768: { slidesPerView: 4, spaceBetween: 10 },
+      1024: { slidesPerView: 4, spaceBetween: 10 },
+    },
+  });
   // ====================================================
   // Popup Toggle
   // ====================================================
@@ -83,15 +95,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ====================================================
-  // Tabs for .flatTab elements
-  // ====================================================
-  const tabs = document.querySelectorAll(".flatTab");
-  const contents = document.querySelectorAll(".flatTab-content");
-  tabs.forEach((tab) => {
+  // Popup Zoom Toggle
+  const togglePopupZoom = document.getElementById("togglePopupZoom");
+  const popupZoom = document.getElementById("popupZoom");
+  const closePopupZoom = document.getElementById("closePopupZoom");
+  const overlayZoom = document.getElementById("overlayZoom");
+
+  if (togglePopupZoom && popupZoom && closePopupZoom && overlayZoom) {
+    togglePopupZoom.addEventListener("click", () => {
+      popupZoom.style.display = "block";
+      overlayZoom.style.display = "block";
+    });
+    closePopupZoom.addEventListener("click", () => {
+      popupZoom.style.display = "none";
+      overlayZoom.style.display = "none";
+    });
+    overlayZoom.addEventListener("click", () => {
+      popupZoom.style.display = "none";
+      overlayZoom.style.display = "none";
+    });
+  }
+
+  // Tabs for main page .flatTab elements
+  const mainTabs = document.querySelectorAll(".flatTab");
+  const mainContents = document.querySelectorAll(".flatTab-content");
+  mainTabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-      tabs.forEach((t) => t.classList.remove("active"));
-      contents.forEach((c) => c.classList.remove("active"));
+      mainTabs.forEach((t) => t.classList.remove("active"));
+      mainContents.forEach((c) => c.classList.remove("active"));
       tab.classList.add("active");
       const target = document.getElementById(tab.dataset.tab);
       if (target) {
@@ -100,24 +131,57 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Tabs for popup .popup-flatTab elements
+  const popupTabs = document.querySelectorAll(".popup-flatTab");
+  const popupContents = document.querySelectorAll(".popup-flatTab-content");
+  popupTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      popupTabs.forEach((t) => t.classList.remove("active"));
+      popupContents.forEach((c) => c.classList.remove("active"));
+      tab.classList.add("active");
+      const target = document.getElementById(tab.dataset.tab);
+      if (target) {
+        target.classList.add("active");
+      }
+    });
+  });
+  // Popup Contact Toggle
+  const togglePopupContact = document.getElementById("togglePopupContact");
+  const popupContact = document.getElementById("popupContact");
+  const closePopupContact = document.getElementById("closePopupContact");
+  const overlayContact = document.getElementById("overlayContact");
+
+  if (
+    togglePopupContact &&
+    popupContact &&
+    closePopupContact &&
+    overlayContact
+  ) {
+    togglePopupContact.addEventListener("click", () => {
+      popupContact.style.display = "block";
+      overlayContact.style.display = "block";
+    });
+    closePopupContact.addEventListener("click", () => {
+      popupContact.style.display = "none";
+      overlayContact.style.display = "none";
+    });
+    overlayContact.addEventListener("click", () => {
+      popupContact.style.display = "none";
+      overlayContact.style.display = "none";
+    });
+  }
   // ====================================================
   // Swiper instances for elements with classes swiper1-in to swiper8-in
   // ====================================================
-  const swiperSelectors = [
-    ".swiper1-in",
-    ".swiper2-in",
-    ".swiper3-in",
-    ".swiper4-in",
-    ".swiper5-in",
-    ".swiper6-in",
-    ".swiper7-in",
-    ".swiper8-in",
-  ];
-  swiperSelectors.forEach((selector) => {
-    new Swiper(selector, {
+
+  document.querySelectorAll(".swiper-in").forEach((swiperElement) => {
+    const swiperId = swiperElement.getAttribute("data-swiper-id");
+    if (!swiperId) return;
+
+    new Swiper("." + swiperId, {
       spaceBetween: 50,
       pagination: {
-        el: ".swiper-pagination",
+        el: "." + swiperId + "-pagination", // Ensure pagination is linked properly
         clickable: true,
       },
     });

@@ -215,9 +215,6 @@ a:hover {
 }
 
 @media (max-width: 767px) {
-  .img-holder img {
-    margin-top: 40px;
-  }
   .search-form input {
     border-radius: 0px;
     border-top-right-radius: 10px;
@@ -563,6 +560,15 @@ a:hover {
   gap: 10px;
   z-index: 1111;
 }
+.fixed-icons .zoom-home {
+  border: none !important;
+  background: none;
+  padding: 0;
+  outline: none;
+}
+.fixed-icons .zoom-home:focus {
+  outline: none;
+}
 /* .compounds .compounds-icons svg {
   width: 30px;
   height: 30px;
@@ -591,7 +597,7 @@ a:hover {
 }
 .compounds .top-card-comp span {
   color: #707070;
-  font-size: 14px;
+  font-size: 12px;
 }
 .compounds img {
   position: relative;
@@ -796,12 +802,14 @@ a:hover {
   bottom: 12px;
   display: flex;
   font-size: 12px;
-  right: 30px;
+  left: 50%;
+  transform: translate(-50%, 0%);
   padding: 5px;
   border-radius: 15px;
   align-items: center;
   justify-content: center;
   border: none;
+  width: 200px;
 }
 .projects .bottom-card-proj button svg {
   width: 20px;
@@ -1275,7 +1283,6 @@ a:hover {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   object-position: center;
-
 }
 /* End swiper-in*/
 /*Start Contact*/
@@ -1435,8 +1442,11 @@ a:hover {
   object-fit: fill;
   max-width: 100%;
   height: 100%;
+  transition: transform 0.3s ease-in-out;
 }
-
+.swiper4 .swiper-slide img:hover {
+  transform: scale(1.2);
+}
 /* Styling navigation buttons */
 .swiper4 .swiper-button-prev,
 .swiper4 .swiper-button-next {
@@ -1559,8 +1569,8 @@ a:hover {
 .services::after {
   content: "";
   position: absolute;
-  bottom: 8%;
-  left: 19%;
+  bottom: 6.5%;
+  left: 12%;
   width: 160px;
   height: 1px;
   background-color: var(--mainColor);
@@ -1575,6 +1585,7 @@ a:hover {
 .services .services-content .head-services h2,
 .services .services-content .services-cards .services-card h5 {
   font-weight: 700;
+  font-size: 1.1rem;
 }
 .services .services-content .services-cards {
   display: grid;
@@ -1585,7 +1596,7 @@ a:hover {
 .services .services-content .services-cards .services-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   color: #000;
   z-index: 1000;

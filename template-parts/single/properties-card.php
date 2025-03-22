@@ -124,25 +124,30 @@ $placeholder = get_template_directory_uri() . '/assets/imgs/default.jpg';
             <img src="<?php echo esc_url( $placeholder ); ?>" data-src="<?php echo esc_url( $developer_image_url ); ?>" alt="<?php echo isset( $developer ) ? esc_attr( $developer->name ) : esc_attr__( 'Default Image', 'cob_theme' ); ?>" class="lazyload">
         </div>
         <li>
-            <div class="swiper swiper7-in swiper-in">
-                <div class="swiper-wrapper">
-                    <?php if ( ! empty( $gallery_images ) ) : ?>
-                        <?php foreach ( $gallery_images as $image_url ) : ?>
-                            <a href="<?php the_permalink(); ?>" class="swiper-slide">
-                                <img data-src="<?php echo esc_url( $image_url ); ?>" class="swiper-in-img lazyload" alt="<?php echo esc_attr( get_the_title() ); ?>">
-                            </a>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <div class="swiper-slide">
-                            <?php $thumbnail = get_the_post_thumbnail_url( $post_id, 'large' ); ?>
-                            <?php if ( $thumbnail ) : ?>
-                                <img data-src="<?php echo esc_url( $thumbnail ); ?>" class="swiper-in-img lazyload" alt="<?php echo esc_attr( get_the_title() ); ?>">
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <div class="swiper-pagination"></div>
+           <?php
+global $swiper_count;
+$swiper_count = isset($swiper_count) ? $swiper_count + 1 : 1; // Unique counter for each Swiper
+$swiper_class = "swiper-instance-" . $swiper_count;
+?>
+<div class="swiper <?php echo esc_attr($swiper_class); ?> swiper-in" data-swiper-id="<?php echo esc_attr($swiper_class); ?>">
+    <div class="swiper-wrapper">
+        <?php if ( ! empty( $gallery_images ) ) : ?>
+            <?php foreach ( $gallery_images as $image_url ) : ?>
+                <a href="<?php the_permalink(); ?>" class="swiper-slide">
+                    <img data-src="<?php echo esc_url( $image_url ); ?>" class="swiper-in-img lazyload" alt="<?php echo esc_attr( get_the_title() ); ?>">
+                </a>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <div class="swiper-slide">
+                <?php $thumbnail = get_the_post_thumbnail_url( $post_id, 'large' ); ?>
+                <?php if ( $thumbnail ) : ?>
+                    <img data-src="<?php echo esc_url( $thumbnail ); ?>" class="swiper-in-img lazyload" alt="<?php echo esc_attr( get_the_title() ); ?>">
+                <?php endif; ?>
             </div>
+        <?php endif; ?>
+    </div>
+    <div class="swiper-pagination <?php echo esc_attr($swiper_class); ?>-pagination"></div> <!-- Unique Pagination -->
+</div>
         </li>
         <li>
             <div class="bottom-properties-swiper">

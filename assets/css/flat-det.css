@@ -206,7 +206,7 @@ td {
   cursor: pointer;
   position: absolute;
   top: 365px;
-  left: 44%;
+  left: 41.5%;
   z-index: 111;
   border: 1px solid #fff;
   border-radius: 10px;
@@ -292,7 +292,9 @@ td {
 .pop-swiper2 .swiper-button-next svg {
   width: 20px;
 }
-#closePopup {
+#closePopup,
+#closePopupZoom,
+#closePopupContact {
   width: 45px;
   height: 45px;
   display: flex;
@@ -333,7 +335,8 @@ td {
   margin-bottom: 20px;
 }
 
-.flatTab {
+.flatTab,
+.popup-flatTab {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -343,23 +346,28 @@ td {
   font-weight: 700;
   transition: all 0.3s;
 }
-.flatTab:focus {
+.flatTab:focus,
+.popup-flatTab:focus {
   outline: none;
 }
-.flatTab.active {
+.flatTab.active,
+.popup-flatTab.active {
   border-bottom: 2px solid var(--mainColor);
   color: var(--mainColor);
   outline: none;
 }
 
-.flatTab-content {
+.flatTab-content,
+.popup-flatTab-content {
   display: none;
 }
 
-.flatTab-content.active {
+.flatTab-content.active,
+.popup-flatTab-content.active {
   display: block;
 }
-.flatTab-content input {
+.flatTab-content input,
+.popup-flatTab-content input {
   padding: 10px;
   font-size: 14px;
   border: 1px solid #e1e4ea;
@@ -367,14 +375,16 @@ td {
   width: 100%;
   margin-bottom: 15px;
 }
-.flatTab-content input::placeholder {
+.flatTab-content input::placeholder,
+.popup-flatTab-content input::placeholder {
   color: #a1aecb;
 }
 .date-picker,
 .time-picker {
   margin-bottom: 15px;
 }
-.flatTab-content .time-picker select {
+.flatTab-content .time-picker select,
+.popup-flatTab-content .time-picker select {
   padding: 10px;
   width: 100%;
   border: 1px solid #00000033;
@@ -467,12 +477,14 @@ td {
 .long-txt {
   color: #707070;
 }
-.date-swiper {
+.date-swiper,
+.date-swiper-zoom {
   width: 100%;
   height: 100%;
 }
 
-.date-swiper .swiper-slide {
+.date-swiper .swiper-slide,
+.date-swiper-zoom .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -480,7 +492,8 @@ td {
   justify-content: center;
   align-items: center;
 }
-.date-swiper .date-btn {
+.date-swiper .date-btn,
+.date-swiper-zoom .date-btn {
   padding: 10px 25px;
   border-radius: 15px;
   border: none;
@@ -491,12 +504,14 @@ td {
   gap: 5px;
   cursor: pointer;
 }
-.date-swiper .date-btn p {
+.date-swiper .date-btn p,
+.date-swiper-zoom .date-btn p {
   margin-bottom: 0;
   font-size: 14px;
   font-weight: 700;
 }
 .date-swiper .date-btn:focus,
+.date-swiper-zoom .date-btn:focus,
 .flatTab-content input:focus,
 .flatTab-content select:focus {
   outline: none;

@@ -85,3 +85,64 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 </header>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+  const navbar = document.querySelector(".navbar");
+  const languageSelector = document.querySelector(".language-selector");
+  const mobileBreakpoint = 768;
+
+  const resetForDesktop = () => {
+    if (window.innerWidth >= mobileBreakpoint) {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      navbar.style.flexDirection = "row";
+      navbar.style.gap = "";
+      languageSelector.style.display = "block";
+    }
+  };
+
+  const toggleMenu = () => {
+    if (window.innerWidth < mobileBreakpoint) {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+
+      const menuOpen = navMenu.classList.contains("active");
+      hamburger.setAttribute("aria-expanded", menuOpen);
+
+      if (menuOpen) {
+        navbar.style.flexDirection = "row-reverse";
+        navbar.style.gap = "50%";
+        languageSelector.style.display = "none";
+      } else {
+        navbar.style.flexDirection = "row";
+        navbar.style.gap = "";
+        languageSelector.style.display = "block";
+      }
+    }
+  };
+
+  const closeMenuOnLinkClick = () => {
+    if (window.innerWidth < mobileBreakpoint) {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      navbar.style.flexDirection = "row";
+      navbar.style.gap = "";
+      languageSelector.style.display = "block";
+    }
+  };
+
+  // Event listeners
+  hamburger.addEventListener("click", toggleMenu);
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", closeMenuOnLinkClick);
+  });
+  window.addEventListener("resize", resetForDesktop);
+
+  // Initial check on page load
+  resetForDesktop();
+});
+</script>

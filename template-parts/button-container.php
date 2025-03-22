@@ -18,19 +18,112 @@
         </svg>
         <span style="color: white"><?php esc_html_e( 'WhatsApp', 'cob_theme' ); ?></span>
     </a>
-    <a href="tel:<?php echo esc_attr( get_option( 'company_phone', '0123456789' ) ); ?>" class="button zoom">
-        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.5 8H13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-            <path
-                d="M2.50098 11C2.50098 7.70017 2.50098 6.05025 3.52611 5.02513C4.55123 4 6.20115 4 9.50098 4H10.501C13.8008 4 15.4507 4 16.4759 5.02513C17.501 6.05025 17.501 7.70017 17.501 11V13C17.501 16.2998 17.501 17.9497 16.4759 18.9749C15.4507 20 13.8008 20 10.501 20H9.50098C6.20115 20 4.55123 20 3.52611 18.9749C2.50098 17.9497 2.50098 16.2998 2.50098 13V11Z"
-                stroke="white" stroke-width="1.5" />
-            <path
-                d="M17.501 8.90585L17.6269 8.80196C19.7427 7.05623 20.8006 6.18336 21.6508 6.60482C22.501 7.02628 22.501 8.42355 22.501 11.2181V12.7819C22.501 15.5765 22.501 16.9737 21.6508 17.3952C20.8006 17.8166 19.7427 16.9438 17.6269 15.198L17.501 15.0941"
-                stroke="white" stroke-width="1.5" stroke-linecap="round" />
+
+        
+   <button class="button zoom" id="togglePopupZoom">
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.5 8H13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+        <path d="M2.50098 11C2.50098 7.70017 2.50098 6.05025 3.52611 5.02513C4.55123 4 6.20115 4 9.50098 4H10.501C13.8008 4 15.4507 4 16.4759 5.02513C17.501 6.05025 17.501 7.70017 17.501 11V13C17.501 16.2998 17.501 17.9497 16.4759 18.9749C15.4507 20 13.8008 20 10.501 20H9.50098C6.20115 20 4.55123 20 3.52611 18.9749C2.50098 17.9497 2.50098 16.2998 2.50098 13V11Z" stroke="white" stroke-width="1.5" />
+        <path d="M17.501 8.90585L17.6269 8.80196C19.7427 7.05623 20.8006 6.18336 21.6508 6.60482C22.501 7.02628 22.501 8.42355 22.501 11.2181V12.7819C22.501 15.5765 22.501 16.9737 21.6508 17.3952C20.8006 17.8166 19.7427 16.9438 17.6269 15.198L17.501 15.0941" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+    </svg>
+    <span style="color: white"><?php esc_html_e( 'Zoom', 'cob_theme' ); ?></span>
+</button>
+<div class="overlay" id="overlayZoom"></div>
+<div class="popup" id="popupZoom">
+    <button id="closePopupZoom">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        <span style="color: white"><?php esc_html_e( 'Zoom', 'cob_theme' ); ?></span>
-    </a>
-    <a href="mailto:<?php echo esc_attr( get_option( 'email', 'info@cob.com.eg' ) ); ?>" class="button help">
+    </button>
+    <div class="popup-tabs-sec">
+        <button class="popup-flatTab active" data-tab="popup-meeting"><?php esc_html_e( 'Schedule Appointment', 'cob_theme' ); ?></button>
+        <button class="popup-flatTab" data-tab="popup-service"><?php esc_html_e( 'Live Meeting', 'cob_theme' ); ?></button>
+    </div>
+  <div class="popup-flatTab-content active" id="popup-meeting">
+    <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
+    <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
+    <div class="date-picker">
+        <label><?php esc_html_e( 'Select Date', 'cob_theme' ); ?></label>
+        <div class="swiper date-swiper-zoom">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Sunday', 'cob_theme' ); ?></p>
+                        <p>07</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Monday', 'cob_theme' ); ?></p>
+                        <p>08</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Tuesday', 'cob_theme' ); ?></p>
+                        <p>09</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Wednesday', 'cob_theme' ); ?></p>
+                        <p>10</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Thursday', 'cob_theme' ); ?></p>
+                        <p>11</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Friday', 'cob_theme' ); ?></p>
+                        <p>12</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Saturday', 'cob_theme' ); ?></p>
+                        <p>13</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="time-picker">
+        <label><?php esc_html_e( 'Select Time', 'cob_theme' ); ?></label>
+        <select>
+            <option>10:00 AM</option>
+            <option>12:00 PM</option>
+            <option>02:00 PM</option>
+        </select>
+    </div>
+    <button class="confirm"><?php esc_html_e( 'Confirm Booking', 'cob_theme' ); ?></button>
+    <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
+</div>
+    <div class="popup-flatTab-content" id="popup-service">
+        <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
+        <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
+        <label><?php esc_html_e( 'Enter Phone Number', 'cob_theme' ); ?></label>
+        <input type="text" placeholder="<?php esc_attr_e( 'Phone Number', 'cob_theme' ); ?>" />
+        <button class="confirm"><?php esc_html_e( 'Create Meeting', 'cob_theme' ); ?></button>
+        <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
+    </div>
+</div>
+
+
+
+
+    <!-- <a href="mailto:<?php echo esc_attr( get_option( 'email', 'info@cob.com.eg' ) ); ?>" class="button help">
         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M13 3.00372C12.1049 2.99039 11.2047 3.01289 10.3294 3.07107C6.14639 3.34913 2.81441 6.72838 2.54024 10.9707C2.48659 11.8009 2.48659 12.6607 2.54024 13.4909C2.6401 15.036 3.32343 16.4666 4.12791 17.6746C4.59501 18.5203 4.28674 19.5758 3.80021 20.4978C3.44941 21.1626 3.27401 21.495 3.41484 21.7351C3.55568 21.9752 3.87026 21.9829 4.49943 21.9982C5.74367 22.0285 6.58268 21.6757 7.24868 21.1846C7.6264 20.9061 7.81527 20.7668 7.94544 20.7508C8.0756 20.7348 8.33177 20.8403 8.84401 21.0513C9.3044 21.2409 9.83896 21.3579 10.3294 21.3905C11.7536 21.4852 13.2435 21.4854 14.6706 21.3905C18.8536 21.1125 22.1856 17.7332 22.4598 13.4909C22.5021 12.836 22.511 12.1627 22.4866 11.5"
@@ -41,5 +134,47 @@
                   stroke-linejoin="round" />
         </svg>
         <span style="color: white"><?php esc_html_e( 'Your Assistant', 'cob_theme' ); ?></span>
-    </a>
+    </a> -->
+
+    <button class="button help" id="togglePopupContact">
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M13 3.00372C12.1049 2.99039 11.2047 3.01289 10.3294 3.07107C6.14639 3.34913 2.81441 6.72838 2.54024 10.9707C2.48659 11.8009 2.48659 12.6607 2.54024 13.4909C2.6401 15.036 3.32343 16.4666 4.12791 17.6746C4.59501 18.5203 4.28674 19.5758 3.80021 20.4978C3.44941 21.1626 3.27401 21.495 3.41484 21.7351C3.55568 21.9752 3.87026 21.9829 4.49943 21.9982C5.74367 22.0285 6.58268 21.6757 7.24868 21.1846C7.6264 20.9061 7.81527 20.7668 7.94544 20.7508C8.0756 20.7348 8.33177 20.8403 8.84401 21.0513C9.3044 21.2409 9.83896 21.3579 10.3294 21.3905C11.7536 21.4852 13.2435 21.4854 14.6706 21.3905C18.8536 21.1125 22.1856 17.7332 22.4598 13.4909C22.5021 12.836 22.511 12.1627 22.4866 11.5"
+                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M9 15H16M9 10H12.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            <path d="M15.5 5.5H22.5M19 2V9" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+        </svg>
+        <span style="color: white"><?php esc_html_e( 'Your Assistant', 'cob_theme' ); ?></span>
+</button>
+<div class="overlay" id="overlayContact"></div>
+<div class="popup" id="popupContact">
+    <button id="closePopupContact">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+       <div class="contact-content">
+            <div class="form-container">
+                <h2 class="head">هل تحتاج إلى مساعدة؟</h2>
+                <p>املأ بياناتك و سوف يقوم خبير عقارى بالاتصال بك فى اقرب وقت</p>
+                <form>
+                    <input type="text" id="name" name="name" placeholder="الاسم" required>
+                    <input type="tel" id="mobile" name="mobile" pattern="[0-9]*" placeholder="رقم الهاتف" required>
+                    <input type=" email" id="email" name="email" placeholder="البريد الالكتروني" required>
+                    <textarea id="message" name="message" rows="4" placeholder="رسالتك" required></textarea>
+                    <button type="submit">أرسل</button>
+                </form>
+            </div>
+            <div class="image-container">
+                <img data-src="<?php echo $theme_dir ?>/assets/imgs/contact.jpg" alt="Office Image" class="offical-img lazyload">
+                <img data-src="<?php echo $theme_dir ?>/assets/imgs/logo.png" alt="Office Image" class="logo-contact lazyload">
+            </div>
+        </div>
+   
 </div>
+</div>
+<script>
+      
+</script>

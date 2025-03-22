@@ -21,8 +21,9 @@ $theme_dir = get_template_directory_uri();
             stroke="white" stroke-width="2.14286" />
     </svg>
     </a>
-    <a href="mailto:<?php echo esc_attr( get_option( 'email', 'info@cob.com.eg' ) ); ?>">
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <button class="button zoom-home" id="togglePopupContact">
+   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="black" />
         <path
             d="M24.7148 11.1489C23.4361 11.1298 22.1501 11.162 20.8997 11.2451C14.924 11.6423 10.164 16.4698 9.77233 22.5303C9.69568 23.7163 9.69568 24.9446 9.77233 26.1306C9.91498 28.3378 10.8912 30.3816 12.0404 32.1073C12.7077 33.3154 12.2673 34.8233 11.5723 36.1404C11.0711 37.0901 10.8206 37.565 11.0218 37.908C11.223 38.251 11.6724 38.262 12.5712 38.2838C14.3487 38.3271 15.5472 37.8231 16.4987 37.1216C17.0383 36.7237 17.3081 36.5247 17.494 36.5018C17.68 36.479 18.0459 36.6297 18.7777 36.9311C19.4354 37.202 20.1991 37.3691 20.8997 37.4157C22.9343 37.551 25.0627 37.5513 27.1014 37.4157C33.0771 37.0186 37.8371 32.191 38.2288 26.1306C38.2893 25.195 38.302 24.2331 38.2671 23.2864"
@@ -32,9 +33,37 @@ $theme_dir = get_template_directory_uri();
         <path d="M28.2861 14.7148H38.2861M33.2861 9.71484V19.7148" stroke="white" stroke-width="2.14286"
               stroke-linecap="round" stroke-linejoin="round" />
     </svg>
-    </a>
-    <a href="zoom">
-   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+</button>
+<div class="overlay" id="overlayContact"></div>
+<div class="popup" id="popupContact">
+    <button id="closePopupContact">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+       <div class="contact-content">
+            <div class="form-container">
+                <h2 class="head">هل تحتاج إلى مساعدة؟</h2>
+                <p>املأ بياناتك و سوف يقوم خبير عقارى بالاتصال بك فى اقرب وقت</p>
+                <form>
+                    <input type="text" id="name" name="name" placeholder="الاسم" required>
+                    <input type="tel" id="mobile" name="mobile" pattern="[0-9]*" placeholder="رقم الهاتف" required>
+                    <input type=" email" id="email" name="email" placeholder="البريد الالكتروني" required>
+                    <textarea id="message" name="message" rows="4" placeholder="رسالتك" required></textarea>
+                    <button type="submit">أرسل</button>
+                </form>
+            </div>
+            <div class="image-container">
+                <img data-src="<?php echo $theme_dir ?>/assets/imgs/contact.jpg" alt="Office Image" class="offical-img lazyload">
+                <img data-src="<?php echo $theme_dir ?>/assets/imgs/logo.png" alt="Office Image" class="logo-contact lazyload">
+            </div>
+        </div>
+   
+</div>
+
+    
+     <button class="button zoom zoom-home" id="togglePopupZoom">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="#357CDC" />
         <path d="M22.5713 18.2861H25.4284" stroke="white" stroke-width="2.14286" stroke-linecap="round" />
         <path
@@ -44,5 +73,173 @@ $theme_dir = get_template_directory_uri();
             d="M31.1436 19.5805L31.3234 19.4321C34.346 16.9382 35.8573 15.6912 37.0718 16.2933C38.2864 16.8954 38.2864 18.8915 38.2864 22.8837V25.1177C38.2864 29.11 38.2864 31.106 37.0718 31.7081C35.8573 32.3101 34.346 31.0633 31.3234 28.5693L31.1436 28.4208"
             stroke="white" stroke-width="2.14286" stroke-linecap="round" />
     </svg>
-    </a>
+</button>
+<div class="overlay" id="overlayZoom"></div>
+<div class="popup" id="popupZoom">
+    <button id="closePopupZoom">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+    <div class="popup-tabs-sec">
+        <button class="popup-flatTab active" data-tab="popup-meeting"><?php esc_html_e( 'Schedule Appointment', 'cob_theme' ); ?></button>
+        <button class="popup-flatTab" data-tab="popup-service"><?php esc_html_e( 'Live Meeting', 'cob_theme' ); ?></button>
+    </div>
+  <div class="popup-flatTab-content active" id="popup-meeting">
+    <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
+    <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
+    <div class="date-picker">
+        <label><?php esc_html_e( 'Select Date', 'cob_theme' ); ?></label>
+        <div class="swiper date-swiper-zoom">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Sunday', 'cob_theme' ); ?></p>
+                        <p>07</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Monday', 'cob_theme' ); ?></p>
+                        <p>08</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Tuesday', 'cob_theme' ); ?></p>
+                        <p>09</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Wednesday', 'cob_theme' ); ?></p>
+                        <p>10</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Thursday', 'cob_theme' ); ?></p>
+                        <p>11</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Friday', 'cob_theme' ); ?></p>
+                        <p>12</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+                <div class="swiper-slide">
+                    <button class="date-btn">
+                        <p><?php esc_html_e( 'Saturday', 'cob_theme' ); ?></p>
+                        <p>13</p>
+                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="time-picker">
+        <label><?php esc_html_e( 'Select Time', 'cob_theme' ); ?></label>
+        <select>
+            <option>10:00 AM</option>
+            <option>12:00 PM</option>
+            <option>02:00 PM</option>
+        </select>
+    </div>
+    <button class="confirm"><?php esc_html_e( 'Confirm Booking', 'cob_theme' ); ?></button>
+    <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
 </div>
+    <div class="popup-flatTab-content" id="popup-service">
+        <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
+        <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
+        <label><?php esc_html_e( 'Enter Phone Number', 'cob_theme' ); ?></label>
+        <input type="text" placeholder="<?php esc_attr_e( 'Phone Number', 'cob_theme' ); ?>" />
+        <button class="confirm"><?php esc_html_e( 'Create Meeting', 'cob_theme' ); ?></button>
+        <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
+    </div>
+</div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Popup Zoom Toggle
+  const togglePopupZoom = document.getElementById("togglePopupZoom");
+  const popupZoom = document.getElementById("popupZoom");
+  const closePopupZoom = document.getElementById("closePopupZoom");
+  const overlayZoom = document.getElementById("overlayZoom");
+
+  if (togglePopupZoom && popupZoom && closePopupZoom && overlayZoom) {
+    togglePopupZoom.addEventListener("click", () => {
+      popupZoom.style.display = "block";
+      overlayZoom.style.display = "block";
+    });
+    closePopupZoom.addEventListener("click", () => {
+      popupZoom.style.display = "none";
+      overlayZoom.style.display = "none";
+    });
+    overlayZoom.addEventListener("click", () => {
+      popupZoom.style.display = "none";
+      overlayZoom.style.display = "none";
+    });
+  }
+   // Tabs for popup .popup-flatTab elements
+  const popupTabs = document.querySelectorAll(".popup-flatTab");
+  const popupContents = document.querySelectorAll(".popup-flatTab-content");
+  popupTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      popupTabs.forEach((t) => t.classList.remove("active"));
+      popupContents.forEach((c) => c.classList.remove("active"));
+      tab.classList.add("active");
+      const target = document.getElementById(tab.dataset.tab);
+      if (target) {
+        target.classList.add("active");
+      }
+    });
+  });
+ // Date Swiper for popup
+  let dateSwiperZoom = new Swiper(".date-swiper-zoom", {
+    slidesPerView: 4,
+    spaceBetween: 10,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 4, spaceBetween: 10 },
+      768: { slidesPerView: 4, spaceBetween: 10 },
+      1024: { slidesPerView: 4, spaceBetween: 10 },
+    },
+  });
+         });
+          // Popup Contact Toggle
+  const togglePopupContact = document.getElementById("togglePopupContact");
+  const popupContact = document.getElementById("popupContact");
+  const closePopupContact = document.getElementById("closePopupContact");
+  const overlayContact = document.getElementById("overlayContact");
+
+  if (
+    togglePopupContact &&
+    popupContact &&
+    closePopupContact &&
+    overlayContact
+  ) {
+    togglePopupContact.addEventListener("click", () => {
+      popupContact.style.display = "block";
+      overlayContact.style.display = "block";
+    });
+    closePopupContact.addEventListener("click", () => {
+      popupContact.style.display = "none";
+      overlayContact.style.display = "none";
+    });
+    overlayContact.addEventListener("click", () => {
+      popupContact.style.display = "none";
+      overlayContact.style.display = "none";
+    });
+  }
+</script>
