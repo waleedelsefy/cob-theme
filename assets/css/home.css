@@ -1361,7 +1361,7 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-top-right-radius: 170px;
+  border-start-start-radius: 170px;
 }
 .contact-content .image-container .logo-contact {
   position: absolute;

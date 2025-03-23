@@ -10,7 +10,7 @@
   border-bottom-left-radius: 0;
 }
 .page-item:last-child .page-link {
-  border-top-right-radius: 0;
+  border-start-end-radius: 0;
   border-bottom-right-radius: 0;
 }
 .sidenav .overlay {
@@ -94,6 +94,6 @@
   right: 41.5%;
 }
 .contact-content .image-container .offical-img {
-  border-top-right-radius: 0;
-  border-top-left-radius: 170px;
+  border-start-end-radius: 0;
+  border-start-start-radius: 170px;
 }

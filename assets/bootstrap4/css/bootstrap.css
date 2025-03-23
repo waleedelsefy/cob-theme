@@ -2891,7 +2891,7 @@ tbody.collapse.show {
 }
 
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
-  border-top-right-radius: 0;
+  border-start-end-radius: 0;
   border-bottom-right-radius: 0;
 }
 
@@ -2911,7 +2911,7 @@ tbody.collapse.show {
 
 .btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
-  border-top-right-radius: 0;
+  border-start-end-radius: 0;
   border-bottom-right-radius: 0;
 }
 
@@ -2976,7 +2976,7 @@ tbody.collapse.show {
 
 .btn-group-vertical > .btn:last-child:not(:first-child) {
   border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-start-end-radius: 0;
 }
 
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
@@ -2995,7 +2995,7 @@ tbody.collapse.show {
   > .btn-group:last-child:not(:first-child)
   > .btn:first-child {
   border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-start-end-radius: 0;
 }
 
 [data-toggle="buttons"] > .btn input[type="radio"],
@@ -3092,7 +3092,7 @@ tbody.collapse.show {
 .input-group-btn:not(:first-child)
   > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
-  border-top-right-radius: 0;
+  border-start-end-radius: 0;
   border-bottom-right-radius: 0;
 }
 
@@ -3412,7 +3412,7 @@ tbody.collapse.show {
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-start-end-radius: 0;
 }
 
 .nav-pills .nav-link {
@@ -4008,7 +4008,7 @@ tbody.collapse.show {
     border-left: 0;
   }
   .card-group .card:first-child {
-    border-top-right-radius: 0;
+    border-start-end-radius: 0;
     border-bottom-right-radius: 0;
   }
   .card-group .card:first-child .card-img-top {
