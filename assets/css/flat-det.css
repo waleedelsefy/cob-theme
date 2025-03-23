@@ -1,6 +1,15 @@
 .head-flat {
   background-color: #fff;
 }
+.facility-img {
+  width: 20px;
+  margin: auto 8px;
+  padding: 0;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
 .flat-details {
   width: 40%;
 }
@@ -398,10 +407,10 @@ td {
 }
 .right-landing-flat .tags .tag {
   background: #fff;
-  padding: 5px;
+  padding: 5px 10px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 6px;
   border: 1px solid #000;
   border-radius: 15px;
 }
