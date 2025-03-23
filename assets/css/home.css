@@ -1296,12 +1296,28 @@ a:hover {
   overflow: hidden;
   height: 500px;
 }
+.pop-contact-content {
+  display: flex;
+  flex-direction: row-reverse;
+
+  overflow: hidden;
+  height: 500px;
+}
 
 .contact-content .form-container {
   padding: 40px;
   background-color: #000;
   color: white;
   width: 50%;
+}
+.black {
+  background-color: #0d0001 !important;
+}
+.contact-content .form-container-pop {
+  padding: 15px;
+  background-color: #000;
+  color: white;
+  width: 100%;
 }
 
 .contact-content .form-container h2 {

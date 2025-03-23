@@ -1,3 +1,6 @@
+<?php
+$theme_dir = get_template_directory_uri();
+?>
 <div class="button-container">
     <a href="tel:<?php echo esc_attr( get_option( 'company_phone', '0123456789' ) ); ?>" class="button call">
         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,14 +152,13 @@
         <span style="color: white"><?php esc_html_e( 'Your Assistant', 'cob_theme' ); ?></span>
 </button>
 <div class="overlay" id="overlayContact"></div>
-<div class="popup" id="popupContact">
-    <button id="closePopupContact">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
+<div class="popup black" id="popupContact">
+    <button id="closePopupContact" style="background: white">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="#000000" xmlns="http://www.w3.org/2000/svg"> <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="#000000" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
     </button>
        <div class="contact-content">
-            <div class="form-container">
+            <div class="form-container-pop">
                 <h2 class="head">هل تحتاج إلى مساعدة؟</h2>
                 <p>املأ بياناتك و سوف يقوم خبير عقارى بالاتصال بك فى اقرب وقت</p>
                 <form>
@@ -167,12 +169,8 @@
                     <button type="submit">أرسل</button>
                 </form>
             </div>
-            <div class="image-container">
-                <img data-src="<?php echo $theme_dir ?>/assets/imgs/contact.jpg" alt="Office Image" class="offical-img lazyload">
-                <img data-src="<?php echo $theme_dir ?>/assets/imgs/logo.png" alt="Office Image" class="logo-contact lazyload">
-            </div>
         </div>
-   
+
 </div>
 </div>
 <script>
