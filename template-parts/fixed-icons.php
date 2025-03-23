@@ -80,6 +80,7 @@ $theme_dir = get_template_directory_uri();
             <button class="popup-flatTab active" data-tab="popup-meeting"><?php esc_html_e( 'Schedule Appointment', 'cob_theme' ); ?></button>
             <button class="popup-flatTab" data-tab="popup-service"><?php esc_html_e( 'Live Meeting', 'cob_theme' ); ?></button>
         </div>
+       <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/imgs/logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
         <div class="popup-flatTab-content active" id="popup-meeting">
             <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
             <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
@@ -163,7 +164,7 @@ $theme_dir = get_template_directory_uri();
 
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
         // Popup Zoom Toggle
   const togglePopupZoomOpety = document.getElementById("togglePopupZoomOpety");
   const PopupZoomOpety = document.getElementById("PopupZoomOpety");
@@ -238,4 +239,5 @@ $theme_dir = get_template_directory_uri();
       overlayContact.style.display = "none";
     });
   }
+  
 </script>

@@ -42,6 +42,7 @@ $theme_dir = get_template_directory_uri();
         <button class="popup-flatTab active" data-tab="popup-meeting"><?php esc_html_e( 'Schedule Appointment', 'cob_theme' ); ?></button>
         <button class="popup-flatTab" data-tab="popup-service"><?php esc_html_e( 'Live Meeting', 'cob_theme' ); ?></button>
     </div>
+     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/imgs/logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
   <div class="popup-flatTab-content active" id="popup-meeting">
     <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
     <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
@@ -123,21 +124,6 @@ $theme_dir = get_template_directory_uri();
     </div>
 </div>
 
-
-
-
-    <!-- <a href="mailto:<?php echo esc_attr( get_option( 'email', 'info@cob.com.eg' ) ); ?>" class="button help">
-        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M13 3.00372C12.1049 2.99039 11.2047 3.01289 10.3294 3.07107C6.14639 3.34913 2.81441 6.72838 2.54024 10.9707C2.48659 11.8009 2.48659 12.6607 2.54024 13.4909C2.6401 15.036 3.32343 16.4666 4.12791 17.6746C4.59501 18.5203 4.28674 19.5758 3.80021 20.4978C3.44941 21.1626 3.27401 21.495 3.41484 21.7351C3.55568 21.9752 3.87026 21.9829 4.49943 21.9982C5.74367 22.0285 6.58268 21.6757 7.24868 21.1846C7.6264 20.9061 7.81527 20.7668 7.94544 20.7508C8.0756 20.7348 8.33177 20.8403 8.84401 21.0513C9.3044 21.2409 9.83896 21.3579 10.3294 21.3905C11.7536 21.4852 13.2435 21.4854 14.6706 21.3905C18.8536 21.1125 22.1856 17.7332 22.4598 13.4909C22.5021 12.836 22.511 12.1627 22.4866 11.5"
-                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M9 15H16M9 10H12.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-            <path d="M15.5 5.5H22.5M19 2V9" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-        </svg>
-        <span style="color: white"><?php esc_html_e( 'Your Assistant', 'cob_theme' ); ?></span>
-    </a> -->
 
     <button class="button help" id="togglePopupContact">
     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">

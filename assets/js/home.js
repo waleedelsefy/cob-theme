@@ -214,18 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hashNavigation: false,
   });
 });
-document.querySelectorAll(".swiper-in").forEach((swiperElement) => {
-  const swiperId = swiperElement.getAttribute("data-swiper-id");
-  if (!swiperId) return;
 
-  new Swiper("." + swiperId, {
-    spaceBetween: 50,
-    pagination: {
-      el: "." + swiperId + "-pagination", // Ensure pagination is linked properly
-      clickable: true,
-    },
-  });
-});
 // swiper4 //motaoron
 document.addEventListener("DOMContentLoaded", () => {
   var swiper = new Swiper(".swiper4", {
@@ -398,4 +387,16 @@ var swiper = new Swiper(".swiper8-in", {
     el: ".swiper-pagination",
     clickable: true,
   },
+});
+document.querySelectorAll(".swiper-in").forEach((swiperElement) => {
+  const swiperId = swiperElement.getAttribute("data-swiper-id");
+  if (!swiperId) return;
+
+  new Swiper("." + swiperId, {
+    spaceBetween: 50,
+    pagination: {
+      el: "." + swiperId + "-pagination", // Ensure pagination is linked properly
+      clickable: true,
+    },
+  });
 });

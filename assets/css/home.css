@@ -2119,3 +2119,19 @@ a:hover {
   }
 }
 /*End areas*/
+
+#popupZoom img,
+#PopupZoomOpety img {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 120px;
+  height: 50px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: none;
+}
+.popup-tabs-sec {
+  margin-bottom: 20px;
+  position: relative;
+}
