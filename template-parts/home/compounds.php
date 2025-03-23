@@ -93,7 +93,6 @@ if ( ! empty( $compounds ) && ! is_wp_error( $compounds ) ) {
                 <?php endif; ?>
             </div>
 
-            <!-- أزرار التنقل -->
             <div class="swiper-button-prev">
                 <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.66602 6.00033H18.3327M1.66602 6.00033C1.66602 4.54158 5.82081 1.81601 6.87435 0.791992M1.66602 6.00033C1.66602 7.45908 5.82081 10.1847 6.87435 11.2087"
