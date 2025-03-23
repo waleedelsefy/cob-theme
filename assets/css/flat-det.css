@@ -206,6 +206,7 @@ td {
   z-index: 1000;
   border-radius: 5px;
   width: 70%;
+  max-width: 425px;
 }
 .btn {
   padding: 0 10px;
