@@ -86,7 +86,7 @@
 }
 /************* Responsive *************/
 .fixed-icons {
-  right: inherit;
+  right: inherit !important;
   left: 10px;
 }
 .btn {
@@ -96,4 +96,64 @@
 .contact-content .image-container .offical-img {
   border-start-end-radius: 0;
   border-start-start-radius: 170px;
+}
+.mySwiper .swiper-button-prev,
+.swiper1 .swiper-button-prev,
+.swiper2 .swiper-button-prev,
+.swiper3 .swiper-button-prev,
+.swiper4 .swiper-button-prev,
+.swiper5 .swiper-button-prev,
+.swiper6 .swiper-button-prev {
+  left: 92% !important;
+  right: inherit !important;
+}
+.mySwiper .swiper-button-next,
+.swiper1 .swiper-button-next,
+.swiper2 .swiper-button-next,
+.swiper3 .swiper-button-next,
+.swiper4 .swiper-button-next,
+.swiper5 .swiper-button-next,
+.swiper6 .swiper-button-next {
+  left: 96% !important;
+  right: inherit !important;
+}
+.areas-button svg,
+.projects-button svg,
+.properties-button svg,
+.motaoron-button svg,
+.services-button svg,
+.factorys-button svg,
+.articles-button svg {
+  transform: rotate(180deg);
+}
+.services::after {
+  left: inherit !important;
+  right: 12%;
+}
+#popupZoom img,
+#PopupZoomOpety img {
+  right: -20%;
+  left: inherit !important;
+}
+@media (max-width: 768px) {
+  .mySwiper .swiper-button-prev,
+  .swiper1 .swiper-button-prev,
+  .swiper2 .swiper-button-prev,
+  .swiper3 .swiper-button-prev,
+  .swiper4 .swiper-button-prev,
+  .swiper5 .swiper-button-prev,
+  .swiper6 .swiper-button-prev {
+    left: 75% !important;
+    right: inherit !important;
+  }
+  .mySwiper .swiper-button-next,
+  .swiper1 .swiper-button-next,
+  .swiper2 .swiper-button-next,
+  .swiper3 .swiper-button-next,
+  .swiper4 .swiper-button-next,
+  .swiper5 .swiper-button-next,
+  .swiper6 .swiper-button-next {
+    left: 83% !important;
+    right: inherit !important;
+  }
 }

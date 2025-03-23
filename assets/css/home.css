@@ -344,7 +344,6 @@ a:hover {
 @media (max-width: 767px) {
   .search-container {
     display: flex !important;
-    /* position: relative; */
   }
   .search-bar-content {
     display: none !important;
@@ -434,7 +433,7 @@ a:hover {
 }
 .mySwiper::after {
   content: "";
-  width: 75%;
+  width: 70%;
   height: 1px;
   background-color: var(--mainColor);
   bottom: 23px;
@@ -498,7 +497,7 @@ a:hover {
 /* Style for the active dot */
 .mySwiper .swiper-pagination {
   text-align: right;
-  top: 76%;
+  top: 80%;
   display: flex;
   align-items: center;
   right: 1%;
@@ -513,7 +512,6 @@ a:hover {
 }
 .mySwiper .swiper-pagination-bullet-active {
   background-color: var(--mainColor);
-
   width: 23px;
   height: 5px;
   border-radius: 5px;
@@ -559,6 +557,10 @@ a:hover {
   flex-direction: column;
   gap: 10px;
   z-index: 1111;
+}
+.fixed-icons a,
+.fixed-icons button {
+  width: 50px;
 }
 .fixed-icons .zoom-home {
   border: none !important;
@@ -613,7 +615,7 @@ a:hover {
 }
 .swiper1::after {
   content: "";
-  width: 75%;
+  width: 70%;
   height: 1px;
   background-color: var(--mainColor);
   bottom: 20px;
@@ -681,7 +683,7 @@ a:hover {
 /* Style for the active dot */
 .swiper1 .swiper-pagination {
   text-align: right;
-  top: 80%;
+  top: 82%;
   display: flex;
   align-items: center;
   background: #fff;
@@ -823,7 +825,7 @@ a:hover {
 }
 .swiper2::after {
   content: "";
-  width: 75%;
+  width: 70%;
   height: 1px;
   background-color: var(--mainColor);
   bottom: 20px;
@@ -891,7 +893,7 @@ a:hover {
 /* Style for the active dot */
 .swiper2 .swiper-pagination {
   text-align: right;
-  top: 80%;
+  top: 82%;
   display: flex;
   align-items: center;
   background: #fff;
@@ -1432,7 +1434,7 @@ a:hover {
 }
 .swiper4::after {
   content: "";
-  width: 75%;
+  width: 70%;
   height: 1px;
   background-color: var(--mainColor);
   bottom: 21px;
@@ -1640,6 +1642,7 @@ a:hover {
   gap: 5px;
   color: var(--mainColor);
   cursor: pointer;
+  margin-inline-end: 20px;
 }
 .services .services-content .services-button:hover {
   color: var(--mainColor);
@@ -1802,7 +1805,7 @@ a:hover {
 }
 .swiper5::after {
   content: "";
-  width: 75%;
+  width: 70%;
   height: 1px;
   background-color: var(--mainColor);
   bottom: 20px;

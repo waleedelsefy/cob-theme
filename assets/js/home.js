@@ -1,59 +1,60 @@
-const toggleButton = document.getElementById("toggleButton");
-const hiddenContent = document.getElementById("hiddenContent");
-const sliderIcon = document.getElementById("sliderIcon");
-const closeIcon = document.getElementById("closeIcon");
-const searchButton = document.getElementById("searchButton");
-const searchTitle = document.getElementById("searchTitle");
-const SearchTitle2 = document.getElementById("SearchTitle2");
-const searchIcon = document.getElementById("searchIcon");
-const navbar2 = document.querySelector(".navbar");
-const areas = document.querySelector(".areas");
-const compounds = document.querySelector(".compounds");
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("toggleButton");
+  const hiddenContent = document.getElementById("hiddenContent");
+  const sliderIcon = document.getElementById("sliderIcon");
+  const closeIcon = document.getElementById("closeIcon");
+  const searchButton = document.getElementById("searchButton");
+  const searchTitle = document.getElementById("searchTitle");
+  const SearchTitle2 = document.getElementById("SearchTitle2");
+  const searchIcon = document.getElementById("searchIcon");
+  const navbar2 = document.querySelector(".navbar");
+  const areas = document.querySelector(".areas");
+  const compounds = document.querySelector(".compounds");
 
-// Function to toggle the hidden content
-toggleButton.addEventListener("click", () => {
-  if (
-    hiddenContent.style.display === "none" ||
-    hiddenContent.style.display === ""
-  ) {
-    hiddenContent.style.display = "block"; // Show the full-screen content
-    sliderIcon.style.display = "none"; // Hide the slider icon
-    searchTitle.style.display = "block";
-    SearchTitle2.style.display = "none";
-    searchButton.style.display = "none";
-    searchIcon.style.display = "none";
-    closeIcon.style.display = "block"; // Show the close icon
-    navbar2.style.zIndex = "0";
-    areas.style.position = "relative";
-    areas.style.zIndex = "-1";
-    compounds.style.zIndex = "-1";
-  } else {
-    hiddenContent.style.display = "none"; // Hide the content
-    sliderIcon.style.display = "block"; // Show the slider icon
-    closeIcon.style.display = "none"; // Hide the close icon
-    searchTitle.style.display = "none";
-    SearchTitle2.style.display = "block";
-    searchButton.style.display = "block";
-    searchIcon.style.display = "block";
-    navbar2.style.zIndex = "1";
-    areas.style.zIndex = "1";
-    compounds.style.zIndex = "1";
-  }
+  // Function to toggle the hidden content
+  toggleButton.addEventListener("click", () => {
+    if (
+      hiddenContent.style.display === "none" ||
+      hiddenContent.style.display === ""
+    ) {
+      hiddenContent.style.display = "block"; // Show the full-screen content
+      sliderIcon.style.display = "none"; // Hide the slider icon
+      searchTitle.style.display = "block";
+      SearchTitle2.style.display = "none";
+      searchButton.style.display = "none";
+      searchIcon.style.display = "none";
+      closeIcon.style.display = "block"; // Show the close icon
+      navbar2.style.zIndex = "0";
+      areas.style.position = "relative";
+      areas.style.zIndex = "-1";
+      compounds.style.zIndex = "-1";
+    } else {
+      hiddenContent.style.display = "none"; // Hide the content
+      sliderIcon.style.display = "block"; // Show the slider icon
+      closeIcon.style.display = "none"; // Hide the close icon
+      searchTitle.style.display = "none";
+      SearchTitle2.style.display = "block";
+      searchButton.style.display = "block";
+      searchIcon.style.display = "block";
+      navbar2.style.zIndex = "1";
+      areas.style.zIndex = "1";
+      compounds.style.zIndex = "1";
+    }
+  });
+
+  // Function to hide content on desktop view
+  const handleResize = () => {
+    if (window.innerWidth > 768) {
+      hiddenContent.style.display = "none";
+      sliderIcon.style.display = "block";
+      closeIcon.style.display = "none";
+      navbar2.style.zIndex = "1";
+    }
+  };
+  window.addEventListener("resize", handleResize);
+
+  handleResize();
 });
-
-// Function to hide content on desktop view
-const handleResize = () => {
-  if (window.innerWidth > 768) {
-    hiddenContent.style.display = "none";
-    sliderIcon.style.display = "block";
-    closeIcon.style.display = "none";
-    navbar2.style.zIndex = "1";
-  }
-};
-
-window.addEventListener("resize", handleResize);
-
-handleResize();
 document.addEventListener("DOMContentLoaded", () => {
   var swiper = new Swiper(".landing-swiper", {
     pagination: {

@@ -176,8 +176,8 @@
   color: #fff;
 }
 .footer-bottom .end-footer .end-left span .end-link {
-  border-left: 1px solid #ffffff;
-  padding-left: 15px;
+  border-inline-end: 1px solid #ffffff;
+  padding-inline-end: 15px;
 }
 @media (max-width: 767px) {
   .footer .main-footer {

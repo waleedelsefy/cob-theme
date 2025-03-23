@@ -145,7 +145,7 @@ $slider_query = new WP_Query( $args );
 
                 <!-- Detailed Search Form (Hidden Content) -->
                 <div class="hidden-content" id="hiddenContent" style="display: none;">
-                    <form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>>
+                    <form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <?php wp_nonce_field( 'save_search', 'search_nonce' ); ?>
                         <input type="hidden" name="search_type" value="detailed">
                         <label>

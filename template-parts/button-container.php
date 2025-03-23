@@ -38,11 +38,12 @@ $theme_dir = get_template_directory_uri();
             <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     </button>
+    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/imgs/logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
     <div class="popup-tabs-sec">
         <button class="popup-flatTab active" data-tab="popup-meeting"><?php esc_html_e( 'Schedule Appointment', 'cob_theme' ); ?></button>
         <button class="popup-flatTab" data-tab="popup-service"><?php esc_html_e( 'Live Meeting', 'cob_theme' ); ?></button>
     </div>
-     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/imgs/logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
+     
   <div class="popup-flatTab-content active" id="popup-meeting">
     <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
     <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
