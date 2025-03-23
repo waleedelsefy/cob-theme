@@ -1,6 +1,9 @@
 /* ul.social li{
     margin-right: 15px;
 } */
+body {
+  direction: rtl;
+}
 .breadcrumb-item {
   float: right;
 }
