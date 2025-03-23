@@ -304,6 +304,8 @@ td {
 }
 #closePopup,
 #closePopupZoom,
+#closePopupZoomOpety,
+#closepopupContactOpety,
 #closePopupContact {
   width: 45px;
   height: 45px;

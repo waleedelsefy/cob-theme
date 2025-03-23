@@ -10,7 +10,6 @@
 get_header();
 
 $theme_dir = get_template_directory_uri();
-             get_template_part('template-parts/fixed-icons');
              get_template_part('template-parts/home/landing');
             get_template_part('template-parts/home/areas');
             get_template_part('template-parts/home/compounds');

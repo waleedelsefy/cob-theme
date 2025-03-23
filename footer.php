@@ -19,6 +19,8 @@ $social_icons = [
     'linkedin'  => 'fab fa-linkedin',
     'youtube'   => 'fab fa-youtube'
 ];
+get_template_part('template-parts/fixed-icons');
+
 ?>
 
 <footer class="footer">

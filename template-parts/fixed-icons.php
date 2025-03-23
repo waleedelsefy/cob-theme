@@ -22,7 +22,7 @@ $theme_dir = get_template_directory_uri();
     </svg>
     </a>
 
-    <button class="button zoom-home" id="togglePopupContact">
+    <button class="button zoom-home" id="togglepopupContactOpety">
    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="black" />
         <path
@@ -35,14 +35,13 @@ $theme_dir = get_template_directory_uri();
     </svg>
 </button>
 <div class="overlay" id="overlayContact"></div>
-<div class="popup" id="popupContact">
-    <button id="closePopupContact">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-       <div class="contact-content">
-            <div class="form-container">
+    <div class="popup black" id="popupContactOpety">
+        <button id="closepopupContactOpety" style="background: white">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="#000000" xmlns="http://www.w3.org/2000/svg"> <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="#000000" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <div class="contact-content">
+            <div class="form-container-pop">
                 <h2 class="head">هل تحتاج إلى مساعدة؟</h2>
                 <p>املأ بياناتك و سوف يقوم خبير عقارى بالاتصال بك فى اقرب وقت</p>
                 <form>
@@ -53,16 +52,12 @@ $theme_dir = get_template_directory_uri();
                     <button type="submit">أرسل</button>
                 </form>
             </div>
-            <div class="image-container">
-                <img data-src="<?php echo $theme_dir ?>/assets/imgs/contact.jpg" alt="Office Image" class="offical-img lazyload">
-                <img data-src="<?php echo $theme_dir ?>/assets/imgs/logo.png" alt="Office Image" class="logo-contact lazyload">
-            </div>
         </div>
-   
-</div>
 
-    
-     <button class="button zoom zoom-home" id="togglePopupZoom">
+    </div>
+
+
+     <button class="button zoom zoom-home" id="togglePopupZoomOpety">
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="#357CDC" />
         <path d="M22.5713 18.2861H25.4284" stroke="white" stroke-width="2.14286" stroke-linecap="round" />
@@ -74,118 +69,119 @@ $theme_dir = get_template_directory_uri();
             stroke="white" stroke-width="2.14286" stroke-linecap="round" />
     </svg>
 </button>
-<div class="overlay" id="overlayZoom"></div>
-<div class="popup" id="popupZoom">
-    <button id="closePopupZoom">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-    <div class="popup-tabs-sec">
-        <button class="popup-flatTab active" data-tab="popup-meeting"><?php esc_html_e( 'Schedule Appointment', 'cob_theme' ); ?></button>
-        <button class="popup-flatTab" data-tab="popup-service"><?php esc_html_e( 'Live Meeting', 'cob_theme' ); ?></button>
-    </div>
-  <div class="popup-flatTab-content active" id="popup-meeting">
-    <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
-    <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
-    <div class="date-picker">
-        <label><?php esc_html_e( 'Select Date', 'cob_theme' ); ?></label>
-        <div class="swiper date-swiper-zoom">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <button class="date-btn">
-                        <p><?php esc_html_e( 'Sunday', 'cob_theme' ); ?></p>
-                        <p>07</p>
-                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
-                    </button>
-                </div>
-                <div class="swiper-slide">
-                    <button class="date-btn">
-                        <p><?php esc_html_e( 'Monday', 'cob_theme' ); ?></p>
-                        <p>08</p>
-                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
-                    </button>
-                </div>
-                <div class="swiper-slide">
-                    <button class="date-btn">
-                        <p><?php esc_html_e( 'Tuesday', 'cob_theme' ); ?></p>
-                        <p>09</p>
-                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
-                    </button>
-                </div>
-                <div class="swiper-slide">
-                    <button class="date-btn">
-                        <p><?php esc_html_e( 'Wednesday', 'cob_theme' ); ?></p>
-                        <p>10</p>
-                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
-                    </button>
-                </div>
-                <div class="swiper-slide">
-                    <button class="date-btn">
-                        <p><?php esc_html_e( 'Thursday', 'cob_theme' ); ?></p>
-                        <p>11</p>
-                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
-                    </button>
-                </div>
-                <div class="swiper-slide">
-                    <button class="date-btn">
-                        <p><?php esc_html_e( 'Friday', 'cob_theme' ); ?></p>
-                        <p>12</p>
-                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
-                    </button>
-                </div>
-                <div class="swiper-slide">
-                    <button class="date-btn">
-                        <p><?php esc_html_e( 'Saturday', 'cob_theme' ); ?></p>
-                        <p>13</p>
-                        <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
-                    </button>
+<div class="overlay" id="overlayZoomOpety"></div>
+    <div class="popup" id="PopupZoomOpety">
+        <button id="closePopupZoomOpety">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M31.375 8.625L8.625 31.375M8.625 8.625L31.375 31.375" stroke="white" stroke-width="2.4375" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+        <div class="popup-tabs-sec">
+            <button class="popup-flatTab active" data-tab="popup-meeting"><?php esc_html_e( 'Schedule Appointment', 'cob_theme' ); ?></button>
+            <button class="popup-flatTab" data-tab="popup-service"><?php esc_html_e( 'Live Meeting', 'cob_theme' ); ?></button>
+        </div>
+        <div class="popup-flatTab-content active" id="popup-meeting">
+            <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
+            <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
+            <div class="date-picker">
+                <label><?php esc_html_e( 'Select Date', 'cob_theme' ); ?></label>
+                <div class="swiper date-swiper-zoom">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <button class="date-btn">
+                                <p><?php esc_html_e( 'Sunday', 'cob_theme' ); ?></p>
+                                <p>07</p>
+                                <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="date-btn">
+                                <p><?php esc_html_e( 'Monday', 'cob_theme' ); ?></p>
+                                <p>08</p>
+                                <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="date-btn">
+                                <p><?php esc_html_e( 'Tuesday', 'cob_theme' ); ?></p>
+                                <p>09</p>
+                                <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="date-btn">
+                                <p><?php esc_html_e( 'Wednesday', 'cob_theme' ); ?></p>
+                                <p>10</p>
+                                <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="date-btn">
+                                <p><?php esc_html_e( 'Thursday', 'cob_theme' ); ?></p>
+                                <p>11</p>
+                                <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="date-btn">
+                                <p><?php esc_html_e( 'Friday', 'cob_theme' ); ?></p>
+                                <p>12</p>
+                                <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="date-btn">
+                                <p><?php esc_html_e( 'Saturday', 'cob_theme' ); ?></p>
+                                <p>13</p>
+                                <p><?php esc_html_e( 'October', 'cob_theme' ); ?></p>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
+            <div class="time-picker">
+                <label><?php esc_html_e( 'Select Time', 'cob_theme' ); ?></label>
+                <select>
+                    <option>10:00 AM</option>
+                    <option>12:00 PM</option>
+                    <option>02:00 PM</option>
+                </select>
+            </div>
+            <button class="confirm"><?php esc_html_e( 'Confirm Booking', 'cob_theme' ); ?></button>
+            <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
+        </div>
+        <div class="popup-flatTab-content" id="popup-service">
+            <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
+            <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
+            <label><?php esc_html_e( 'Enter Phone Number', 'cob_theme' ); ?></label>
+            <input type="text" placeholder="<?php esc_attr_e( 'Phone Number', 'cob_theme' ); ?>" />
+            <button class="confirm"><?php esc_html_e( 'Create Meeting', 'cob_theme' ); ?></button>
+            <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
         </div>
     </div>
-    <div class="time-picker">
-        <label><?php esc_html_e( 'Select Time', 'cob_theme' ); ?></label>
-        <select>
-            <option>10:00 AM</option>
-            <option>12:00 PM</option>
-            <option>02:00 PM</option>
-        </select>
-    </div>
-    <button class="confirm"><?php esc_html_e( 'Confirm Booking', 'cob_theme' ); ?></button>
-    <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
-</div>
-    <div class="popup-flatTab-content" id="popup-service">
-        <label><?php esc_html_e( 'Full Name', 'cob_theme' ); ?></label>
-        <input type="text" placeholder="<?php esc_attr_e( 'Full Name', 'cob_theme' ); ?>" />
-        <label><?php esc_html_e( 'Enter Phone Number', 'cob_theme' ); ?></label>
-        <input type="text" placeholder="<?php esc_attr_e( 'Phone Number', 'cob_theme' ); ?>" />
-        <button class="confirm"><?php esc_html_e( 'Create Meeting', 'cob_theme' ); ?></button>
-        <span><?php esc_html_e( 'Book your meeting now', 'cob_theme' ); ?></span>
-    </div>
-</div>
+
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         // Popup Zoom Toggle
-  const togglePopupZoom = document.getElementById("togglePopupZoom");
-  const popupZoom = document.getElementById("popupZoom");
-  const closePopupZoom = document.getElementById("closePopupZoom");
-  const overlayZoom = document.getElementById("overlayZoom");
+  const togglePopupZoomOpety = document.getElementById("togglePopupZoomOpety");
+  const PopupZoomOpety = document.getElementById("PopupZoomOpety");
+  const closePopupZoomOpety = document.getElementById("closePopupZoomOpety");
+  const overlayZoomOpety = document.getElementById("overlayZoomOpety");
 
-  if (togglePopupZoom && popupZoom && closePopupZoom && overlayZoom) {
-    togglePopupZoom.addEventListener("click", () => {
-      popupZoom.style.display = "block";
-      overlayZoom.style.display = "block";
+  if (togglePopupZoomOpety && PopupZoomOpety && closePopupZoomOpety && overlayZoomOpety) {
+    togglePopupZoomOpety.addEventListener("click", () => {
+      PopupZoomOpety.style.display = "block";
+      overlayZoomOpety.style.display = "block";
     });
-    closePopupZoom.addEventListener("click", () => {
-      popupZoom.style.display = "none";
-      overlayZoom.style.display = "none";
+    closePopupZoomOpety.addEventListener("click", () => {
+      PopupZoomOpety.style.display = "none";
+      overlayZoomOpety.style.display = "none";
     });
-    overlayZoom.addEventListener("click", () => {
-      popupZoom.style.display = "none";
-      overlayZoom.style.display = "none";
+    overlayZoomOpety.addEventListener("click", () => {
+      PopupZoomOpety.style.display = "none";
+      overlayZoomOpety.style.display = "none";
     });
   }
    // Tabs for popup .popup-flatTab elements
@@ -218,27 +214,27 @@ $theme_dir = get_template_directory_uri();
   });
          });
           // Popup Contact Toggle
-  const togglePopupContact = document.getElementById("togglePopupContact");
-  const popupContact = document.getElementById("popupContact");
-  const closePopupContact = document.getElementById("closePopupContact");
+  const togglepopupContactOpety = document.getElementById("togglepopupContactOpety");
+  const popupContactOpety = document.getElementById("popupContactOpety");
+  const closepopupContactOpety = document.getElementById("closepopupContactOpety");
   const overlayContact = document.getElementById("overlayContact");
 
   if (
-    togglePopupContact &&
-    popupContact &&
-    closePopupContact &&
+    togglepopupContactOpety &&
+    popupContactOpety &&
+    closepopupContactOpety &&
     overlayContact
   ) {
-    togglePopupContact.addEventListener("click", () => {
-      popupContact.style.display = "block";
+    togglepopupContactOpety.addEventListener("click", () => {
+      popupContactOpety.style.display = "block";
       overlayContact.style.display = "block";
     });
-    closePopupContact.addEventListener("click", () => {
-      popupContact.style.display = "none";
+    closepopupContactOpety.addEventListener("click", () => {
+      popupContactOpety.style.display = "none";
       overlayContact.style.display = "none";
     });
     overlayContact.addEventListener("click", () => {
-      popupContact.style.display = "none";
+      popupContactOpety.style.display = "none";
       overlayContact.style.display = "none";
     });
   }
