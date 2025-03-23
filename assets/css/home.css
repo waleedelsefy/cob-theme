@@ -1013,7 +1013,7 @@ a:hover {
   left: 10px;
   width: 35px;
   height: 35px;
-  z-index: 10000;
+  z-index: 5;
 }
 .top-card-properties img {
   border-radius: 50%;
