@@ -2,7 +2,7 @@
 $theme_dir = get_template_directory_uri();
 ?>
 <div class="fixed-icons">
-    <a href="tel:<?php echo esc_attr( get_option( 'company_phone', '0123456789' ) ); ?>">
+    <a class="fixed-svg" href="tel:<?php echo esc_attr( get_option( 'company_phone', '0123456789' ) ); ?>">
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="#EC3C43" />
         <path
@@ -10,7 +10,7 @@ $theme_dir = get_template_directory_uri();
             stroke="white" stroke-width="2.14286" stroke-linecap="round" />
     </svg>
     </a>
-    <a href="https://api.whatsapp.com/send?phone=2<?php echo esc_attr( get_option( 'company_whatsapp', '0123456789' ) ); ?>">
+    <a class="fixed-svg" href="https://api.whatsapp.com/send?phone=2<?php echo esc_attr( get_option( 'company_whatsapp', '0123456789' ) ); ?>">
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="#00DE3E" />
         <path
@@ -22,7 +22,7 @@ $theme_dir = get_template_directory_uri();
     </svg>
     </a>
 
-    <button class="button zoom-home" id="togglepopupContactOpety">
+    <button class="button zoom-home fixed-svg" id="togglepopupContactOpety">
    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="black" />
         <path
@@ -57,7 +57,7 @@ $theme_dir = get_template_directory_uri();
     </div>
 
 
-     <button class="button zoom zoom-home" id="togglePopupZoomOpety">
+     <button class="button zoom zoom-home fixed-svg" id="togglePopupZoomOpety">
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="48" height="48" rx="15.4286" fill="#357CDC" />
         <path d="M22.5713 18.2861H25.4284" stroke="white" stroke-width="2.14286" stroke-linecap="round" />

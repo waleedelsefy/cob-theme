@@ -90,7 +90,7 @@ body {
 /************* Responsive *************/
 .fixed-icons {
   right: inherit !important;
-  left: 10px;
+  left: 15px;
 }
 .btn {
   left: inherit;
@@ -107,7 +107,7 @@ body {
 .swiper4 .swiper-button-prev,
 .swiper5 .swiper-button-prev,
 .swiper6 .swiper-button-prev {
-  left: 92% !important;
+  left: 96% !important;
   right: inherit !important;
 }
 .mySwiper .swiper-button-next,
@@ -117,10 +117,20 @@ body {
 .swiper4 .swiper-button-next,
 .swiper5 .swiper-button-next,
 .swiper6 .swiper-button-next {
-  left: 96% !important;
+  left: 92% !important;
   right: inherit !important;
 }
-.areas-button svg,
+.mySwiper .swiper-pagination,
+.swiper1 .swiper-pagination,
+.swiper2 .swiper-pagination,
+.swiper3 .swiper-pagination:not(.swiper-in .swiper-pagination),
+.swiper4 .swiper-pagination,
+.swiper5 .swiper-pagination:not(.swiper-in .swiper-pagination),
+.swiper6 .swiper-pagination {
+  left: 1% !important;
+  right: inherit !important;
+}
+/* .areas-button svg,
 .projects-button svg,
 .properties-button svg,
 .motaoron-button svg,
@@ -128,16 +138,8 @@ body {
 .factorys-button svg,
 .articles-button svg {
   transform: rotate(180deg);
-}
-.services::after {
-  left: inherit !important;
-  right: 12%;
-}
-#popupZoom img,
-#PopupZoomOpety img {
-  right: -20%;
-  left: inherit !important;
-}
+} */
+
 @media (max-width: 768px) {
   .mySwiper .swiper-button-prev,
   .swiper1 .swiper-button-prev,
@@ -146,7 +148,7 @@ body {
   .swiper4 .swiper-button-prev,
   .swiper5 .swiper-button-prev,
   .swiper6 .swiper-button-prev {
-    left: 75% !important;
+    left: 83% !important;
     right: inherit !important;
   }
   .mySwiper .swiper-button-next,
@@ -156,7 +158,7 @@ body {
   .swiper4 .swiper-button-next,
   .swiper5 .swiper-button-next,
   .swiper6 .swiper-button-next {
-    left: 83% !important;
+    left: 75% !important;
     right: inherit !important;
   }
 }

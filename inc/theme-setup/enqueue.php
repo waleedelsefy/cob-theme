@@ -42,7 +42,7 @@ if ( ! function_exists( 'cob_enqueue_assets' ) ) {
         }
 
         // Enqueue Bootstrap CSS from theme files.
-        wp_enqueue_style( 'bootstrap', $theme_uri . '/assets/bootstrap4/css/bootstrap.min.css', array(), '4.6.0' );
+        // wp_enqueue_style( 'bootstrap', $theme_uri . '/assets/bootstrap4/css/bootstrap.min.css', array(), '4.6.0' );
 
         // Enqueue Swiper Slider CSS from CDN.
         wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
@@ -89,7 +89,7 @@ if ( ! function_exists( 'cob_enqueue_assets' ) ) {
         wp_enqueue_script( 'jquery' );
 
         // Enqueue Bootstrap Bundle JS (includes Popper.js) from CDN.
-        wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js', array( 'jquery' ), '5.3.2', true );
+        // wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js', array( 'jquery' ), '5.3.2', true );
 
         // Enqueue Swiper JS from CDN.
         wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );

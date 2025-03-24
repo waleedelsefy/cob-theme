@@ -11,9 +11,10 @@
 
 body {
   font-family: "Almarai", serif;
-  direction: ltr;
 }
-
+.rtl {
+  direction: rtl;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -295,6 +296,7 @@ nav {
 
 .nav-menu.active {
   left: 0;
+  top: 4em;
 }
 
 @media (max-width: 767px) {
