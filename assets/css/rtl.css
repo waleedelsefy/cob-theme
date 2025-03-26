@@ -93,8 +93,32 @@ body {
   left: 15px;
 }
 .btn {
-  left: inherit;
-  right: 41.5%;
+  left: inherit !important;
+  right: 48.5%;
+}
+@media (max-width: 768px) {
+  .btn {
+    left: inherit !important;
+    right: 13%;
+  }
+}
+@media (max-width: 640px) {
+  .btn {
+    left: inherit !important;
+    right: 13%;
+  }
+}
+@media (max-width: 480px) {
+  .btn {
+    left: inherit !important;
+    right: 13%;
+  }
+}
+@media (max-width: 360px) {
+  .btn {
+    left: inherit !important;
+    right: 13%;
+  }
 }
 .contact-content .image-container .offical-img {
   border-start-end-radius: 0;

@@ -545,7 +545,7 @@ a:hover {
   }
   .mySwiper::after {
     width: 100px;
-    right: 45%;
+    right: 35%;
   }
 }
 @media (max-width: 480px) {
@@ -1261,7 +1261,6 @@ a:hover {
     .swiper-in .swiper-pagination-bullet-active
   ) {
   background-color: var(--mainColor);
-
   width: 23px;
   height: 5px;
   border-radius: 5px;
@@ -1778,7 +1777,7 @@ a:hover {
   background-color: #fff;
 }
 
-.factorys-card .bottom-factorys-swiper .prices::after {
+/* .factorys-card .bottom-factorys-swiper .prices::after {
   position: absolute;
   content: "";
   bottom: -70px;
@@ -1786,7 +1785,7 @@ a:hover {
   background-color: #0000001a;
   width: 95%;
   height: 1px;
-}
+} */
 .factorys-card .bottom-factorys-swiper .prices::before {
   position: absolute;
   content: "";

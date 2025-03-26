@@ -11,6 +11,7 @@
 
 body {
   font-family: "Almarai", serif;
+  cursor: pointer;
 }
 .rtl {
   direction: rtl;
@@ -295,7 +296,7 @@ nav {
 }
 
 .nav-menu.active {
-  left: 0;
+  left: -4px;
   top: 4em;
 }
 

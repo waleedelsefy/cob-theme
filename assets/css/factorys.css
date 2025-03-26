@@ -10,6 +10,9 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 25px;
 }
+.factorys-cards .factorys-card {
+  max-width: 450px;
+}
 .factorys-cards .factorys-card .bottom-factorys-swiper {
   padding: 5px 15px;
   border: 1px solid #0000001a;
