@@ -146,7 +146,7 @@
   margin-top: 20px;
 }
 
-.page {
+/* .page {
   margin: 0 5px;
   padding: 5px 12px;
   background: #fff;
@@ -169,7 +169,7 @@
   border: none;
   outline: none;
   user-select: none;
-}
+} */
 
 .section-layout {
   display: flex;

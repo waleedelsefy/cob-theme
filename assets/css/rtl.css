@@ -162,3 +162,27 @@ body {
     right: inherit !important;
   }
 }
+@media (max-width: 480px) {
+  .mySwiper .swiper-button-next,
+  .swiper1 .swiper-button-next,
+  .swiper2 .swiper-button-next,
+  .swiper3 .swiper-button-next,
+  .swiper4 .swiper-button-next,
+  .swiper5 .swiper-button-next,
+  .swiper6 .swiper-button-next {
+    left: 72% !important;
+    right: inherit !important;
+  }
+}
+@media (max-width: 360px) {
+  .mySwiper .swiper-button-next,
+  .swiper1 .swiper-button-next,
+  .swiper2 .swiper-button-next,
+  .swiper3 .swiper-button-next,
+  .swiper4 .swiper-button-next,
+  .swiper5 .swiper-button-next,
+  .swiper6 .swiper-button-next {
+    left: 72% !important;
+    right: inherit !important;
+  }
+}

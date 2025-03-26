@@ -18,7 +18,7 @@
                 $cities = get_terms([
                     'taxonomy'   => 'city',
                     'hide_empty' => false,
-                    'number'     => 9,
+                    'number'     => 6,
                     'orderby'    => 'count',
                     'order'      => 'DESC',
                 ]);

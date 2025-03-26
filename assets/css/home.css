@@ -306,12 +306,17 @@ a:hover {
   border-radius: 5px;
   flex: 2;
   width: 100%;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis;
 }
 .search-container input::placeholder {
   color: #a1aecb;
   opacity: 1;
   font-size: 14px;
   font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .search-container {
   display: none !important;
@@ -418,7 +423,7 @@ a:hover {
   background-color: transparent;
   color: #000;
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
@@ -541,6 +546,16 @@ a:hover {
   .mySwiper::after {
     width: 100px;
     right: 45%;
+  }
+}
+@media (max-width: 480px) {
+  .mySwiper::after {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .mySwiper::after {
+    display: none;
   }
 }
 /*End areas*/
@@ -753,6 +768,16 @@ a:hover {
     display: none;
   }
 }
+@media (max-width: 480px) {
+  .swiper1::after {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .swiper1::after {
+    display: none;
+  }
+}
 /*End compounds*/
 /*Start projects*/
 .projects {
@@ -771,7 +796,7 @@ a:hover {
   background-color: transparent;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
@@ -958,7 +983,16 @@ a:hover {
   .projects-card {
     width: 90%;
   }
-
+  @media (max-width: 480px) {
+    .swiper2::after {
+      display: none;
+    }
+  }
+  @media (max-width: 360px) {
+    .swiper2::after {
+      display: none;
+    }
+  }
   /* .mySwiper,
   .swiper1,
   .swiper2 {
@@ -983,7 +1017,7 @@ a:hover {
   background-color: transparent;
   color: #000;
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
@@ -1265,6 +1299,16 @@ a:hover {
     width: 100%;
   }
 }
+@media (max-width: 480px) {
+  .Swiper3::after {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .Swiper3::after {
+    display: none;
+  }
+}
 /*End properties*/
 /* Start swiper-in*/
 .swiper-in {
@@ -1421,7 +1465,7 @@ a:hover {
   background-color: transparent;
   color: #000;
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
@@ -1566,6 +1610,16 @@ a:hover {
     right: 35%;
   }
 }
+@media (max-width: 480px) {
+  .Swiper4::after {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .Swiper4::after {
+    display: none;
+  }
+}
 /*End motaoron*/
 /*Start services*/
 
@@ -1677,7 +1731,7 @@ a:hover {
   background-color: transparent;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
@@ -1933,6 +1987,16 @@ a:hover {
     right: 35%;
   }
 }
+@media (max-width: 480px) {
+  .Swiper5::after {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .Swiper5::after {
+    display: none;
+  }
+}
 /*End factorys*/
 /*Start articles*/
 
@@ -1984,7 +2048,7 @@ a:hover {
   background-color: transparent;
   color: #000;
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
@@ -2129,6 +2193,16 @@ a:hover {
   }
   .articles .top-articles h5 {
     font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .Swiper6::after {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .Swiper6::after {
+    display: none;
   }
 }
 /*End areas*/
