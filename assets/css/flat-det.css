@@ -378,6 +378,9 @@ td {
 .flatTab-content.active,
 .popup-flatTab-content.active {
   display: block;
+  height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 .flatTab-content input,
 .popup-flatTab-content input {

@@ -210,3 +210,6 @@ body {
     right: inherit !important;
   }
 }
+.confirm {
+  margin-bottom: 10px;
+}
