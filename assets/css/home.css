@@ -306,8 +306,8 @@ a:hover {
   border-radius: 5px;
   flex: 2;
   width: 100%;
-  white-space: nowrap; /* Prevent wrapping */
-  overflow: hidden; /* Hide overflow */
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 .search-container input::placeholder {
