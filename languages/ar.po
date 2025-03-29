@@ -1687,7 +1687,7 @@ msgstr "الشريحة الافتراضية"
 
 #: template-parts/home/landing.php:53
 msgid "Find your property"
-msgstr "ابحث عن الممتلكات الخاصة بك"
+msgstr "ابحث عن وحدتك"
 
 #: template-parts/home/landing.php:68
 msgid "Search by compound, location, real estate"
