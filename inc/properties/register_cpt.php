@@ -1,9 +1,57 @@
 <?php
+/**
+ * Custom Properties & Taxonomies Registration
+ *
+ * This file registers the 'properties' custom post type along with custom taxonomies,
+ * sets up a custom permalink structure that is editable from the Permalinks settings page,
+ * and adds the necessary rewrite rules.
+ *
+ * Compatible with Polylang Pro.
+ *
+ * @package Capital_of_Business
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/*-----------------------------------------
+  CUSTOM POST TYPE: PROPERTIES
+-----------------------------------------*/
+/**
+ * Register 'properties' custom post type.
+ */
+function cob_register_properties_cpt() {
+	$labels = array(
+		'name'          => __( 'Properties', 'cob_theme' ),
+		'singular_name' => __( 'Property', 'cob_theme' ),
+		'add_new'       => __( 'Add New Property', 'cob_theme' ),
+		'add_new_item'  => __( 'Add New Property', 'cob_theme' ),
+		'edit_item'     => __( 'Edit Property', 'cob_theme' ),
+		'new_item'      => __( 'New Property', 'cob_theme' ),
+		'view_item'     => __( 'View Property', 'cob_theme' ),
+		'all_items'     => __( 'All Properties', 'cob_theme' ),
+		'search_items'  => __( 'Search Properties', 'cob_theme' ),
+		'not_found'     => __( 'No properties found.', 'cob_theme' ),
+	);
+
+	$args = array(
+		'labels'            => $labels,
+		'public'            => true,
+		'has_archive'       => true,
+		'menu_icon'         => 'dashicons-building',
+		'supports'          => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+		'rewrite'           => false, // We handle rewrites manually.
+		'show_in_rest'      => true,
+	);
+
+	register_post_type( 'properties', $args );
+}
+add_action( 'init', 'cob_register_properties_cpt' );
+
+/*-----------------------------------------
+  CUSTOM TAXONOMY: COMPOUND (for Properties)
+-----------------------------------------*/
 /**
  * Register 'compound' taxonomy for properties.
  */
@@ -37,70 +85,9 @@ function cob_register_compound_taxonomy() {
 }
 add_action( 'init', 'cob_register_compound_taxonomy' );
 
-/**
- * Register 'city' taxonomy for properties.
- */
-function cob_register_city_taxonomy() {
-	$labels = array(
-		'name'                       => __( 'Cities', 'cob_theme' ),
-		'singular_name'              => __( 'City', 'cob_theme' ),
-		'search_items'               => __( 'Search Cities', 'cob_theme' ),
-		'all_items'                  => __( 'All Cities', 'cob_theme' ),
-		'parent_item'                => __( 'Parent City', 'cob_theme' ),
-		'parent_item_colon'          => __( 'Parent City:', 'cob_theme' ),
-		'edit_item'                  => __( 'Edit City', 'cob_theme' ),
-		'view_item'                  => __( 'View City', 'cob_theme' ),
-		'update_item'                => __( 'Update City', 'cob_theme' ),
-		'add_new_item'               => __( 'Add New City', 'cob_theme' ),
-		'new_item_name'              => __( 'New City Name', 'cob_theme' ),
-		'menu_name'                  => __( 'Cities', 'cob_theme' ),
-	);
-
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'city' ),
-		'show_in_rest'      => true,
-	);
-
-	register_taxonomy( 'city', array( 'properties' ), $args );
-}
-add_action( 'init', 'cob_register_city_taxonomy' );
-
-/**
- * Register 'properties' custom post type.
- */
-function cob_register_properties_cpt() {
-	$labels = array(
-		'name'          => __( 'Properties', 'cob_theme' ),
-		'singular_name' => __( 'Property', 'cob_theme' ),
-		'add_new'       => __( 'Add New Property', 'cob_theme' ),
-		'add_new_item'  => __( 'Add New Property', 'cob_theme' ),
-		'edit_item'     => __( 'Edit Property', 'cob_theme' ),
-		'new_item'      => __( 'New Property', 'cob_theme' ),
-		'view_item'     => __( 'View Property', 'cob_theme' ),
-		'all_items'     => __( 'All Properties', 'cob_theme' ),
-		'search_items'  => __( 'Search Properties', 'cob_theme' ),
-		'not_found'     => __( 'No properties found.', 'cob_theme' ),
-	);
-
-	$args = array(
-		'labels'            => $labels,
-		'public'            => true,
-		'has_archive'       => true,
-		'menu_icon'         => 'dashicons-building',
-		'supports'          => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
-		'rewrite'           => false, // We handle rewrites manually.
-		'show_in_rest'      => true,
-	);
-
-	register_post_type( 'properties', $args );
-}
-add_action( 'init', 'cob_register_properties_cpt' );
-
+/*-----------------------------------------
+  CUSTOM PERMALINK STRUCTURE & REWRITE RULES
+-----------------------------------------*/
 /**
  * Add custom permalink structure field to the Permalinks settings page.
  */
@@ -186,7 +173,6 @@ function cob_properties_custom_rewrite() {
 
 	// Build the regex by replacing placeholders with regex patterns.
 	$regex = preg_quote( $structure, '#' );
-	// Replace the placeholders with capturing groups.
 	$regex = str_replace( preg_quote('%city%', '#'), '([^/]+)', $regex );
 	$regex = str_replace( preg_quote('%compound%', '#'), '([^/]+)', $regex );
 	$regex = str_replace( preg_quote('%post_id%', '#'), '([0-9]+)', $regex );
@@ -210,13 +196,15 @@ function cob_properties_custom_rewrite() {
 }
 add_action( 'init', 'cob_properties_custom_rewrite' );
 
+/*-----------------------------------------
+  FLUSH REWRITE RULES ON ACTIVATION/DEACTIVATION
+-----------------------------------------*/
 /**
  * Flush rewrite rules on plugin activation.
  */
 function cob_flush_rewrite_rules_on_activation() {
-	// Register taxonomies and CPT to ensure rewrite rules exist.
+	// Ensure CPT and taxonomies are registered.
 	cob_register_compound_taxonomy();
-	cob_register_city_taxonomy();
 	cob_register_properties_cpt();
 	cob_properties_custom_rewrite();
 	flush_rewrite_rules();
@@ -231,17 +219,22 @@ function cob_flush_rewrite_rules_on_deactivation() {
 }
 register_deactivation_hook( __FILE__, 'cob_flush_rewrite_rules_on_deactivation' );
 
-$default_args = [
+/*-----------------------------------------
+  ADDITIONAL TAXONOMIES REGISTRATION
+  (For projects, properties, factory, posts)
+-----------------------------------------*/
+$default_args = array(
 	'hierarchical'      => true,
 	'show_ui'           => true,
 	'show_admin_column' => true,
 	'query_var'         => true,
 	'rewrite'           => true,
 	'show_in_rest'      => true,
-];
+);
 
-register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
-	'labels' => [
+// City Taxonomy (applied to multiple post types)
+register_taxonomy( 'city', array( 'projects', 'properties', 'factory', 'posts' ), array_merge( $default_args, array(
+	'labels' => array(
 		'name'                       => __( 'Cities', 'cob_theme' ),
 		'singular_name'              => __( 'City', 'cob_theme' ),
 		'search_items'               => __( 'Search Cities', 'cob_theme' ),
@@ -255,13 +248,13 @@ register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], arr
 		'new_item_name'              => __( 'New City Name', 'cob_theme' ),
 		'menu_name'                  => __( 'Cities', 'cob_theme' ),
 		'separate_items_with_commas' => __( 'Separate cities with commas', 'cob_theme' ),
-	],
-	'rewrite' => [ 'slug' => 'city' ],
-] ) );
+	),
+	'rewrite' => array( 'slug' => 'city' ),
+) ) );
 
 // Developer Taxonomy
-register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
-	'labels' => [
+register_taxonomy( 'developer', array( 'projects', 'properties', 'factory', 'posts' ), array_merge( $default_args, array(
+	'labels' => array(
 		'name'                       => __( 'Developers', 'cob_theme' ),
 		'singular_name'              => __( 'Developer', 'cob_theme' ),
 		'search_items'               => __( 'Search Developers', 'cob_theme' ),
@@ -275,13 +268,13 @@ register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ]
 		'new_item_name'              => __( 'New Developer Name', 'cob_theme' ),
 		'menu_name'                  => __( 'Developers', 'cob_theme' ),
 		'separate_items_with_commas' => __( 'Separate Developers with commas', 'cob_theme' ),
-	],
-	'rewrite' => [ 'slug' => 'developer' ],
-] ) );
+	),
+	'rewrite' => array( 'slug' => 'developer' ),
+) ) );
 
 // Finishing Taxonomy
-register_taxonomy( 'finishing', [ 'projects', 'properties' ], array_merge( $default_args, [
-	'labels' => [
+register_taxonomy( 'finishing', array( 'projects', 'properties' ), array_merge( $default_args, array(
+	'labels' => array(
 		'name'                       => __( 'Finishing Types', 'cob_theme' ),
 		'singular_name'              => __( 'Finishing Type', 'cob_theme' ),
 		'search_items'               => __( 'Search Finishing Types', 'cob_theme' ),
@@ -293,15 +286,15 @@ register_taxonomy( 'finishing', [ 'projects', 'properties' ], array_merge( $defa
 		'new_item_name'              => __( 'New Finishing Type Name', 'cob_theme' ),
 		'menu_name'                  => __( 'Finishing Types', 'cob_theme' ),
 		'separate_items_with_commas' => __( 'Separate Finishing Types with commas', 'cob_theme' ),
-	],
-	'rewrite' => [ 'slug' => 'finishing' ],
-] ) );
+	),
+	'rewrite' => array( 'slug' => 'finishing' ),
+) ) );
 
 // Type Taxonomy
-register_taxonomy( 'type', [ 'projects', 'properties', 'posts' ], array_merge( $default_args, [
-	'labels' => [
+register_taxonomy( 'type', array( 'projects', 'properties', 'posts' ), array_merge( $default_args, array(
+	'labels' => array(
 		'name'          => __( 'Types', 'cob_theme' ),
 		'singular_name' => __( 'Type', 'cob_theme' ),
-	],
-	'rewrite' => [ 'slug' => 'type' ],
-] ) );
+	),
+	'rewrite' => array( 'slug' => 'type' ),
+) ) );
