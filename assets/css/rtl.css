@@ -89,8 +89,8 @@ body {
 }
 /************* Responsive *************/
 .fixed-icons {
-  right: inherit !important;
-  left: 15px;
+  left: inherit !important;
+  right: 15px;
 }
 .btn {
   left: inherit !important;
