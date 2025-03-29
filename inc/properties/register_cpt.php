@@ -230,3 +230,78 @@ function cob_flush_rewrite_rules_on_deactivation() {
 	flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'cob_flush_rewrite_rules_on_deactivation' );
+
+$default_args = [
+	'hierarchical'      => true,
+	'show_ui'           => true,
+	'show_admin_column' => true,
+	'query_var'         => true,
+	'rewrite'           => true,
+	'show_in_rest'      => true,
+];
+
+register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
+	'labels' => [
+		'name'                       => __( 'Cities', 'cob_theme' ),
+		'singular_name'              => __( 'City', 'cob_theme' ),
+		'search_items'               => __( 'Search Cities', 'cob_theme' ),
+		'all_items'                  => __( 'All Cities', 'cob_theme' ),
+		'parent_item'                => __( 'Parent City', 'cob_theme' ),
+		'parent_item_colon'          => __( 'Parent City:', 'cob_theme' ),
+		'edit_item'                  => __( 'Edit City', 'cob_theme' ),
+		'view_item'                  => __( 'View City', 'cob_theme' ),
+		'update_item'                => __( 'Update City', 'cob_theme' ),
+		'add_new_item'               => __( 'Add New City', 'cob_theme' ),
+		'new_item_name'              => __( 'New City Name', 'cob_theme' ),
+		'menu_name'                  => __( 'Cities', 'cob_theme' ),
+		'separate_items_with_commas' => __( 'Separate cities with commas', 'cob_theme' ),
+	],
+	'rewrite' => [ 'slug' => 'city' ],
+] ) );
+
+// Developer Taxonomy
+register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
+	'labels' => [
+		'name'                       => __( 'Developers', 'cob_theme' ),
+		'singular_name'              => __( 'Developer', 'cob_theme' ),
+		'search_items'               => __( 'Search Developers', 'cob_theme' ),
+		'all_items'                  => __( 'All Developers', 'cob_theme' ),
+		'parent_item'                => __( 'Parent Developer', 'cob_theme' ),
+		'parent_item_colon'          => __( 'Parent Developer:', 'cob_theme' ),
+		'edit_item'                  => __( 'Edit Developer', 'cob_theme' ),
+		'view_item'                  => __( 'View Developer', 'cob_theme' ),
+		'update_item'                => __( 'Update Developer', 'cob_theme' ),
+		'add_new_item'               => __( 'Add New Developer', 'cob_theme' ),
+		'new_item_name'              => __( 'New Developer Name', 'cob_theme' ),
+		'menu_name'                  => __( 'Developers', 'cob_theme' ),
+		'separate_items_with_commas' => __( 'Separate Developers with commas', 'cob_theme' ),
+	],
+	'rewrite' => [ 'slug' => 'developer' ],
+] ) );
+
+// Finishing Taxonomy
+register_taxonomy( 'finishing', [ 'projects', 'properties' ], array_merge( $default_args, [
+	'labels' => [
+		'name'                       => __( 'Finishing Types', 'cob_theme' ),
+		'singular_name'              => __( 'Finishing Type', 'cob_theme' ),
+		'search_items'               => __( 'Search Finishing Types', 'cob_theme' ),
+		'all_items'                  => __( 'All Finishing Types', 'cob_theme' ),
+		'edit_item'                  => __( 'Edit Finishing Type', 'cob_theme' ),
+		'view_item'                  => __( 'View Finishing Type', 'cob_theme' ),
+		'update_item'                => __( 'Update Finishing Type', 'cob_theme' ),
+		'add_new_item'               => __( 'Add New Finishing Type', 'cob_theme' ),
+		'new_item_name'              => __( 'New Finishing Type Name', 'cob_theme' ),
+		'menu_name'                  => __( 'Finishing Types', 'cob_theme' ),
+		'separate_items_with_commas' => __( 'Separate Finishing Types with commas', 'cob_theme' ),
+	],
+	'rewrite' => [ 'slug' => 'finishing' ],
+] ) );
+
+// Type Taxonomy
+register_taxonomy( 'type', [ 'projects', 'properties', 'posts' ], array_merge( $default_args, [
+	'labels' => [
+		'name'          => __( 'Types', 'cob_theme' ),
+		'singular_name' => __( 'Type', 'cob_theme' ),
+	],
+	'rewrite' => [ 'slug' => 'type' ],
+] ) );
