@@ -37,7 +37,6 @@ $cities = get_terms( array(
         <!-- Tabs -->
         <div class="tabs">
             <div class="select-tabs">
-                <!-- يمكنك إضافة عناصر التاب هنا إن أردت -->
             </div>
         </div>
 
@@ -58,21 +57,20 @@ $cities = get_terms( array(
 							$thumbnail_id   = absint( get_term_meta( $city->term_id, 'thumbnail_id', true ) );
 							$city_image_url = $thumbnail_id ? wp_get_attachment_url( $thumbnail_id ) : $theme_dir . '/assets/imgs/default-city.png';
 
-							// Query for compounds (projects) in this city, including child cities.
-							$compound_query = new WP_Query( array(
-								'post_type'      => 'projects',
-								'tax_query'      => array(
-									array(
-										'taxonomy'         => 'city',
-										'field'            => 'term_id',
-										'terms'            => $city->term_id,
-										'include_children' => true, // Include child cities.
-									),
-								),
-								'posts_per_page' => -1,
-								'fields'         => 'ids',
-							) );
-							$compound_count = $compound_query->found_posts;
+
+							$compound_query = get_terms([
+								'taxonomy'   => 'compound',
+								'hide_empty' => false,
+								'meta_query' => [
+									[
+										'key'     => 'compound_city',
+										'value'   => '"' . $city->term_id . '"',
+										'compare' => 'LIKE'
+									]
+								]
+							]);
+							$compound_count = count($compound_query);
+
 
 							// Query for properties in this city, including child cities.
 							$property_query = new WP_Query( array(
