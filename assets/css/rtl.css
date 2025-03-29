@@ -213,3 +213,8 @@ body {
 .confirm {
   margin-bottom: 10px;
 }
+#popupZoom img,
+#PopupZoomOpety img {
+  left: 20px;
+  right: inherit;
+}
