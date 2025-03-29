@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Capital of Business\n"
-"POT-Creation-Date: 2025-03-11 02:44+0200\n"
-"PO-Revision-Date: 2025-03-11 02:45+0200\n"
+"POT-Creation-Date: 2025-03-29 23:53+0200\n"
+"PO-Revision-Date: 2025-03-29 23:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && "
 "n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
@@ -22,71 +22,75 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: footer.php:29
+#: footer.php:31
 msgid "Quick links"
 msgstr "روابط سريعة"
 
-#: footer.php:41 template-parts/home/areas.php:8
+#: footer.php:43 template-parts/home/areas.php:5
 msgid "Top Areas"
 msgstr "افضل المناطق"
 
-#: footer.php:53 template-parts/home/projects.php:14
+#: footer.php:55 template-parts/home/projects.php:14
 msgid "Latest Projects"
 msgstr "أحدث المشروعات"
 
-#: footer.php:65 inc/properties/register_cpt.php:144
-#: inc/properties/register_cpt.php:155 template-parts/home/developers.php:15
+#: footer.php:67 inc/properties/register_cpt.php:258
+#: inc/properties/register_cpt.php:269 template-parts/home/developers.php:15
 msgid "Developers"
 msgstr "المطورين"
 
-#: footer.php:78
+#: footer.php:80
 msgid "Subscribe to the newsletter"
 msgstr "اشترك في النشرة الإخبارية"
 
-#: footer.php:79
+#: footer.php:81
 msgid "Subscribe now to receive the latest news and exclusive offers"
 msgstr "اشترك الآن للحصول على آخر الأخبار والعروض الحصرية"
 
-#: footer.php:82
+#: footer.php:84
 msgid "Subscribe"
 msgstr "اشترك"
 
-#: footer.php:114
+#: footer.php:116
 msgid "All rights reserved ©"
 msgstr "جميع الحقوق محفوظة  ©"
 
 #. Theme Name of the plugin/theme
-#: footer.php:114
+#: footer.php:116
 msgid "Capital of Business"
 msgstr "Capital of Business"
 
-#: footer.php:117
+#: footer.php:119
 msgid "privacy policy"
 msgstr "سياسة الخصوصية"
 
-#: footer.php:118
+#: footer.php:120
 msgid "terms of use"
 msgstr "شروط الاستخدام"
 
-#: header.php:29
-msgid "Toggle navigation"
-msgstr "تبديل التنقل"
+#: header.php:25
+msgid "Arabic"
+msgstr ""
 
-#: header.php:47 inc/theme-setup/menus.php:20
-msgid "Primary Menu"
-msgstr "القائمة الأساسية"
-
-#: header.php:63
+#: header.php:28
 msgid "English"
 msgstr "الانجليزية"
 
-#: header.php:73
+#: header.php:55
+msgid "Toggle navigation"
+msgstr "تبديل التنقل"
+
+#: header.php:73 inc/theme-setup/menus.php:20
+msgid "Primary Menu"
+msgstr "القائمة الأساسية"
+
+#: header.php:97
 msgid "Call us"
 msgstr "اتصل بنا"
 
 #: inc/city/cob_add_city_image_field.php:20
 #: inc/city/cob_add_city_image_field.php:91
-#: template-parts/taxonomy-city/head.php:55
+#: template-parts/taxonomy-city/head.php:26
 msgid "City Image"
 msgstr "صورة المدينة"
 
@@ -148,14 +152,14 @@ msgstr "أدخل عنوان URL لصورة الكمبوند أو استخدم ز
 #: inc/city/cob_add_compounds_columns.php:4
 #: inc/properties/cob_add_compounds_developer_city.php:179
 #: inc/properties/cob_add_compounds_developer_city.php:246
-#: inc/properties/register_cpt.php:145
+#: inc/properties/register_cpt.php:259
 msgid "Developer"
 msgstr "مطور"
 
 #: inc/city/cob_add_compounds_columns.php:5
 #: inc/properties/cob_add_compounds_developer_city.php:191
 #: inc/properties/cob_add_compounds_developer_city.php:257
-#: inc/properties/register_cpt.php:125
+#: inc/properties/register_cpt.php:239
 msgid "City"
 msgstr "مدينة"
 
@@ -188,6 +192,7 @@ msgstr "الهاتف"
 
 #: inc/contact-forms/contact_entries_menu.php:41
 #: inc/jobs/job_applicants_menu_page.php:42
+#: inc/theme-setup/cob_register_company_settings.php:33
 msgid "Email"
 msgstr "البريد إلكتروني"
 
@@ -225,10 +230,15 @@ msgstr "لقد تم إرسال رسالتك بنجاح!"
 
 #: inc/contact-forms/contact_form_submission.php:112
 #: inc/jobs/job_applicants_menu_page.php:40
+#: template-parts/button-container.php:48 template-parts/button-container.php:49
+#: template-parts/button-container.php:119
+#: template-parts/button-container.php:120
 #: template-parts/factories-post/left-landing-flat.php:7
 #: template-parts/factories-post/left-landing-flat.php:8
 #: template-parts/factories-post/left-landing-flat.php:78
 #: template-parts/factories-post/left-landing-flat.php:79
+#: template-parts/fixed-icons.php:86 template-parts/fixed-icons.php:87
+#: template-parts/fixed-icons.php:157 template-parts/fixed-icons.php:158
 #: template-parts/properties-post/left-landing-flat.php:7
 #: template-parts/properties-post/left-landing-flat.php:8
 #: template-parts/properties-post/left-landing-flat.php:78
@@ -267,7 +277,7 @@ msgid "Enter the URL of the developer image or use the \"Upload Image\" button."
 msgstr "أدخل عنوان URL لصورة المطور أو استخدم زر \"تحميل الصورة\"."
 
 #: inc/developer/cob_add_developer_image_field.php:65
-#: template-parts/taxonomy-developer/head.php:58
+#: template-parts/taxonomy-developer/head.php:29
 msgid "developer Image"
 msgstr "صورة المطور"
 
@@ -341,8 +351,8 @@ msgstr "المؤهلات الوظيفية"
 #: inc/jobs/job_qualifications_meta_box.php:33
 #: inc/jobs/job_qualifications_meta_box.php:39
 #: inc/jobs/job_qualifications_meta_box.php:50
-#: inc/properties/cob_property_metabox.php:75
-#: inc/properties/cob_property_metabox.php:94
+#: inc/properties/cob_property_metabox.php:78
+#: inc/properties/cob_property_metabox.php:99
 msgid "Remove"
 msgstr "حذف"
 
@@ -572,7 +582,7 @@ msgstr "تفاصيل العقار وخطط الدفع"
 msgid "Area (sqm)"
 msgstr "المساحة (متر مربع)"
 
-#: inc/properties/cob_property_metabox.php:41 template-parts/home/landing.php:229
+#: inc/properties/cob_property_metabox.php:41 template-parts/home/landing.php:235
 msgid "Price (EGP)"
 msgstr "السعر (جنيه مصري)"
 
@@ -600,38 +610,37 @@ msgstr "الرقم المرجعي"
 msgid "Delivery Year"
 msgstr "سنة التسليم"
 
-#: inc/properties/cob_property_metabox.php:60
+#: inc/properties/cob_property_metabox.php:58
 msgid "Property Details"
 msgstr "تفاصيل العقار"
 
-#: inc/properties/cob_property_metabox.php:68
+#: inc/properties/cob_property_metabox.php:66
 msgid "Payment Plans"
 msgstr "خطط الدفع"
 
-#: inc/properties/cob_property_metabox.php:73
-#: inc/properties/cob_property_metabox.php:92
+#: inc/properties/cob_property_metabox.php:76
+#: inc/properties/cob_property_metabox.php:97
 msgid "Down Payment %"
 msgstr "دفعة مبدئية  %"
 
-#: inc/properties/cob_property_metabox.php:74
-#: inc/properties/cob_property_metabox.php:93 template-parts/home/units.php:165
-#: template-parts/properties-post/properties-related.php:162
-#: template-parts/properties-post/right-landing-flat.php:24
-#: template-parts/single/properties-card.php:133
+#: inc/properties/cob_property_metabox.php:77
+#: inc/properties/cob_property_metabox.php:98
+#: template-parts/properties-post/right-landing-flat.php:22
+#: template-parts/single/properties-card.php:163
 msgid "Years"
 msgstr "سنين"
 
-#: inc/properties/cob_property_metabox.php:80
+#: inc/properties/cob_property_metabox.php:85
 msgid "Add Payment Plan"
 msgstr "أضف خطة الدفع"
 
 #: inc/properties/dido_theme_property_developer_editor.php:8
-#: inc/properties/dido_theme_property_developer_editor.php:35
+#: inc/properties/dido_theme_property_developer_editor.php:34
 msgid "Description"
 msgstr "الوصف"
 
 #: inc/properties/dido_theme_property_developer_editor.php:22
-#: inc/properties/dido_theme_property_developer_editor.php:48
+#: inc/properties/dido_theme_property_developer_editor.php:47
 msgid "The description is not prominent by default, but some themes may show it."
 msgstr "الوصف ليس بارزًا بشكل افتراضي، ولكن قد تظهره بعض السمات."
 
@@ -669,7 +678,7 @@ msgstr "حدد الكمبوند:"
 msgid "-- None --"
 msgstr "-- لا أحد --"
 
-#: inc/properties/link_unit_to_project.php:87 inc/properties/register_cpt.php:18
+#: inc/properties/link_unit_to_project.php:87 inc/properties/register_cpt.php:61
 msgid "Compound"
 msgstr "الكمبوند"
 
@@ -682,247 +691,221 @@ msgstr "لا أحد"
 msgid "-- No Change --"
 msgstr "-- لا تغيير --"
 
-#: inc/properties/register_cpt.php:17 inc/properties/register_cpt.php:27
-#: template-parts/areas/pagination-section.php:94
-#: template-parts/home/areas.php:85
-msgid "Compounds"
-msgstr "كمبوندات"
-
-#: inc/properties/register_cpt.php:19
-msgid "Search Compounds"
-msgstr "البحث في الكمبوندات"
-
-#: inc/properties/register_cpt.php:20
-msgid "All Compounds"
-msgstr "كل الكمبوندات"
-
-#: inc/properties/register_cpt.php:21
-msgid "Parent Compound"
-msgstr "الكمبوند الاب"
-
-#: inc/properties/register_cpt.php:22
-msgid "Parent Compound:"
-msgstr "الكمبوند الاب"
-
-#: inc/properties/register_cpt.php:23
-msgid "Edit Compound"
-msgstr "تحرير كمبوند"
-
-#: inc/properties/register_cpt.php:24
-msgid "Update Compound"
-msgstr "تحديث الكمبوند"
-
-#: inc/properties/register_cpt.php:25
-msgid "Add New Compound"
-msgstr "إضافة كبموند جديد"
-
 #: inc/properties/register_cpt.php:26
-msgid "New Compound Name"
-msgstr "اسم الكمبوند الجديد"
-
-#: inc/properties/register_cpt.php:51
 #: template-parts/areas/pagination-section.php:95
-#: template-parts/home/areas.php:86 template-parts/home/compounds.php:78
+#: template-parts/home/areas.php:73 template-parts/home/compounds.php:78
+#: template-parts/taxonomy-city/featured.php:78
+#: template-parts/taxonomy-city/sup-taxonomy.php:56
 msgid "Properties"
 msgstr "العقارات"
 
-#: inc/properties/register_cpt.php:52
+#: inc/properties/register_cpt.php:27
 msgid "Property"
 msgstr "عقار"
 
-#: inc/properties/register_cpt.php:53 inc/properties/register_cpt.php:54
+#: inc/properties/register_cpt.php:28 inc/properties/register_cpt.php:29
 msgid "Add New Property"
 msgstr "إضافة عقار جديد"
 
-#: inc/properties/register_cpt.php:55
+#: inc/properties/register_cpt.php:30
 msgid "Edit Property"
 msgstr "تحرير العقار"
 
-#: inc/properties/register_cpt.php:56
+#: inc/properties/register_cpt.php:31
 msgid "New Property"
 msgstr "عقار جديد"
 
-#: inc/properties/register_cpt.php:57
+#: inc/properties/register_cpt.php:32
 msgid "View Property"
 msgstr "عرض العقار"
 
-#: inc/properties/register_cpt.php:58
+#: inc/properties/register_cpt.php:33
 msgid "All Properties"
 msgstr "جميع العقارات"
 
-#: inc/properties/register_cpt.php:59
+#: inc/properties/register_cpt.php:34
 msgid "Search Properties"
 msgstr "البحث عن العقارات"
 
-#: inc/properties/register_cpt.php:60
+#: inc/properties/register_cpt.php:35
 msgid "No properties found."
 msgstr "لم يتم العثور على خصائص."
 
-#: inc/properties/register_cpt.php:83
-msgid "Factories"
-msgstr "المصانع"
+#: inc/properties/register_cpt.php:60 inc/properties/register_cpt.php:70
+#: template-parts/areas/pagination-section.php:94
+#: template-parts/home/areas.php:72
+msgid "Compounds"
+msgstr "كمبوندات"
 
-#: inc/properties/register_cpt.php:84
-msgid "Factory"
-msgstr "مصنع"
+#: inc/properties/register_cpt.php:62
+msgid "Search Compounds"
+msgstr "البحث في الكمبوندات"
 
-#: inc/properties/register_cpt.php:85 inc/properties/register_cpt.php:86
-msgid "Add New Factory"
-msgstr "إضافة مصنع جديد"
+#: inc/properties/register_cpt.php:63
+msgid "All Compounds"
+msgstr "كل الكمبوندات"
 
-#: inc/properties/register_cpt.php:87
-msgid "Edit Factory"
-msgstr "تحرير المصنع"
+#: inc/properties/register_cpt.php:64
+msgid "Parent Compound"
+msgstr "الكمبوند الاب"
 
-#: inc/properties/register_cpt.php:88
-msgid "New Factory"
-msgstr "مصنع جديد"
+#: inc/properties/register_cpt.php:65
+msgid "Parent Compound:"
+msgstr "الكمبوند الاب"
 
-#: inc/properties/register_cpt.php:89
-msgid "View Factory"
-msgstr "عرض المصنع"
+#: inc/properties/register_cpt.php:66
+msgid "Edit Compound"
+msgstr "تحرير كمبوند"
 
-#: inc/properties/register_cpt.php:90
-msgid "All Factories"
-msgstr "كل المصانع"
+#: inc/properties/register_cpt.php:67
+msgid "Update Compound"
+msgstr "تحديث الكمبوند"
 
-#: inc/properties/register_cpt.php:91
-msgid "Search Factories"
-msgstr "بحث عن مصنع"
+#: inc/properties/register_cpt.php:68
+msgid "Add New Compound"
+msgstr "إضافة كبموند جديد"
 
-#: inc/properties/register_cpt.php:92
-msgid "No factories found."
-msgstr "المصنع غير موجود."
+#: inc/properties/register_cpt.php:69
+msgid "New Compound Name"
+msgstr "اسم الكمبوند الجديد"
 
-#: inc/properties/register_cpt.php:124 inc/properties/register_cpt.php:135
+#: inc/properties/register_cpt.php:105
+msgid "Properties Permalink Structure"
+msgstr ""
+
+#: inc/properties/register_cpt.php:119
+msgid "Use placeholders: %city%, %compound%, %post_id%."
+msgstr ""
+
+#: inc/properties/register_cpt.php:238 inc/properties/register_cpt.php:249
 msgid "Cities"
 msgstr "المدن"
 
-#: inc/properties/register_cpt.php:126
+#: inc/properties/register_cpt.php:240
 msgid "Search Cities"
 msgstr "البحث في المدن"
 
-#: inc/properties/register_cpt.php:127
+#: inc/properties/register_cpt.php:241
 msgid "All Cities"
 msgstr "كل المدن"
 
-#: inc/properties/register_cpt.php:128
+#: inc/properties/register_cpt.php:242
 msgid "Parent City"
 msgstr "المدينة الأم"
 
-#: inc/properties/register_cpt.php:129
+#: inc/properties/register_cpt.php:243
 msgid "Parent City:"
 msgstr "المدينة الأم:"
 
-#: inc/properties/register_cpt.php:130
+#: inc/properties/register_cpt.php:244
 msgid "Edit City"
 msgstr "تحرير المدينة"
 
-#: inc/properties/register_cpt.php:131
+#: inc/properties/register_cpt.php:245
 msgid "View City"
 msgstr "شاهد المدينة"
 
-#: inc/properties/register_cpt.php:132
+#: inc/properties/register_cpt.php:246
 msgid "Update City"
 msgstr "تحديث المدينة"
 
-#: inc/properties/register_cpt.php:133
+#: inc/properties/register_cpt.php:247
 msgid "Add New City"
 msgstr "اصافة مدينة جديدة"
 
-#: inc/properties/register_cpt.php:134
+#: inc/properties/register_cpt.php:248
 msgid "New City Name"
 msgstr "اسم المدينة الجديد"
 
-#: inc/properties/register_cpt.php:136
+#: inc/properties/register_cpt.php:250
 msgid "Separate cities with commas"
 msgstr "افصل بين المدن بفواصل"
 
-#: inc/properties/register_cpt.php:146
+#: inc/properties/register_cpt.php:260
 msgid "Search Developers"
 msgstr "بحث المطورين"
 
-#: inc/properties/register_cpt.php:147
+#: inc/properties/register_cpt.php:261
 msgid "All Developers"
 msgstr "كل المطورين"
 
-#: inc/properties/register_cpt.php:148
+#: inc/properties/register_cpt.php:262
 msgid "Parent Developer"
 msgstr "المطور الاب"
 
-#: inc/properties/register_cpt.php:149
+#: inc/properties/register_cpt.php:263
 msgid "Parent Developer:"
 msgstr "المطور الاب :"
 
-#: inc/properties/register_cpt.php:150
+#: inc/properties/register_cpt.php:264
 msgid "Edit Developer"
 msgstr "تحرير المطور"
 
-#: inc/properties/register_cpt.php:151
+#: inc/properties/register_cpt.php:265
 msgid "View Developer"
 msgstr "عرض المطور"
 
-#: inc/properties/register_cpt.php:152
+#: inc/properties/register_cpt.php:266
 msgid "Update Developer"
 msgstr "تحديث المطور"
 
-#: inc/properties/register_cpt.php:153
+#: inc/properties/register_cpt.php:267
 msgid "Add New Developer"
 msgstr "إضافة مطور جديد"
 
-#: inc/properties/register_cpt.php:154
+#: inc/properties/register_cpt.php:268
 msgid "New Developer Name"
 msgstr "اسم المطور الجديد"
 
-#: inc/properties/register_cpt.php:156
+#: inc/properties/register_cpt.php:270
 msgid "Separate Developers with commas"
 msgstr "فصل المطورين بفواصل"
 
-#: inc/properties/register_cpt.php:164 inc/properties/register_cpt.php:173
+#: inc/properties/register_cpt.php:278 inc/properties/register_cpt.php:287
 msgid "Finishing Types"
 msgstr "أنواع التشطيب"
 
-#: inc/properties/register_cpt.php:165
+#: inc/properties/register_cpt.php:279
 msgid "Finishing Type"
 msgstr "نوع التشطيب"
 
-#: inc/properties/register_cpt.php:166
+#: inc/properties/register_cpt.php:280
 msgid "Search Finishing Types"
 msgstr "البحث عن أنواع التشطيب"
 
-#: inc/properties/register_cpt.php:167
+#: inc/properties/register_cpt.php:281
 msgid "All Finishing Types"
 msgstr "جميع أنواع التشطيب"
 
-#: inc/properties/register_cpt.php:168
+#: inc/properties/register_cpt.php:282
 msgid "Edit Finishing Type"
 msgstr "تحرير نوع التشطيب"
 
-#: inc/properties/register_cpt.php:169
+#: inc/properties/register_cpt.php:283
 msgid "View Finishing Type"
 msgstr "عرض نوع التشطيب"
 
-#: inc/properties/register_cpt.php:170
+#: inc/properties/register_cpt.php:284
 msgid "Update Finishing Type"
 msgstr "تحديث نوع التشطيب"
 
-#: inc/properties/register_cpt.php:171
+#: inc/properties/register_cpt.php:285
 msgid "Add New Finishing Type"
 msgstr "إضافة نوع تشطيب جديد"
 
-#: inc/properties/register_cpt.php:172
+#: inc/properties/register_cpt.php:286
 msgid "New Finishing Type Name"
 msgstr "اسم نوع التشطيب الجديد"
 
-#: inc/properties/register_cpt.php:174
+#: inc/properties/register_cpt.php:288
 msgid "Separate Finishing Types with commas"
 msgstr "أنواع التشطيب المنفصلة باستخدام الفواصل"
 
-#: inc/properties/register_cpt.php:182
+#: inc/properties/register_cpt.php:296
 msgid "Types"
 msgstr "الأنواع"
 
-#: inc/properties/register_cpt.php:183
+#: inc/properties/register_cpt.php:297
 msgid "Type"
 msgstr "نوع"
 
@@ -931,67 +914,67 @@ msgid "Project Facilities"
 msgstr "مميزات المشروع"
 
 #: inc/properties/render-project-facilities-metabox.php:19
-#: template-parts/properties-post/project-facilities.php:5
+#: template-parts/properties-post/project-facilities.php:12
 msgid "Water Games"
 msgstr "العاب مائية"
 
 #: inc/properties/render-project-facilities-metabox.php:20
-#: template-parts/properties-post/project-facilities.php:6
+#: template-parts/properties-post/project-facilities.php:13
 msgid "Security"
 msgstr "أمن وحراسه"
 
 #: inc/properties/render-project-facilities-metabox.php:21
-#: template-parts/properties-post/project-facilities.php:7
+#: template-parts/properties-post/project-facilities.php:14
 msgid "Sports Clubs"
 msgstr "أندية اجتماعية"
 
 #: inc/properties/render-project-facilities-metabox.php:22
-#: template-parts/properties-post/project-facilities.php:8
+#: template-parts/properties-post/project-facilities.php:15
 msgid "Electronic Gates"
 msgstr "البوابات الإلكترونية"
 
 #: inc/properties/render-project-facilities-metabox.php:23
-#: template-parts/properties-post/project-facilities.php:9
+#: template-parts/properties-post/project-facilities.php:16
 msgid "Car Garages"
 msgstr "جراج"
 
 #: inc/properties/render-project-facilities-metabox.php:24
-#: template-parts/properties-post/project-facilities.php:10
+#: template-parts/properties-post/project-facilities.php:17
 msgid "Maintenance and Cleaning"
 msgstr "خدمات الصيانة والنظافة"
 
 #: inc/properties/render-project-facilities-metabox.php:25
-#: template-parts/properties-post/project-facilities.php:11
+#: template-parts/properties-post/project-facilities.php:18
 msgid "Internet Networks"
 msgstr "انترنت"
 
 #: inc/properties/render-project-facilities-metabox.php:26
-#: template-parts/properties-post/project-facilities.php:12
+#: template-parts/properties-post/project-facilities.php:19
 msgid "Cafes and Restaurants"
 msgstr "مطاعم وكافيهات"
 
 #: inc/properties/render-project-facilities-metabox.php:27
-#: template-parts/properties-post/project-facilities.php:13
+#: template-parts/properties-post/project-facilities.php:20
 msgid "Kids Area"
 msgstr "منطقة اطفال"
 
 #: inc/properties/render-project-facilities-metabox.php:28
-#: template-parts/properties-post/project-facilities.php:14
+#: template-parts/properties-post/project-facilities.php:21
 msgid "Shopping Center"
 msgstr "مركز تجاري"
 
 #: inc/properties/render-project-facilities-metabox.php:29
-#: template-parts/properties-post/project-facilities.php:15
+#: template-parts/properties-post/project-facilities.php:22
 msgid "Green Spaces"
 msgstr "مساحات خضراء"
 
 #: inc/properties/render-project-facilities-metabox.php:30
-#: template-parts/properties-post/project-facilities.php:16
+#: template-parts/properties-post/project-facilities.php:23
 msgid "Cycling Lanes"
 msgstr "مسارات دراجات"
 
 #: inc/properties/render-project-facilities-metabox.php:31
-#: template-parts/properties-post/project-facilities.php:17
+#: template-parts/properties-post/project-facilities.php:24
 msgid "Power Generators"
 msgstr "مولدات الطاقة"
 
@@ -1004,7 +987,9 @@ msgid "Real Estate Expert Information"
 msgstr "معلومات الخبراء العقاريين"
 
 #: inc/real-estate-expert/real_estate_expert_extra_profile_fields.php:9
+#: template-parts/button-container.php:122
 #: template-parts/factories-post/left-landing-flat.php:81
+#: template-parts/fixed-icons.php:160
 #: template-parts/properties-post/left-landing-flat.php:81
 msgid "Phone Number"
 msgstr "رقم التليفون"
@@ -1133,53 +1118,55 @@ msgstr "روابط وسائل التواصل الاجتماعي"
 msgid "Add social media links. Use the format: platform|URL"
 msgstr "إضافة روابط وسائل التواصل الاجتماعي. استخدم التنسيق: النظام الأساسي|URL"
 
-#: inc/services/cob_register_services_post_type.php:5
+#: inc/services/cob_register_services_post_type.php:14
 msgid "Services"
 msgstr "الخدمات"
 
-#: inc/services/cob_register_services_post_type.php:6
+#: inc/services/cob_register_services_post_type.php:15
 msgid "Service"
 msgstr "الخدمة"
 
-#: inc/services/cob_register_services_post_type.php:7
-#: inc/services/cob_register_services_post_type.php:8
+#: inc/services/cob_register_services_post_type.php:16
+#: inc/services/cob_register_services_post_type.php:17
 msgid "Add New Service"
 msgstr "إضافة خدمة جديدة"
 
-#: inc/services/cob_register_services_post_type.php:9
+#: inc/services/cob_register_services_post_type.php:18
 msgid "Edit Service"
 msgstr "تحرير الخدمة"
 
-#: inc/services/cob_register_services_post_type.php:10
+#: inc/services/cob_register_services_post_type.php:19
 msgid "New Service"
 msgstr "خدمة جديدة"
 
-#: inc/services/cob_register_services_post_type.php:11
+#: inc/services/cob_register_services_post_type.php:20
 msgid "View Service"
 msgstr "عرض الخدمة"
 
-#: inc/services/cob_register_services_post_type.php:12
+#: inc/services/cob_register_services_post_type.php:21
 msgid "All Services"
 msgstr "All Services"
 
-#: inc/services/cob_register_services_post_type.php:13
+#: inc/services/cob_register_services_post_type.php:22
 msgid "Search Services"
 msgstr "خدمات البحث"
 
-#: inc/services/cob_register_services_post_type.php:14
+#: inc/services/cob_register_services_post_type.php:23
 msgid "No Services found."
 msgstr "لم يتم العثور على أي خدمات."
 
-#: inc/services/cob_register_services_post_type.php:50
+#: inc/services/cob_register_services_post_type.php:67
 msgid "Service SVG Icon"
 msgstr "أيقونة الخدمة SVG"
 
-#: inc/services/cob_register_services_post_type.php:67
+#: inc/services/cob_register_services_post_type.php:88
 msgid "Insert SVG Code:"
 msgstr "أدخل كود SVG:"
 
-#: inc/services/cob_register_services_post_type.php:70
-msgid "Paste valid SVG code including &lt;svg&gt; tags. Example:"
+#: inc/services/cob_register_services_post_type.php:91
+#, fuzzy
+#| msgid "Paste valid SVG code including &lt;svg&gt; tags. Example:"
+msgid "Paste valid SVG code including <svg> tags. Example:"
 msgstr "الصق رمز SVG صالحًا يتضمن &lt;svg&gt; العلامات. مثال:"
 
 #: inc/theme-setup/Widget/cob_widgets_init.php:18
@@ -1189,6 +1176,44 @@ msgstr "الشريط الجانبي الرئيسي"
 #: inc/theme-setup/Widget/cob_widgets_init.php:20
 msgid "Widgets added here will appear in the sidebar."
 msgstr "ستظهر الأدوات المُضافة هنا في الشريط الجانبي."
+
+#: inc/theme-setup/cob_register_company_settings.php:11
+msgid "Company & Zoom Contact Settings"
+msgstr ""
+
+#: inc/theme-setup/cob_register_company_settings.php:18
+#, fuzzy
+#| msgid "Company Name"
+msgid "Company Phone"
+msgstr "الشركة المطورة"
+
+#: inc/theme-setup/cob_register_company_settings.php:25
+#, fuzzy
+#| msgid "WhatsApp"
+msgid "Company WhatsApp"
+msgstr "واتساب"
+
+#: inc/theme-setup/cob_register_company_settings.php:40
+#, fuzzy
+#| msgid "Zoom"
+msgid "Zoom ID"
+msgstr "زووم"
+
+#: inc/theme-setup/cob_register_company_settings.php:47
+#, fuzzy
+#| msgid "Zoom"
+msgid "Zoom Key"
+msgstr "زووم"
+
+#: inc/theme-setup/cob_register_company_settings.php:57
+msgid "Please enter your company and Zoom contact details below:"
+msgstr ""
+
+#: inc/theme-setup/cob_register_company_settings.php:88
+#: inc/theme-setup/cob_register_company_settings.php:89
+#: inc/theme-setup/cob_register_company_settings.php:100
+msgid "Company Options"
+msgstr ""
 
 #: inc/theme-setup/cob_register_slider_post_type.php:5
 msgid "Sliders"
@@ -1291,6 +1316,36 @@ msgstr "رقم الاتصال"
 msgid "1222222123"
 msgstr "1222222123"
 
+#: search.php:24 template-parts/areas/pagination-section.php:149
+#: template-parts/factors/pagination-section.php:110
+#: template-parts/hiring/jobs-posts.php:151
+#: template-parts/projects/projects.php:72
+#: template-parts/properties-post/properties-related.php:106
+#: template-parts/taxonomy-city/top-trend.php:71
+#: template-parts/taxonomy-compound/featured.php:139
+#: template-parts/taxonomy-compound/top-trend.php:73
+#: template-parts/taxonomy-developer/top-trend.php:74
+msgid "Previous"
+msgstr "السابق"
+
+#: search.php:25 template-parts/areas/pagination-section.php:150
+#: template-parts/factors/pagination-section.php:111
+#: template-parts/hiring/jobs-posts.php:152
+#: template-parts/projects/projects.php:73
+#: template-parts/properties-post/properties-related.php:107
+#: template-parts/taxonomy-city/top-trend.php:72
+#: template-parts/taxonomy-compound/featured.php:140
+#: template-parts/taxonomy-compound/top-trend.php:74
+#: template-parts/taxonomy-developer/top-trend.php:75
+msgid "Next"
+msgstr "التالي"
+
+#: search.php:30
+#, fuzzy
+#| msgid "No posts found."
+msgid "No results found."
+msgstr "لم يتم العثور على أي مشاركات."
+
 #: template-parts/areas/head-areas.php:24
 #: template-parts/factors/head-areas.php:24
 msgid "landing areas"
@@ -1324,50 +1379,152 @@ msgstr "محتوى هليوبوليس الجديدة"
 msgid "Content for North Coast"
 msgstr "المحتوى للساحل الشمالي"
 
-#: template-parts/areas/pagination-section.php:149
-#: template-parts/factors/pagination-section.php:110
-#: template-parts/hiring/jobs-posts.php:151
-#: template-parts/projects/projects.php:72
-#: template-parts/properties-post/properties-related.php:224
-#: template-parts/taxonomy-city/top-trend.php:71
-#: template-parts/taxonomy-compound/featured.php:140
-#: template-parts/taxonomy-compound/top-trend.php:73
-#: template-parts/taxonomy-developer/top-trend.php:74
-msgid "Previous"
-msgstr "السابق"
-
-#: template-parts/areas/pagination-section.php:150
-#: template-parts/factors/pagination-section.php:111
-#: template-parts/hiring/jobs-posts.php:152
-#: template-parts/projects/projects.php:73
-#: template-parts/properties-post/properties-related.php:225
-#: template-parts/taxonomy-city/top-trend.php:72
-#: template-parts/taxonomy-compound/featured.php:141
-#: template-parts/taxonomy-compound/top-trend.php:74
-#: template-parts/taxonomy-developer/top-trend.php:75
-msgid "Next"
-msgstr "التالي"
-
-#: template-parts/button-container.php:8 template-parts/taxonomy-city/head.php:21
-#: template-parts/taxonomy-developer/head.php:21
+#: template-parts/button-container.php:11
 msgid "Call Us"
 msgstr "اتصل بنا"
 
-#: template-parts/button-container.php:19
-#: template-parts/taxonomy-city/head.php:28
-#: template-parts/taxonomy-developer/head.php:28
+#: template-parts/button-container.php:22
 msgid "WhatsApp"
 msgstr "واتساب"
 
-#: template-parts/button-container.php:31
-#: template-parts/taxonomy-city/head.php:36
-#: template-parts/taxonomy-developer/head.php:36
+#: template-parts/button-container.php:32
 msgid "Zoom"
 msgstr "زووم"
 
 #: template-parts/button-container.php:43
-#: template-parts/taxonomy-city/head.php:44
-#: template-parts/taxonomy-developer/head.php:44
+#: template-parts/factories-post/left-landing-flat.php:3
+#: template-parts/fixed-icons.php:81
+#: template-parts/properties-post/left-landing-flat.php:3
+msgid "Schedule Appointment"
+msgstr "تحديد موعد"
+
+#: template-parts/button-container.php:44
+#: template-parts/factories-post/left-landing-flat.php:4
+#: template-parts/fixed-icons.php:82
+#: template-parts/properties-post/left-landing-flat.php:4
+msgid "Live Meeting"
+msgstr "لقاء مباشر"
+
+#: template-parts/button-container.php:51
+#: template-parts/factories-post/left-landing-flat.php:10
+#: template-parts/fixed-icons.php:89
+#: template-parts/properties-post/left-landing-flat.php:10
+msgid "Select Date"
+msgstr "حدد التاريخ"
+
+#: template-parts/button-container.php:56
+#: template-parts/factories-post/left-landing-flat.php:16
+#: template-parts/fixed-icons.php:94
+#: template-parts/properties-post/left-landing-flat.php:16
+msgid "Sunday"
+msgstr "الأحد"
+
+#: template-parts/button-container.php:58 template-parts/button-container.php:65
+#: template-parts/button-container.php:72 template-parts/button-container.php:79
+#: template-parts/button-container.php:86 template-parts/button-container.php:93
+#: template-parts/button-container.php:100
+#: template-parts/factories-post/left-landing-flat.php:18
+#: template-parts/factories-post/left-landing-flat.php:25
+#: template-parts/factories-post/left-landing-flat.php:32
+#: template-parts/factories-post/left-landing-flat.php:39
+#: template-parts/factories-post/left-landing-flat.php:46
+#: template-parts/factories-post/left-landing-flat.php:53
+#: template-parts/factories-post/left-landing-flat.php:60
+#: template-parts/fixed-icons.php:96 template-parts/fixed-icons.php:103
+#: template-parts/fixed-icons.php:110 template-parts/fixed-icons.php:117
+#: template-parts/fixed-icons.php:124 template-parts/fixed-icons.php:131
+#: template-parts/fixed-icons.php:138
+#: template-parts/properties-post/left-landing-flat.php:18
+#: template-parts/properties-post/left-landing-flat.php:25
+#: template-parts/properties-post/left-landing-flat.php:32
+#: template-parts/properties-post/left-landing-flat.php:39
+#: template-parts/properties-post/left-landing-flat.php:46
+#: template-parts/properties-post/left-landing-flat.php:53
+#: template-parts/properties-post/left-landing-flat.php:60
+msgid "October"
+msgstr "أكتوبر"
+
+#: template-parts/button-container.php:63
+#: template-parts/factories-post/left-landing-flat.php:23
+#: template-parts/fixed-icons.php:101
+#: template-parts/properties-post/left-landing-flat.php:23
+msgid "Monday"
+msgstr "الاثنين"
+
+#: template-parts/button-container.php:70
+#: template-parts/factories-post/left-landing-flat.php:30
+#: template-parts/fixed-icons.php:108
+#: template-parts/properties-post/left-landing-flat.php:30
+msgid "Tuesday"
+msgstr "الثلاثاء"
+
+#: template-parts/button-container.php:77
+#: template-parts/factories-post/left-landing-flat.php:37
+#: template-parts/fixed-icons.php:115
+#: template-parts/properties-post/left-landing-flat.php:37
+msgid "Wednesday"
+msgstr "الأربعاء"
+
+#: template-parts/button-container.php:84
+#: template-parts/factories-post/left-landing-flat.php:44
+#: template-parts/fixed-icons.php:122
+#: template-parts/properties-post/left-landing-flat.php:44
+msgid "Thursday"
+msgstr "الخميس"
+
+#: template-parts/button-container.php:91
+#: template-parts/factories-post/left-landing-flat.php:51
+#: template-parts/fixed-icons.php:129
+#: template-parts/properties-post/left-landing-flat.php:51
+msgid "Friday"
+msgstr "الجمعة"
+
+#: template-parts/button-container.php:98
+#: template-parts/factories-post/left-landing-flat.php:58
+#: template-parts/fixed-icons.php:136
+#: template-parts/properties-post/left-landing-flat.php:58
+msgid "Saturday"
+msgstr "السبت"
+
+#: template-parts/button-container.php:108
+#: template-parts/factories-post/left-landing-flat.php:67
+#: template-parts/fixed-icons.php:146
+#: template-parts/properties-post/left-landing-flat.php:67
+msgid "Select Time"
+msgstr "حدد الوقت"
+
+#: template-parts/button-container.php:115
+#: template-parts/factories-post/left-landing-flat.php:74
+#: template-parts/fixed-icons.php:153
+#: template-parts/properties-post/left-landing-flat.php:74
+msgid "Confirm Booking"
+msgstr "تأكيد الحجز"
+
+#: template-parts/button-container.php:116
+#: template-parts/button-container.php:124
+#: template-parts/factories-post/left-landing-flat.php:75
+#: template-parts/factories-post/left-landing-flat.php:83
+#: template-parts/fixed-icons.php:154 template-parts/fixed-icons.php:162
+#: template-parts/properties-post/left-landing-flat.php:75
+#: template-parts/properties-post/left-landing-flat.php:83
+msgid "Book your meeting now"
+msgstr "احجز اجتماعك الآن"
+
+#: template-parts/button-container.php:121
+#: template-parts/factories-post/left-landing-flat.php:80
+#: template-parts/fixed-icons.php:159
+#: template-parts/properties-post/left-landing-flat.php:80
+msgid "Enter Phone Number"
+msgstr "أدخل رقم الهاتف"
+
+#: template-parts/button-container.php:123
+#: template-parts/factories-post/left-landing-flat.php:82
+#: template-parts/fixed-icons.php:161
+#: template-parts/properties-post/left-landing-flat.php:82
+msgid "Create Meeting"
+msgstr "إنشاء اجتماع"
+
+#: template-parts/button-container.php:139
 msgid "Your Assistant"
 msgstr "رسالتك"
 
@@ -1388,152 +1545,57 @@ msgid "Featured Factories"
 msgstr "مصانع مميزة"
 
 #: template-parts/factories-post/factories-related.php:35
-#: template-parts/home/units.php:37
+#: template-parts/home/properties.php:37
 msgid "Explore the latest real estate projects available"
 msgstr "موقع عقار الجديد ينشر أحدث المشاريع العقارية"
 
-#: template-parts/factories-post/factories-related.php:127
+#: template-parts/factories-post/factories-related.php:52
 #: template-parts/home/factories.php:139
 msgid "There are no factories currently available."
 msgstr "لا يوجد مصانع متاحة حاليا."
 
 #: template-parts/factories-post/flat-details.php:5
-#: template-parts/home/units.php:56
+#: template-parts/home/properties.php:53
 #: template-parts/properties-post/flat-details.php:7
-#: template-parts/properties-post/properties-related.php:69
 msgid "Not known"
 msgstr "غير معروف"
 
-#: template-parts/factories-post/flat-details.php:110
+#: template-parts/factories-post/flat-details.php:105
 msgid " Factory price "
 msgstr " سعر المصنع "
 
-#: template-parts/factories-post/flat-details.php:111
+#: template-parts/factories-post/flat-details.php:106
 #: template-parts/properties-post/flat-details.php:114
 #: template-parts/properties-post/flat-details.php:129
 msgid "L.E."
 msgstr "جنية ."
 
-#: template-parts/factories-post/flat-details.php:138
+#: template-parts/factories-post/flat-details.php:132
 #: template-parts/properties-post/flat-details.php:150
 msgid " Meter "
 msgstr " متر "
 
-#: template-parts/factories-post/flat-details.php:156
+#: template-parts/factories-post/flat-details.php:150
 #: template-parts/properties-post/flat-details.php:181
 msgid " Bathrooms "
 msgstr " الحمامات "
 
-#: template-parts/factories-post/flat-details.php:162
+#: template-parts/factories-post/flat-details.php:156
 #: template-parts/properties-post/flat-details.php:197
 msgid "Reference number "
 msgstr "الرقم المرجعي "
 
-#: template-parts/factories-post/flat-details.php:171
+#: template-parts/factories-post/flat-details.php:165
 #: template-parts/properties-post/flat-details.php:207
 msgid "Delivery in "
 msgstr "موعد التسليم "
-
-#: template-parts/factories-post/left-landing-flat.php:3
-#: template-parts/properties-post/left-landing-flat.php:3
-msgid "Schedule Appointment"
-msgstr "تحديد موعد"
-
-#: template-parts/factories-post/left-landing-flat.php:4
-#: template-parts/properties-post/left-landing-flat.php:4
-msgid "Live Meeting"
-msgstr "لقاء مباشر"
-
-#: template-parts/factories-post/left-landing-flat.php:10
-#: template-parts/properties-post/left-landing-flat.php:10
-msgid "Select Date"
-msgstr "حدد التاريخ"
-
-#: template-parts/factories-post/left-landing-flat.php:16
-#: template-parts/properties-post/left-landing-flat.php:16
-msgid "Sunday"
-msgstr "الأحد"
-
-#: template-parts/factories-post/left-landing-flat.php:18
-#: template-parts/factories-post/left-landing-flat.php:25
-#: template-parts/factories-post/left-landing-flat.php:32
-#: template-parts/factories-post/left-landing-flat.php:39
-#: template-parts/factories-post/left-landing-flat.php:46
-#: template-parts/factories-post/left-landing-flat.php:53
-#: template-parts/factories-post/left-landing-flat.php:60
-#: template-parts/properties-post/left-landing-flat.php:18
-#: template-parts/properties-post/left-landing-flat.php:25
-#: template-parts/properties-post/left-landing-flat.php:32
-#: template-parts/properties-post/left-landing-flat.php:39
-#: template-parts/properties-post/left-landing-flat.php:46
-#: template-parts/properties-post/left-landing-flat.php:53
-#: template-parts/properties-post/left-landing-flat.php:60
-msgid "October"
-msgstr "أكتوبر"
-
-#: template-parts/factories-post/left-landing-flat.php:23
-#: template-parts/properties-post/left-landing-flat.php:23
-msgid "Monday"
-msgstr "الاثنين"
-
-#: template-parts/factories-post/left-landing-flat.php:30
-#: template-parts/properties-post/left-landing-flat.php:30
-msgid "Tuesday"
-msgstr "الثلاثاء"
-
-#: template-parts/factories-post/left-landing-flat.php:37
-#: template-parts/properties-post/left-landing-flat.php:37
-msgid "Wednesday"
-msgstr "الأربعاء"
-
-#: template-parts/factories-post/left-landing-flat.php:44
-#: template-parts/properties-post/left-landing-flat.php:44
-msgid "Thursday"
-msgstr "الخميس"
-
-#: template-parts/factories-post/left-landing-flat.php:51
-#: template-parts/properties-post/left-landing-flat.php:51
-msgid "Friday"
-msgstr "الجمعة"
-
-#: template-parts/factories-post/left-landing-flat.php:58
-#: template-parts/properties-post/left-landing-flat.php:58
-msgid "Saturday"
-msgstr "السبت"
-
-#: template-parts/factories-post/left-landing-flat.php:67
-#: template-parts/properties-post/left-landing-flat.php:67
-msgid "Select Time"
-msgstr "حدد الوقت"
-
-#: template-parts/factories-post/left-landing-flat.php:74
-#: template-parts/properties-post/left-landing-flat.php:74
-msgid "Confirm Booking"
-msgstr "تأكيد الحجز"
-
-#: template-parts/factories-post/left-landing-flat.php:75
-#: template-parts/factories-post/left-landing-flat.php:83
-#: template-parts/properties-post/left-landing-flat.php:75
-#: template-parts/properties-post/left-landing-flat.php:83
-msgid "Book your meeting now"
-msgstr "احجز اجتماعك الآن"
-
-#: template-parts/factories-post/left-landing-flat.php:80
-#: template-parts/properties-post/left-landing-flat.php:80
-msgid "Enter Phone Number"
-msgstr "أدخل رقم الهاتف"
-
-#: template-parts/factories-post/left-landing-flat.php:82
-#: template-parts/properties-post/left-landing-flat.php:82
-msgid "Create Meeting"
-msgstr "إنشاء اجتماع"
 
 #: template-parts/factories-post/right-landing-flat.php:3
 msgid " About the factory"
 msgstr " عن المصنع"
 
 #: template-parts/factors/pagination-section.php:70
-#: template-parts/home/landing.php:96
+#: template-parts/home/landing.php:98
 msgid "Price"
 msgstr "السعر"
 
@@ -1550,7 +1612,7 @@ msgstr "لم يتم العثور على مشاريع."
 msgid "Search..."
 msgstr "بحث ..."
 
-#: template-parts/header.php:42 template-parts/home/landing.php:105
+#: template-parts/header.php:42 template-parts/home/landing.php:107
 msgid "Search"
 msgstr "بحث"
 
@@ -1635,18 +1697,18 @@ msgstr "أدخل أي تفاصيل أخرى."
 msgid "There are no jobs."
 msgstr "لا توجد وظائف."
 
-#: template-parts/home/areas.php:9
-msgid "Search by area "
+#: template-parts/home/areas.php:6
+msgid "Search by area"
 msgstr "البحث حسب المنطقة "
 
-#: template-parts/home/areas.php:11 template-parts/home/articles.php:13
+#: template-parts/home/areas.php:9 template-parts/home/articles.php:13
 #: template-parts/home/developers.php:20 template-parts/home/factories.php:42
 #: template-parts/home/projects.php:19 template-parts/home/services.php:43
 #: template-parts/single/articles-news.php:19
 msgid "View all"
 msgstr "عرض الكل"
 
-#: template-parts/home/areas.php:97 template-parts/home/services.php:40
+#: template-parts/home/areas.php:82 template-parts/home/services.php:40
 msgid "There are currently no services."
 msgstr "لا يوجد حاليا أي خدمات."
 
@@ -1663,10 +1725,12 @@ msgid "There are no new articles currently."
 msgstr "لا توجد مقالات جديدة حاليا."
 
 #: template-parts/home/compounds.php:60
+#: template-parts/taxonomy-city/featured.php:60
 msgid "Most Searched Compounds"
 msgstr "الكمبوندات الأكثر بحثا"
 
 #: template-parts/home/compounds.php:92
+#: template-parts/taxonomy-city/featured.php:92
 msgid "No compounds available at the moment."
 msgstr "لا توجد مركبات متاحة في الوقت الراهن."
 
@@ -1681,57 +1745,57 @@ msgid ""
 msgstr ""
 "اكتشف أحدث المصانع والتقنيات المتقدمة التي تلبي احتياجات السوق الصناعية الحديثة"
 
-#: template-parts/home/landing.php:35
+#: template-parts/home/landing.php:36
 msgid "Default Slide"
 msgstr "الشريحة الافتراضية"
 
-#: template-parts/home/landing.php:53
+#: template-parts/home/landing.php:54
 msgid "Find your property"
-msgstr "ابحث عن الممتلكات الخاصة بك"
+msgstr "ابحث عن وحدتك"
 
 #: template-parts/home/landing.php:68
 msgid "Search by compound, location, real estate"
 msgstr "البحث عن طريق الكلمات الرئيسية والموقع او العقار"
 
-#: template-parts/home/landing.php:79 template-parts/home/landing.php:185
+#: template-parts/home/landing.php:79 template-parts/home/landing.php:189
 msgid "Select Property Type"
 msgstr "اختر نوع العقار"
 
-#: template-parts/home/landing.php:89 template-parts/home/landing.php:209
-#: template-parts/home/landing.php:212
+#: template-parts/home/landing.php:91 template-parts/home/landing.php:215
+#: template-parts/home/landing.php:218
 msgid "Bedrooms"
 msgstr "غرف نوم"
 
-#: template-parts/home/landing.php:112
+#: template-parts/home/landing.php:115
 msgid "Detailed search"
 msgstr "بحث مفصل"
 
-#: template-parts/home/landing.php:122 template-parts/home/landing.php:158
+#: template-parts/home/landing.php:125 template-parts/home/landing.php:162
 msgid "Search by keywords, location, real estate photos"
 msgstr "البحث عن طريق الكلمات الرئيسية والموقع والصور العقارية"
 
-#: template-parts/home/landing.php:156
+#: template-parts/home/landing.php:160
 msgid "Search words"
 msgstr "كلمات البحث"
 
-#: template-parts/home/landing.php:176
+#: template-parts/home/landing.php:180
 msgid "properties"
 msgstr "العقارت"
 
-#: template-parts/home/landing.php:232
+#: template-parts/home/landing.php:238
 msgid "From"
 msgstr "من"
 
-#: template-parts/home/landing.php:233
+#: template-parts/home/landing.php:239
 msgid "To"
 msgstr "الي"
 
-#: template-parts/home/landing.php:241
+#: template-parts/home/landing.php:246
 #, php-format
 msgid "Search (%s results)"
 msgstr "البحث (نتائج %s)"
 
-#: template-parts/home/landing.php:244
+#: template-parts/home/landing.php:249
 msgid "Clear all"
 msgstr "مسح الكل"
 
@@ -1740,10 +1804,21 @@ msgid "Explore a selection of our latest available real estate projects"
 msgstr "استكشف مجموعة مختارة من أحدث مشاريعنا العقارية المتاحة"
 
 #: template-parts/home/projects.php:69
-#: template-parts/taxonomy-city/featured.php:81
 #: template-parts/taxonomy-developer/featured.php:81
 msgid "No projects available."
 msgstr "لا توجد مشاريع متاحة."
+
+#: template-parts/home/properties.php:36
+msgid "Featured Properties"
+msgstr "عقارات مميزة"
+
+#: template-parts/home/properties.php:40
+msgid "View All"
+msgstr "عرض الكل"
+
+#: template-parts/home/properties.php:70
+msgid "No properties available at the moment."
+msgstr "لا توجد عقارات  متاحة في الوقت الراهن."
 
 #: template-parts/home/services.php:17
 msgid "Legal services"
@@ -1752,37 +1827,6 @@ msgstr "الخدمات القانونية"
 #: template-parts/home/services.php:18
 msgid "We provide a variety of legal services to meet our clients' needs"
 msgstr "نحن نقدم مجموعة متنوعة من الخدمات القانونية لتلبية احتياجات عملائنا"
-
-#: template-parts/home/units.php:36
-msgid "Featured Properties"
-msgstr "عقارات مميزة"
-
-#: template-parts/home/units.php:40
-msgid "View All"
-msgstr "عرض الكل"
-
-#: template-parts/home/units.php:147
-#: template-parts/properties-post/properties-related.php:129
-#: template-parts/properties-post/properties-related.php:142
-#: template-parts/single/properties-card.php:98
-msgid "Default Image"
-msgstr "الصورة الافتراضية"
-
-#: template-parts/home/units.php:160
-#: template-parts/properties-post/properties-related.php:156
-#: template-parts/single/properties-card.php:128
-msgid "EGP"
-msgstr "ج.م"
-
-#: template-parts/home/units.php:163
-#: template-parts/properties-post/properties-related.php:160
-#: template-parts/single/properties-card.php:131
-msgid "Down Payment:"
-msgstr "دفعة مبدئية:"
-
-#: template-parts/home/units.php:226
-msgid "No properties available at the moment."
-msgstr "لا توجد عقارات  متاحة في الوقت الراهن."
 
 #: template-parts/properties-post/flat-details.php:108
 msgid " Prices start "
@@ -1808,37 +1852,32 @@ msgstr " غرف "
 msgid "The most searched compounds in %s"
 msgstr "الكمبوندات الأكثر بحثًا في %s"
 
-#: template-parts/properties-post/properties-related.php:55
-#: template-parts/taxonomy-city/featured.php:55
-#: template-parts/taxonomy-city/top-trend.php:42
-#: template-parts/taxonomy-compound/top-trend.php:42
-#: template-parts/taxonomy-developer/featured.php:55
-#: template-parts/taxonomy-developer/top-trend.php:42
-#, php-format
-msgid "%d Results"
-msgstr "%d نتائج"
-
-#: template-parts/properties-post/properties-related.php:210
+#: template-parts/properties-post/properties-related.php:62
 #: template-parts/taxonomy-city/top-trend.php:58
-#: template-parts/taxonomy-compound/featured.php:126
+#: template-parts/taxonomy-compound/featured.php:125
 #: template-parts/taxonomy-compound/top-trend.php:59
 #: template-parts/taxonomy-developer/top-trend.php:58
 msgid "There are no posts currently available"
 msgstr "لا توجد مشاركات متاحة حاليا"
 
+#: template-parts/properties-post/properties-related.php:84
+#, php-format
+msgid "Compounds in %s"
+msgstr "كمبوندات في %s"
+
 #: template-parts/properties-post/right-landing-flat.php:2
 msgid "Facilities and services"
 msgstr "المرافق والخدمات"
 
-#: template-parts/properties-post/right-landing-flat.php:17
+#: template-parts/properties-post/right-landing-flat.php:15
 msgid "Payment systems"
 msgstr "أنظمة السداد"
 
-#: template-parts/properties-post/right-landing-flat.php:23
+#: template-parts/properties-post/right-landing-flat.php:21
 msgid "Deposit"
 msgstr "مقدم"
 
-#: template-parts/properties-post/right-landing-flat.php:30
+#: template-parts/properties-post/right-landing-flat.php:28
 msgid "About the property"
 msgstr " عن العقار"
 
@@ -1859,10 +1898,9 @@ msgid "services1"
 msgstr "الخدمات1"
 
 #: template-parts/services/head-services.php:19
-#: template-parts/taxonomy-city/head.php:57
-#: template-parts/taxonomy-city/sup-taxonomy.php:58
-#: template-parts/taxonomy-compound/sup-taxonomy.php:52
-#: template-parts/taxonomy-developer/head.php:49
+#: template-parts/taxonomy-city/head.php:28
+#: template-parts/taxonomy-compound/sup-taxonomy.php:83
+#: template-parts/taxonomy-developer/head.php:20
 #: template-parts/taxonomy-developer/sup-taxonomy.php:58
 #: template-parts/top-articles.php:54
 msgid "Image 2"
@@ -1888,17 +1926,25 @@ msgstr "استكشف مجموعة مختارة من أحدث المشاريع ا
 msgid "There are no articles currently available."
 msgstr "لا توجد مقالات متاحة حاليا."
 
-#: template-parts/taxonomy-city/featured.php:51
-#: template-parts/taxonomy-developer/featured.php:51
-msgid "Featured projects"
-msgstr "مشاروعات مميزة"
+#: template-parts/single/properties-card.php:124
+msgid "Default Image"
+msgstr "الصورة الافتراضية"
 
-#: template-parts/taxonomy-city/sup-taxonomy.php:56
-#: template-parts/taxonomy-compound/sup-taxonomy.php:50
-#: template-parts/taxonomy-developer/sup-taxonomy.php:56
-#: template-parts/top-articles.php:52
-msgid "Image 1"
-msgstr "الصورة 1"
+#: template-parts/single/properties-card.php:158
+msgid "EGP"
+msgstr "ج.م."
+
+#: template-parts/single/properties-card.php:161
+msgid "Down Payment:"
+msgstr "دفعة مبدئية:"
+
+#: template-parts/taxonomy-city/sup-taxonomy.php:42
+msgid "Top 5 Open Compounds"
+msgstr "افضل كمبوندات"
+
+#: template-parts/taxonomy-city/sup-taxonomy.php:61
+msgid "No open compounds available."
+msgstr "لا توجد كموبوندات مفتوحة الان"
 
 #: template-parts/taxonomy-city/top-compounds.php:51
 #: template-parts/taxonomy-compound/top-compounds.php:51
@@ -1931,34 +1977,52 @@ msgstr "الصورة الافتراضية 1"
 msgid "Default Image 2"
 msgstr "الصورة الافتراضية 2"
 
-#: template-parts/taxonomy-compound/featured.php:69
+#: template-parts/taxonomy-city/top-trend.php:42
+#: template-parts/taxonomy-compound/top-trend.php:42
+#: template-parts/taxonomy-developer/featured.php:55
+#: template-parts/taxonomy-developer/top-trend.php:42
+#, php-format
+msgid "%d Results"
+msgstr "%d نتائج"
+
+#: template-parts/taxonomy-compound/featured.php:68
 #, php-format
 msgid "Discover %s Units"
 msgstr "اكتشف %s وحدات"
 
-#: template-parts/taxonomy-compound/featured.php:71
+#: template-parts/taxonomy-compound/featured.php:70
 msgid "results"
 msgstr "نتائج"
 
-#: template-parts/taxonomy-compound/featured.php:77
+#: template-parts/taxonomy-compound/featured.php:76
 msgid "Sort By"
 msgstr "فرز حسب"
 
-#: template-parts/taxonomy-compound/featured.php:80
+#: template-parts/taxonomy-compound/featured.php:79
 msgid "Price: Low to High"
 msgstr "السعر: من الأقل إلى الأعلى"
 
-#: template-parts/taxonomy-compound/featured.php:83
+#: template-parts/taxonomy-compound/featured.php:82
 msgid "Price: High to Low"
 msgstr "السعر: من الأعلى إلى الأدنى"
 
-#: template-parts/taxonomy-compound/featured.php:86
+#: template-parts/taxonomy-compound/featured.php:85
 msgid "Date: Oldest"
 msgstr "التاريخ: الأقدم"
 
-#: template-parts/taxonomy-compound/featured.php:89
+#: template-parts/taxonomy-compound/featured.php:88
 msgid "Date: Newest"
 msgstr "التاريخ: الأحدث"
+
+#: template-parts/taxonomy-compound/sup-taxonomy.php:81
+#: template-parts/taxonomy-developer/sup-taxonomy.php:56
+#: template-parts/top-articles.php:52
+msgid "Image 1"
+msgstr "الصورة 1"
+
+#: template-parts/taxonomy-developer/featured.php:51
+msgid "Featured projects"
+msgstr "مشاروعات مميزة"
 
 #: template-parts/top-articles.php:46
 msgid "No articles selected."
@@ -2002,3 +2066,30 @@ msgstr "الكمبوند"
 #. Template Name of the plugin/theme
 msgid "single post"
 msgstr "المقالة"
+
+#~ msgid "Factories"
+#~ msgstr "المصانع"
+
+#~ msgid "Factory"
+#~ msgstr "مصنع"
+
+#~ msgid "Add New Factory"
+#~ msgstr "إضافة مصنع جديد"
+
+#~ msgid "Edit Factory"
+#~ msgstr "تحرير المصنع"
+
+#~ msgid "New Factory"
+#~ msgstr "مصنع جديد"
+
+#~ msgid "View Factory"
+#~ msgstr "عرض المصنع"
+
+#~ msgid "All Factories"
+#~ msgstr "كل المصانع"
+
+#~ msgid "Search Factories"
+#~ msgstr "بحث عن مصنع"
+
+#~ msgid "No factories found."
+#~ msgstr "المصنع غير موجود."
