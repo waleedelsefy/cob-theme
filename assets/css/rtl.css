@@ -154,15 +154,15 @@ body {
   left: 1% !important;
   right: inherit !important;
 }
-/* .areas-button svg,
+.areas-button svg,
 .projects-button svg,
 .properties-button svg,
 .motaoron-button svg,
 .services-button svg,
 .factorys-button svg,
 .articles-button svg {
-  transform: rotate(180deg);
-} */
+  transform: rotate(360deg) !important;
+}
 
 @media (max-width: 768px) {
   .mySwiper .swiper-button-prev,
@@ -217,4 +217,8 @@ body {
 #PopupZoomOpety img {
   left: 20px;
   right: inherit;
+}
+.search-form svg:not(.bar) {
+  right: 300px !important;
+  left: inherit !important;
 }

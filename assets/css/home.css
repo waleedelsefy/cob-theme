@@ -158,6 +158,7 @@ a:hover {
   font-size: 18px;
   margin-bottom: 10px;
   color: #000;
+  text-align: start;
 }
 
 .search-form {
@@ -170,7 +171,7 @@ a:hover {
 }
 .search-form svg:not(.bar) {
   position: absolute;
-  right: 300px;
+  left: 285px;
 }
 .nav-menu2 {
   display: flex;
@@ -432,7 +433,15 @@ a:hover {
   align-items: center;
   gap: 10px;
 }
-
+.areas-button svg,
+.projects-button svg,
+.properties-button svg,
+.motaoron-button svg,
+.services-button svg,
+.factorys-button svg,
+.articles-button svg {
+  transform: rotate(180deg);
+}
 .mySwiper {
   width: 100%;
   height: 100%;
