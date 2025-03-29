@@ -25,18 +25,13 @@ function cob_register_services_post_type() {
 
 	$args = [
 		'labels'              => $labels,
-		'public'              => false,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'menu_icon'           => 'dashicons-awards',
-		'capability_type'     => 'post',
-		'supports'            => ['title', 'editor', 'thumbnail'],
-		'has_archive'         => false,
-		'rewrite'             => false,
-		'query_var'           => false,
-		'show_in_rest'        => true,
-		'exclude_from_search' => true,
-		'publicly_queryable'  => false,
+		'public'            => true,
+		'hierarchical'      => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'services' ),
+		'show_in_rest'      => true,
 	];
 
 	register_post_type('services', $args);
