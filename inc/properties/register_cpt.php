@@ -44,7 +44,6 @@ add_action( 'init', 'cob_register_compound_taxonomy' );
 
 /**
  * Register Properties Custom Post Type
- *
  */
 function cob_register_properties_cpt() {
 	$labels = [
@@ -66,7 +65,7 @@ function cob_register_properties_cpt() {
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-building',
 		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		// تم تعديل السطر التالي إلى false لتفادي التعارض مع إعدادات الرابط الدائم المُخصصة.
+		// Disable default rewrite to rely on our custom rewrite.
 		'rewrite'       => false,
 		'show_in_rest'  => true,
 		'hierarchical'  => false,
@@ -190,7 +189,6 @@ add_action( 'init', 'cob_register_taxonomies' );
 
 /**
  * Update Project Views with Rate Limiting
- *
  */
 function cob_update_project_views() {
 	if ( is_admin() || ! is_singular( 'projects' ) ) {
@@ -286,6 +284,11 @@ function cob_properties_permalink( $post_link, $post ) {
 	$replace = array( $city_slug, $compound_slug, $post->ID );
 	$custom_permalink = str_replace( $search, $replace, $structure );
 
+	// Use pll_home_url if Polylang Pro is active to include language prefix.
+	if ( function_exists( 'pll_home_url' ) ) {
+		return pll_home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
+	}
+
 	// Return the full URL.
 	return home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
 }
@@ -307,6 +310,9 @@ function cob_properties_custom_rewrite() {
 	$regex = str_replace( preg_quote('%compound%', '#'), '([^/]+)', $regex );
 	$regex = str_replace( preg_quote('%post_id%', '#'), '([0-9]+)', $regex );
 
+	// Prepend an optional language prefix (two lowercase letters) for Polylang Pro.
+	$regex = '^(?:[a-z]{2}/)?' . $regex;
+
 	// Determine the position of %post_id% to know which capturing group contains the post ID.
 	$parts = explode( '/', $structure );
 	$post_id_group_index = 0;
@@ -319,7 +325,7 @@ function cob_properties_custom_rewrite() {
 
 	// Add the rewrite rule.
 	add_rewrite_rule(
-		'^' . $regex . '/?$',
+		$regex . '/?$',
 		'index.php?post_type=properties&p=$matches[' . $post_id_group_index . ']',
 		'top'
 	);
