@@ -109,6 +109,34 @@ add_action( 'init', 'cob_register_factory_cpt' );
 /**
  * Register Custom Taxonomies: City, Developer, Finishing, Type
  */
+function cob_register_land_cpt() {
+	$labels = [
+		'name'          => __( 'Lands', 'cob_theme' ),
+		'singular_name' => __( 'Land', 'cob_theme' ),
+		'add_new'       => __( 'Add New Land', 'cob_theme' ),
+		'add_new_item'  => __( 'Add New Land', 'cob_theme' ),
+		'edit_item'     => __( 'Edit Land', 'cob_theme' ),
+		'new_item'      => __( 'New Land', 'cob_theme' ),
+		'view_item'     => __( 'View Land', 'cob_theme' ),
+		'all_items'     => __( 'All Lands', 'cob_theme' ),
+		'search_items'  => __( 'Search Lands', 'cob_theme' ),
+		'not_found'     => __( 'No lands found.', 'cob_theme' ),
+	];
+
+	$args = [
+		'labels'        => $labels,
+		'public'        => true,
+		'has_archive'   => true,
+		'menu_icon'     => 'dashicons-palmtree',
+		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
+		'rewrite'       => [ 'slug' => 'lands' ],
+		'show_in_rest'  => true,
+	];
+
+	register_post_type( 'lands', $args );
+}
+add_action( 'init', 'cob_register_land_cpt' );
+
 function cob_register_taxonomies() {
 	$default_args = [
 		'hierarchical'      => true,
@@ -119,7 +147,7 @@ function cob_register_taxonomies() {
 		'show_in_rest'      => true,
 	];
 
-	register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
+	register_taxonomy( 'city', [ 'lands', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Cities', 'cob_theme' ),
 			'singular_name'              => __( 'City', 'cob_theme' ),
@@ -139,7 +167,7 @@ function cob_register_taxonomies() {
 	] ) );
 
 	// Developer Taxonomy
-	register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
+	register_taxonomy( 'developer', [ 'lands', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Developers', 'cob_theme' ),
 			'singular_name'              => __( 'Developer', 'cob_theme' ),
@@ -177,7 +205,7 @@ function cob_register_taxonomies() {
 	] ) );
 
 	// Type Taxonomy
-	register_taxonomy( 'type', [ 'projects', 'properties', 'posts' ], array_merge( $default_args, [
+	register_taxonomy( 'type', [ 'lands', 'properties', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'          => __( 'Types', 'cob_theme' ),
 			'singular_name' => __( 'Type', 'cob_theme' ),
@@ -192,7 +220,7 @@ add_action( 'init', 'cob_register_taxonomies' );
  *
  */
 function cob_update_project_views() {
-	if ( is_admin() || ! is_singular( 'projects' ) ) {
+	if ( is_admin() || ! is_singular( 'properties' ) ) {
 		return;
 	}
 
@@ -201,14 +229,14 @@ function cob_update_project_views() {
 		return;
 	}
 
-	$cookie_name = 'project_viewed_' . $post_id;
+	$cookie_name = 'properties_viewed_' . $post_id;
 	if ( isset( $_COOKIE[ $cookie_name ] ) ) {
 		return;
 	}
 
-	$views = (int) get_post_meta( $post_id, 'project_views', true );
+	$views = (int) get_post_meta( $post_id, 'properties_views', true );
 	$views++;
-	update_post_meta( $post_id, 'project_views', $views );
+	update_post_meta( $post_id, 'properties_views', $views );
 
 	setcookie( $cookie_name, 1, time() + HOUR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
 }
