@@ -304,15 +304,6 @@ function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
 }
 add_filter( 'post_type_link', 'cob_properties_permalink', 10, 4 );
 
-/**
- * Filter compound taxonomy term link to include the associated city slug.
- *
- * Desired URL structure:
- *   domain/{city_slug}/{compound_slug}/
- *
- * This filter retrieves the 'compound_city' meta value from the compound term
- * (which is assumed to store the city term ID) and then uses the city's slug.
- */
 function cob_compound_term_link( $termlink, $term, $taxonomy ) {
 	if ( 'compound' === $taxonomy ) {
 		$compound_slug = $term->slug;
