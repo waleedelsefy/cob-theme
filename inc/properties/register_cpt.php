@@ -226,7 +226,7 @@ function cob_add_permalink_settings_field() {
 	register_setting( 'permalink', 'properties_permalink_structure', array(
 		'type'              => 'string',
 		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '%city%/%compound%/%post_id%',
+		'default'           => '%city%/%compound%/%post_id%/',
 	) );
 
 	// Add the settings field in the "Optional" section of Permalinks settings.
@@ -244,9 +244,9 @@ add_action( 'admin_init', 'cob_add_permalink_settings_field' );
  * Output the custom permalink structure field.
  */
 function cob_properties_permalink_settings_field() {
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
+	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%/' );
 	echo '<input type="text" name="properties_permalink_structure" value="' . esc_attr( $structure ) . '" class="regular-text ltr" />';
-	echo '<p class="description">' . __( 'Use placeholders: %city%, %compound%, %post_id%.', 'cob_theme' ) . '</p>';
+	echo '<p class="description">' . __( 'Use placeholders: %city%, %compound%, %post_id%. /', 'cob_theme' ) . '</p>';
 }
 
 /**
@@ -279,7 +279,7 @@ function cob_properties_permalink( $post_link, $post ) {
 	}
 
 	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
+	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%/' );
 
 	// Replace placeholders with actual values.
 	$search  = array( '%city%', '%compound%', '%post_id%' );
@@ -299,7 +299,7 @@ add_filter( 'post_type_link', 'cob_properties_permalink', 10, 2 );
  */
 function cob_properties_custom_rewrite() {
 	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
+	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%/' );
 
 	// Build the regex by replacing placeholders with regex patterns.
 	$regex = preg_quote( $structure, '#' );
