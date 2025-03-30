@@ -80,11 +80,11 @@ a {
   border-left: 2px solid #000;
 }
 
-@media (min-width: 769px) {
+/* @media (min-width: 769px) {
   .nav-links li:not(.dropdown li) {
     flex: 0 0 20%;
   }
-}
+} */
 .nav-links li a {
   text-decoration: none;
   color: #000;
@@ -101,9 +101,6 @@ nav {
 /* .nav-links li a svg {
   display: none;
 } */
-.nav-links .more-details {
-  display: none;
-}
 
 @media (max-width: 767px) {
   .navbar {
@@ -137,6 +134,9 @@ nav {
     align-items: center;
     padding-bottom: 15px;
     border-bottom: 2px solid #0000001a;
+  }
+  .nav-links li a:not(.dropdown a):hover {
+    border-bottom: 2px solid var(--mainColor);
   }
   .nav-links li .first-link {
     border-top: 2px solid #0000001a;

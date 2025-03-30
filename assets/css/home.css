@@ -1660,8 +1660,8 @@ a:hover {
 .services::after {
   content: "";
   position: absolute;
-  bottom: 7%;
-  left: 13%;
+  bottom: 14%;
+  left: 18%;
   width: 160px;
   height: 1px;
   background-color: var(--mainColor);
