@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Custom Post Types and Taxonomies - Improved Version
+ * Register Custom Post Types and Taxonomies - Improved Version with Polylang Pro Support
  *
  * @package Capital_of_Business
  */
@@ -65,7 +65,7 @@ function cob_register_properties_cpt() {
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-building',
 		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		// Disable default rewrite to rely on our custom rewrite.
+		// Disable default rewrite to rely on custom rewrite rules.
 		'rewrite'       => false,
 		'show_in_rest'  => true,
 		'hierarchical'  => false,
@@ -119,6 +119,7 @@ function cob_register_taxonomies() {
 		'show_in_rest'      => true,
 	];
 
+	// City taxonomy
 	register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Cities', 'cob_theme' ),
@@ -138,7 +139,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'city' ],
 	] ) );
 
-	// Developer Taxonomy
+	// Developer taxonomy
 	register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Developers', 'cob_theme' ),
@@ -158,7 +159,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'developer' ],
 	] ) );
 
-	// Finishing Taxonomy
+	// Finishing taxonomy
 	register_taxonomy( 'finishing', [ 'projects', 'properties' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Finishing Types', 'cob_theme' ),
@@ -176,7 +177,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'finishing' ],
 	] ) );
 
-	// Type Taxonomy
+	// Type taxonomy
 	register_taxonomy( 'type', [ 'projects', 'properties', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'          => __( 'Types', 'cob_theme' ),
@@ -310,7 +311,7 @@ function cob_properties_custom_rewrite() {
 	$regex = str_replace( preg_quote('%compound%', '#'), '([^/]+)', $regex );
 	$regex = str_replace( preg_quote('%post_id%', '#'), '([0-9]+)', $regex );
 
-	// Prepend an optional language prefix (two lowercase letters) for Polylang Pro.
+	// Prepend an optional language prefix (two lowercase letters followed by a slash) for Polylang Pro.
 	$regex = '^(?:[a-z]{2}/)?' . $regex;
 
 	// Determine the position of %post_id% to know which capturing group contains the post ID.
