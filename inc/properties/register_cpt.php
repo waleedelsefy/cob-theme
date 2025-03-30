@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Custom Post Types and Taxonomies - Improved Version
+ * Custom Post Types and Taxonomies Registration - Custom Permalink with Language/City/Compound/PostID structure.
  *
  * @package Capital_of_Business
  */
@@ -10,20 +10,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register Rewrite Tag for Compound
+ * Register Rewrite Tags for Compound and City.
  *
- * يسمح هذا الكود لووردبريس بفهم عنصر نائب %compound% في الروابط.
+ * (Optional – if needed for other custom rules.)
  */
 function cob_add_rewrite_tags() {
 	add_rewrite_tag( '%compound%', '([^/]+)' );
+	add_rewrite_tag( '%city%', '([^/]+)' );
 }
-add_action( 'init', 'cob_add_rewrite_tags' );
+add_action( 'init', 'cob_add_rewrite_tags', 20 );
 
 /**
- * Register Compound Taxonomy
+ * Register Compound Taxonomy.
  */
 function cob_register_compound_taxonomy() {
-	$labels = [
+	$labels = array(
 		'name'              => __( 'Compounds', 'cob_theme' ),
 		'singular_name'     => __( 'Compound', 'cob_theme' ),
 		'search_items'      => __( 'Search Compounds', 'cob_theme' ),
@@ -35,28 +36,33 @@ function cob_register_compound_taxonomy() {
 		'add_new_item'      => __( 'Add New Compound', 'cob_theme' ),
 		'new_item_name'     => __( 'New Compound Name', 'cob_theme' ),
 		'menu_name'         => __( 'Compounds', 'cob_theme' ),
-	];
+	);
 
-	$args = [
+	$args = array(
 		'labels'            => $labels,
 		'public'            => true,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => [ 'slug' => 'compound' ],
+		'rewrite'           => array( 'slug' => 'compound' ),
 		'show_in_rest'      => true,
-	];
+	);
 
-	register_taxonomy( 'compound', [ 'properties' ], $args );
+	register_taxonomy( 'compound', array( 'properties' ), $args );
 }
 add_action( 'init', 'cob_register_compound_taxonomy' );
 
 /**
- * Register Properties Custom Post Type
+ * Register Properties Custom Post Type.
+ *
+ * We disable the automatic rewrite rules by setting 'rewrite' => false.
+ * The final URL structure will be:
+ * /{city}/{compound}/{post-ID}
+ * Polylang will add the language prefix automatically.
  */
 function cob_register_properties_cpt() {
-	$labels = [
+	$labels = array(
 		'name'          => __( 'Properties', 'cob_theme' ),
 		'singular_name' => __( 'Property', 'cob_theme' ),
 		'add_new'       => __( 'Add New Property', 'cob_theme' ),
@@ -67,29 +73,45 @@ function cob_register_properties_cpt() {
 		'all_items'     => __( 'All Properties', 'cob_theme' ),
 		'search_items'  => __( 'Search Properties', 'cob_theme' ),
 		'not_found'     => __( 'No properties found.', 'cob_theme' ),
-	];
+	);
 
-	$args = [
+	$args = array(
 		'labels'        => $labels,
 		'public'        => true,
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-building',
-		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		// يتم استخدام عنصر نائب %compound% في الرابط، والذي سيتم استبداله بلقب التصنيف
-		'rewrite'       => [ 'slug' => 'compound/%compound%/properties', 'with_front' => false ],
+		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+		// Disable default rewrite rules
+		'rewrite'       => false,
 		'show_in_rest'  => true,
 		'hierarchical'  => false,
-	];
+	);
 
 	register_post_type( 'properties', $args );
 }
 add_action( 'init', 'cob_register_properties_cpt' );
 
 /**
- * Register Factory Custom Post Type
+ * Add Custom Rewrite Rule for Properties.
+ *
+ * This rule matches URLs of the form:
+ * /{city}/{compound}/{post-ID}
+ * and rewrites them to the appropriate query for the "properties" post type.
+ */
+function cob_custom_properties_rewrite_rule() {
+	add_rewrite_rule(
+		'^([^/]+)/([^/]+)/([0-9]+)/?$',
+		'index.php?post_type=properties&p=$matches[3]',
+		'top'
+	);
+}
+add_action( 'init', 'cob_custom_properties_rewrite_rule' );
+
+/**
+ * Register Factory Custom Post Type.
  */
 function cob_register_factory_cpt() {
-	$labels = [
+	$labels = array(
 		'name'          => __( 'Factories', 'cob_theme' ),
 		'singular_name' => __( 'Factory', 'cob_theme' ),
 		'add_new'       => __( 'Add New Factory', 'cob_theme' ),
@@ -100,27 +122,27 @@ function cob_register_factory_cpt() {
 		'all_items'     => __( 'All Factories', 'cob_theme' ),
 		'search_items'  => __( 'Search Factories', 'cob_theme' ),
 		'not_found'     => __( 'No factories found.', 'cob_theme' ),
-	];
+	);
 
-	$args = [
+	$args = array(
 		'labels'        => $labels,
 		'public'        => true,
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-store',
-		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		'rewrite'       => [ 'slug' => 'factories' ],
+		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+		'rewrite'       => array( 'slug' => 'factories' ),
 		'show_in_rest'  => true,
-	];
+	);
 
 	register_post_type( 'factory', $args );
 }
 add_action( 'init', 'cob_register_factory_cpt' );
 
 /**
- * Register Lands Custom Post Type
+ * Register Lands Custom Post Type.
  */
 function cob_register_land_cpt() {
-	$labels = [
+	$labels = array(
 		'name'          => __( 'Lands', 'cob_theme' ),
 		'singular_name' => __( 'Land', 'cob_theme' ),
 		'add_new'       => __( 'Add New Land', 'cob_theme' ),
@@ -131,37 +153,38 @@ function cob_register_land_cpt() {
 		'all_items'     => __( 'All Lands', 'cob_theme' ),
 		'search_items'  => __( 'Search Lands', 'cob_theme' ),
 		'not_found'     => __( 'No lands found.', 'cob_theme' ),
-	];
+	);
 
-	$args = [
+	$args = array(
 		'labels'        => $labels,
 		'public'        => true,
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-palmtree',
-		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		'rewrite'       => [ 'slug' => 'lands' ],
+		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+		'rewrite'       => array( 'slug' => 'lands' ),
 		'show_in_rest'  => true,
-	];
+	);
 
 	register_post_type( 'lands', $args );
 }
 add_action( 'init', 'cob_register_land_cpt' );
 
 /**
- * Register Custom Taxonomies: City, Developer, Finishing, Type
+ * Register Custom Taxonomies: City, Developer, Finishing, Type.
  */
 function cob_register_taxonomies() {
-	$default_args = [
+	$default_args = array(
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
 		'rewrite'           => true,
 		'show_in_rest'      => true,
-	];
+	);
 
-	register_taxonomy( 'city', [ 'lands', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
-		'labels' => [
+	// City Taxonomy
+	register_taxonomy( 'city', array( 'lands', 'properties', 'factory', 'posts' ), array_merge( $default_args, array(
+		'labels' => array(
 			'name'                       => __( 'Cities', 'cob_theme' ),
 			'singular_name'              => __( 'City', 'cob_theme' ),
 			'search_items'               => __( 'Search Cities', 'cob_theme' ),
@@ -175,13 +198,13 @@ function cob_register_taxonomies() {
 			'new_item_name'              => __( 'New City Name', 'cob_theme' ),
 			'menu_name'                  => __( 'Cities', 'cob_theme' ),
 			'separate_items_with_commas' => __( 'Separate cities with commas', 'cob_theme' ),
-		],
-		'rewrite' => [ 'slug' => 'city' ],
-	] ) );
+		),
+		'rewrite' => array( 'slug' => 'city' ),
+	) ) );
 
 	// Developer Taxonomy
-	register_taxonomy( 'developer', [ 'lands', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
-		'labels' => [
+	register_taxonomy( 'developer', array( 'lands', 'properties', 'factory', 'posts' ), array_merge( $default_args, array(
+		'labels' => array(
 			'name'                       => __( 'Developers', 'cob_theme' ),
 			'singular_name'              => __( 'Developer', 'cob_theme' ),
 			'search_items'               => __( 'Search Developers', 'cob_theme' ),
@@ -195,13 +218,13 @@ function cob_register_taxonomies() {
 			'new_item_name'              => __( 'New Developer Name', 'cob_theme' ),
 			'menu_name'                  => __( 'Developers', 'cob_theme' ),
 			'separate_items_with_commas' => __( 'Separate Developers with commas', 'cob_theme' ),
-		],
-		'rewrite' => [ 'slug' => 'developer' ],
-	] ) );
+		),
+		'rewrite' => array( 'slug' => 'developer' ),
+	) ) );
 
 	// Finishing Taxonomy
-	register_taxonomy( 'finishing', [ 'projects', 'properties' ], array_merge( $default_args, [
-		'labels' => [
+	register_taxonomy( 'finishing', array( 'projects', 'properties' ), array_merge( $default_args, array(
+		'labels' => array(
 			'name'                       => __( 'Finishing Types', 'cob_theme' ),
 			'singular_name'              => __( 'Finishing Type', 'cob_theme' ),
 			'search_items'               => __( 'Search Finishing Types', 'cob_theme' ),
@@ -213,23 +236,23 @@ function cob_register_taxonomies() {
 			'new_item_name'              => __( 'New Finishing Type Name', 'cob_theme' ),
 			'menu_name'                  => __( 'Finishing Types', 'cob_theme' ),
 			'separate_items_with_commas' => __( 'Separate Finishing Types with commas', 'cob_theme' ),
-		],
-		'rewrite' => [ 'slug' => 'finishing' ],
-	] ) );
+		),
+		'rewrite' => array( 'slug' => 'finishing' ),
+	) ) );
 
 	// Type Taxonomy
-	register_taxonomy( 'type', [ 'lands', 'properties', 'posts' ], array_merge( $default_args, [
-		'labels' => [
+	register_taxonomy( 'type', array( 'lands', 'properties', 'posts' ), array_merge( $default_args, array(
+		'labels' => array(
 			'name'          => __( 'Types', 'cob_theme' ),
 			'singular_name' => __( 'Type', 'cob_theme' ),
-		],
-		'rewrite' => [ 'slug' => 'type' ],
-	] ) );
+		),
+		'rewrite' => array( 'slug' => 'type' ),
+	) ) );
 }
 add_action( 'init', 'cob_register_taxonomies' );
 
 /**
- * Update Project Views with Rate Limiting
+ * Update Property Views with Rate Limiting.
  */
 function cob_update_project_views() {
 	if ( is_admin() || ! is_singular( 'properties' ) ) {
@@ -255,18 +278,33 @@ function cob_update_project_views() {
 add_action( 'template_redirect', 'cob_update_project_views' );
 
 /**
- * تعديل الرابط الخاص بالـ Properties ليستبدل %compound% بـ slug التصنيف
+ * Filter the permalink for Properties to include the city slug, compound slug, and post ID.
+ *
+ * Final URL: /{city}/{compound}/{post-ID}
+ * Polylang will add the language prefix automatically.
  */
 function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
 	if ( 'properties' === $post->post_type ) {
-		$terms = get_the_terms( $post->ID, 'compound' );
-		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-			$term_slug = current( $terms )->slug;
-			$post_link = str_replace( '%compound%', $term_slug, $post_link );
-		} else {
-			$post_link = str_replace( '%compound%', 'compound', $post_link );
+		// Get the city slug.
+		$city_slug = 'city';
+		$city_terms = get_the_terms( $post->ID, 'city' );
+		if ( ! empty( $city_terms ) && ! is_wp_error( $city_terms ) ) {
+			$city_slug = current( $city_terms )->slug;
 		}
+		// Get the compound slug.
+		$compound_slug = 'compound';
+		$compound_terms = get_the_terms( $post->ID, 'compound' );
+		if ( ! empty( $compound_terms ) && ! is_wp_error( $compound_terms ) ) {
+			$compound_slug = current( $compound_terms )->slug;
+		}
+		// Build the permalink as /{city}/{compound}/{post-ID}
+		$post_link = home_url( user_trailingslashit( "$city_slug/$compound_slug/" . $post->ID ) );
 	}
 	return $post_link;
 }
 add_filter( 'post_type_link', 'cob_properties_permalink', 10, 4 );
+
+/**
+ * Note: After making these changes, please flush the rewrite rules by visiting
+ * Settings > Permalinks and clicking "Save Changes".
+ */

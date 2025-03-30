@@ -94,3 +94,4 @@ function cob_theme_icon( $name, $size = 24 ) {
 	);
 	return isset( $icons[ $name ] ) ? $icons[ $name ] : '';
 }
+
