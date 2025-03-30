@@ -79,7 +79,12 @@ a {
   padding-left: 20px;
   border-left: 2px solid #000;
 }
-
+/* .nav-links li:not(.dropdown li) {
+  min-width: 100px;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+} */
 .nav-links li a {
   text-decoration: none;
   color: #000;
@@ -93,9 +98,9 @@ nav {
   align-items: center;
   gap: 20px;
 }
-.nav-links li a svg {
+/* .nav-links li a svg {
   display: none;
-}
+} */
 .nav-links .more-details {
   display: none;
 }
@@ -112,6 +117,12 @@ nav {
     background-color: #fff;
     width: 99vw;
   }
+  /* .nav-links li {
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: start;
+  } */
   .nav-links li a svg {
     display: block;
   }
@@ -119,7 +130,7 @@ nav {
     display: none;
   }
 
-  .nav-links li a {
+  .nav-links li a:not(.dropdown a) {
     display: flex;
     justify-content: flex-start;
     gap: 13px;
@@ -183,7 +194,7 @@ nav {
   margin-right: 6px;
 }
 
-.dropdown {
+/* .dropdown {
   display: none;
   position: absolute;
   background: white;
@@ -192,7 +203,7 @@ nav {
   padding: 10px;
   border-radius: 6px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .dropdown li {
   list-style: none;
@@ -206,17 +217,11 @@ nav {
   color: #fff;
 }
 
-.active2 .dropdown {
-  display: block;
-  z-index: 111;
-}
 .mazed svg {
   transition: rotate 0.2s;
   color: var(--mainColor);
 }
-.active2 .mazed svg {
-  transform: rotate(180deg);
-}
+
 .nav-links li a:hover {
   border-bottom: 2px solid var(--mainColor);
   font-weight: bold;
@@ -326,3 +331,51 @@ nav {
   }
 }
 /* End hamburger menu */
+/* dropdown hidden */
+.dropdown-container .dropdown {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.dropdown-container .dropdown a:hover {
+  border: none;
+}
+/* Show dropdown on hover */
+.dropdown-container:hover .dropdown {
+  display: block;
+}
+
+/* Active state (for mobile) */
+.dropdown-container.active .dropdown {
+  display: block;
+  width: 100%;
+}
+
+/* On mobile, disable hover behavior */
+@media (hover: none) {
+  .dropdown-container:hover .dropdown {
+    display: none;
+  }
+}
+/* SVG Arrow - Default State */
+.dropdown-container .svg-inline--fa {
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+/* Rotate Arrow When Dropdown is Open (Hover or Active) */
+.dropdown-container:hover .svg-inline--fa,
+.dropdown-container.active .svg-inline--fa {
+  transform: rotate(180deg);
+}
+.dropdown-container:hover .svg-inline--fa {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+@media (max-width: 767px) {
+  .dropdown-container .dropdown {
+    width: 94%;
+  }
+}
