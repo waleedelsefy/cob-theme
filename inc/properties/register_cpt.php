@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Custom Post Types and Taxonomies - Improved Version
+ * Register Custom Post Types and Taxonomies - Improved Version with Polylang Pro Support
  *
  * @package Capital_of_Business
  */
@@ -44,7 +44,6 @@ add_action( 'init', 'cob_register_compound_taxonomy' );
 
 /**
  * Register Properties Custom Post Type
- *
  */
 function cob_register_properties_cpt() {
 	$labels = [
@@ -61,14 +60,16 @@ function cob_register_properties_cpt() {
 	];
 
 	$args = [
-		'labels'        => $labels,
-		'public'        => true,
-		'has_archive'   => true,
-		'menu_icon'     => 'dashicons-building',
-		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		'rewrite'       => [ 'slug' => '', 'with_front' => false ],
-		'show_in_rest'  => true,
-		'hierarchical'  => false,
+		'labels'             => $labels,
+		'public'             => true,
+		'has_archive'        => true,
+		'publicly_queryable' => true, // تأكد من إمكانية استعلام العرض للعامة.
+		'menu_icon'          => 'dashicons-building',
+		'supports'           => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
+		// نعطل إعادة الكتابة الافتراضية لنستخدم قواعدنا المخصصة.
+		'rewrite'            => false,
+		'show_in_rest'       => true,
+		'hierarchical'       => false,
 	];
 
 	register_post_type( 'properties', $args );
@@ -93,13 +94,13 @@ function cob_register_factory_cpt() {
 	];
 
 	$args = [
-		'labels'        => $labels,
-		'public'        => true,
-		'has_archive'   => true,
-		'menu_icon'     => 'dashicons-store',
-		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		'rewrite'       => [ 'slug' => 'factories' ],
-		'show_in_rest'  => true,
+		'labels'       => $labels,
+		'public'       => true,
+		'has_archive'  => true,
+		'menu_icon'    => 'dashicons-store',
+		'supports'     => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
+		'rewrite'      => [ 'slug' => 'factories' ],
+		'show_in_rest' => true,
 	];
 
 	register_post_type( 'factory', $args );
@@ -119,6 +120,7 @@ function cob_register_taxonomies() {
 		'show_in_rest'      => true,
 	];
 
+	// City taxonomy
 	register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Cities', 'cob_theme' ),
@@ -138,7 +140,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'city' ],
 	] ) );
 
-	// Developer Taxonomy
+	// Developer taxonomy
 	register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Developers', 'cob_theme' ),
@@ -158,7 +160,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'developer' ],
 	] ) );
 
-	// Finishing Taxonomy
+	// Finishing taxonomy
 	register_taxonomy( 'finishing', [ 'projects', 'properties' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Finishing Types', 'cob_theme' ),
@@ -176,7 +178,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'finishing' ],
 	] ) );
 
-	// Type Taxonomy
+	// Type taxonomy
 	register_taxonomy( 'type', [ 'projects', 'properties', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'          => __( 'Types', 'cob_theme' ),
@@ -189,7 +191,6 @@ add_action( 'init', 'cob_register_taxonomies' );
 
 /**
  * Update Project Views with Rate Limiting
- *
  */
 function cob_update_project_views() {
 	if ( is_admin() || ! is_singular( 'projects' ) ) {
@@ -214,7 +215,6 @@ function cob_update_project_views() {
 }
 add_action( 'template_redirect', 'cob_update_project_views' );
 
-
 /*-----------------------------------------
   CUSTOM PERMALINK STRUCTURE & REWRITE RULES
 -----------------------------------------*/
@@ -226,7 +226,7 @@ function cob_add_permalink_settings_field() {
 	register_setting( 'permalink', 'properties_permalink_structure', array(
 		'type'              => 'string',
 		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '%city%/%compound%/%post_id%/',
+		'default'           => '%city%/%compound%/%post_id%',
 	) );
 
 	// Add the settings field in the "Optional" section of Permalinks settings.
@@ -244,9 +244,9 @@ add_action( 'admin_init', 'cob_add_permalink_settings_field' );
  * Output the custom permalink structure field.
  */
 function cob_properties_permalink_settings_field() {
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%/' );
+	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
 	echo '<input type="text" name="properties_permalink_structure" value="' . esc_attr( $structure ) . '" class="regular-text ltr" />';
-	echo '<p class="description">' . __( 'Use placeholders: %city%, %compound%, %post_id%. /', 'cob_theme' ) . '</p>';
+	echo '<p class="description">' . __( 'Use placeholders: %city%, %compound%, %post_id%.', 'cob_theme' ) . '</p>';
 }
 
 /**
@@ -279,12 +279,17 @@ function cob_properties_permalink( $post_link, $post ) {
 	}
 
 	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%/' );
+	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
 
 	// Replace placeholders with actual values.
 	$search  = array( '%city%', '%compound%', '%post_id%' );
 	$replace = array( $city_slug, $compound_slug, $post->ID );
 	$custom_permalink = str_replace( $search, $replace, $structure );
+
+	// Use pll_home_url if Polylang Pro is active to include language prefix.
+	if ( function_exists( 'pll_home_url' ) ) {
+		return pll_home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
+	}
 
 	// Return the full URL.
 	return home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
@@ -299,13 +304,16 @@ add_filter( 'post_type_link', 'cob_properties_permalink', 10, 2 );
  */
 function cob_properties_custom_rewrite() {
 	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%/' );
+	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
 
 	// Build the regex by replacing placeholders with regex patterns.
 	$regex = preg_quote( $structure, '#' );
 	$regex = str_replace( preg_quote('%city%', '#'), '([^/]+)', $regex );
 	$regex = str_replace( preg_quote('%compound%', '#'), '([^/]+)', $regex );
 	$regex = str_replace( preg_quote('%post_id%', '#'), '([0-9]+)', $regex );
+
+	// Prepend an optional language prefix (two lowercase letters followed by a slash) for Polylang Pro.
+	$regex = '^(?:[a-z]{2}/)?' . $regex;
 
 	// Determine the position of %post_id% to know which capturing group contains the post ID.
 	$parts = explode( '/', $structure );
@@ -319,7 +327,7 @@ function cob_properties_custom_rewrite() {
 
 	// Add the rewrite rule.
 	add_rewrite_rule(
-		'^' . $regex . '/?$',
+		$regex . '/?$',
 		'index.php?post_type=properties&p=$matches[' . $post_id_group_index . ']',
 		'top'
 	);
