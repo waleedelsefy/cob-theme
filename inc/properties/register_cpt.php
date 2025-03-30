@@ -66,7 +66,7 @@ function cob_register_properties_cpt() {
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-building',
 		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		'rewrite'       => [ 'slug' => '', 'with_front' => false ],
+		'rewrite'       => [ 'slug' => 'compound/%compound%/properties', 'with_front' => false ],
 		'show_in_rest'  => true,
 		'hierarchical'  => false,
 	];
@@ -109,6 +109,34 @@ add_action( 'init', 'cob_register_factory_cpt' );
 /**
  * Register Custom Taxonomies: City, Developer, Finishing, Type
  */
+function cob_register_land_cpt() {
+	$labels = [
+		'name'          => __( 'Lands', 'cob_theme' ),
+		'singular_name' => __( 'Land', 'cob_theme' ),
+		'add_new'       => __( 'Add New Land', 'cob_theme' ),
+		'add_new_item'  => __( 'Add New Land', 'cob_theme' ),
+		'edit_item'     => __( 'Edit Land', 'cob_theme' ),
+		'new_item'      => __( 'New Land', 'cob_theme' ),
+		'view_item'     => __( 'View Land', 'cob_theme' ),
+		'all_items'     => __( 'All Lands', 'cob_theme' ),
+		'search_items'  => __( 'Search Lands', 'cob_theme' ),
+		'not_found'     => __( 'No lands found.', 'cob_theme' ),
+	];
+
+	$args = [
+		'labels'        => $labels,
+		'public'        => true,
+		'has_archive'   => true,
+		'menu_icon'     => 'dashicons-palmtree',
+		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
+		'rewrite'       => [ 'slug' => 'lands' ],
+		'show_in_rest'  => true,
+	];
+
+	register_post_type( 'lands', $args );
+}
+add_action( 'init', 'cob_register_land_cpt' );
+
 function cob_register_taxonomies() {
 	$default_args = [
 		'hierarchical'      => true,
@@ -119,7 +147,7 @@ function cob_register_taxonomies() {
 		'show_in_rest'      => true,
 	];
 
-	register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
+	register_taxonomy( 'city', [ 'lands', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Cities', 'cob_theme' ),
 			'singular_name'              => __( 'City', 'cob_theme' ),
@@ -139,7 +167,7 @@ function cob_register_taxonomies() {
 	] ) );
 
 	// Developer Taxonomy
-	register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
+	register_taxonomy( 'developer', [ 'lands', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Developers', 'cob_theme' ),
 			'singular_name'              => __( 'Developer', 'cob_theme' ),
@@ -177,7 +205,7 @@ function cob_register_taxonomies() {
 	] ) );
 
 	// Type Taxonomy
-	register_taxonomy( 'type', [ 'projects', 'properties', 'posts' ], array_merge( $default_args, [
+	register_taxonomy( 'type', [ 'lands', 'properties', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'          => __( 'Types', 'cob_theme' ),
 			'singular_name' => __( 'Type', 'cob_theme' ),
@@ -192,7 +220,7 @@ add_action( 'init', 'cob_register_taxonomies' );
  *
  */
 function cob_update_project_views() {
-	if ( is_admin() || ! is_singular( 'projects' ) ) {
+	if ( is_admin() || ! is_singular( 'properties' ) ) {
 		return;
 	}
 
@@ -201,150 +229,28 @@ function cob_update_project_views() {
 		return;
 	}
 
-	$cookie_name = 'project_viewed_' . $post_id;
+	$cookie_name = 'properties_viewed_' . $post_id;
 	if ( isset( $_COOKIE[ $cookie_name ] ) ) {
 		return;
 	}
 
-	$views = (int) get_post_meta( $post_id, 'project_views', true );
+	$views = (int) get_post_meta( $post_id, 'properties_views', true );
 	$views++;
-	update_post_meta( $post_id, 'project_views', $views );
+	update_post_meta( $post_id, 'properties_views', $views );
 
 	setcookie( $cookie_name, 1, time() + HOUR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
 }
 add_action( 'template_redirect', 'cob_update_project_views' );
-
-
-/*-----------------------------------------
-  CUSTOM PERMALINK STRUCTURE & REWRITE RULES
------------------------------------------*/
-/**
- * Add custom permalink structure field to the Permalinks settings page.
- */
-function cob_add_permalink_settings_field() {
-	// Register the setting for properties permalink structure.
-	register_setting( 'permalink', 'properties_permalink_structure', array(
-		'type'              => 'string',
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '%city%/%compound%/%post_id%',
-	) );
-
-	// Add the settings field in the "Optional" section of Permalinks settings.
-	add_settings_field(
-		'properties_permalink_structure',
-		__( 'Properties Permalink Structure', 'cob_theme' ),
-		'cob_properties_permalink_settings_field',
-		'permalink',
-		'optional'
-	);
-}
-add_action( 'admin_init', 'cob_add_permalink_settings_field' );
-
-/**
- * Output the custom permalink structure field.
- */
-function cob_properties_permalink_settings_field() {
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
-	echo '<input type="text" name="properties_permalink_structure" value="' . esc_attr( $structure ) . '" class="regular-text ltr" />';
-	echo '<p class="description">' . __( 'Use placeholders: %city%, %compound%, %post_id%.', 'cob_theme' ) . '</p>';
-}
-
-/**
- * Filter to generate custom permalink for the properties post type.
- *
- * Generates a URL based on the structure defined in the Permalinks settings.
- * Example structure: %city%/%compound%/%post_id%
- *
- * Compatible with Polylang Pro.
- */
-function cob_properties_permalink( $post_link, $post ) {
-	if ( 'properties' !== $post->post_type ) {
-		return $post_link;
-	}
-
-	// Get the city term slug.
-	$city_terms = get_the_terms( $post->ID, 'city' );
-	if ( ! empty( $city_terms ) && ! is_wp_error( $city_terms ) ) {
-		$city_slug = $city_terms[0]->slug;
-	} else {
-		$city_slug = 'no-city';
-	}
-
-	// Get the compound term slug.
-	$compound_terms = get_the_terms( $post->ID, 'compound' );
-	if ( ! empty( $compound_terms ) && ! is_wp_error( $compound_terms ) ) {
-		$compound_slug = $compound_terms[0]->slug;
-	} else {
-		$compound_slug = 'no-compound';
-	}
-
-	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
-
-	// Replace placeholders with actual values.
-	$search  = array( '%city%', '%compound%', '%post_id%' );
-	$replace = array( $city_slug, $compound_slug, $post->ID );
-	$custom_permalink = str_replace( $search, $replace, $structure );
-
-	// Return the full URL.
-	return home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
-}
-add_filter( 'post_type_link', 'cob_properties_permalink', 10, 2 );
-
-/**
- * Add custom rewrite rule for properties.
- *
- * Converts the custom permalink structure into a regular expression and maps it
- * to the appropriate query variables.
- */
-function cob_properties_custom_rewrite() {
-	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
-
-	// Build the regex by replacing placeholders with regex patterns.
-	$regex = preg_quote( $structure, '#' );
-	$regex = str_replace( preg_quote('%city%', '#'), '([^/]+)', $regex );
-	$regex = str_replace( preg_quote('%compound%', '#'), '([^/]+)', $regex );
-	$regex = str_replace( preg_quote('%post_id%', '#'), '([0-9]+)', $regex );
-
-	// Determine the position of %post_id% to know which capturing group contains the post ID.
-	$parts = explode( '/', $structure );
-	$post_id_group_index = 0;
-	foreach ( $parts as $i => $part ) {
-		if ( '%post_id%' === $part ) {
-			$post_id_group_index = $i + 1; // Capturing groups are 1-indexed.
-			break;
+function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
+	if ( 'properties' === $post->post_type ) {
+		$terms = get_the_terms( $post->ID, 'compound' );
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			$term_slug = current( $terms )->slug;
+			$post_link = str_replace( '%compound%', $term_slug, $post_link );
+		} else {
+			$post_link = str_replace( '%compound%', 'compound', $post_link );
 		}
 	}
-
-	// Add the rewrite rule.
-	add_rewrite_rule(
-		'^' . $regex . '/?$',
-		'index.php?post_type=properties&p=$matches[' . $post_id_group_index . ']',
-		'top'
-	);
+	return $post_link;
 }
-add_action( 'init', 'cob_properties_custom_rewrite' );
-
-/*-----------------------------------------
-  FLUSH REWRITE RULES ON ACTIVATION/DEACTIVATION
------------------------------------------*/
-/**
- * Flush rewrite rules on plugin activation.
- */
-function cob_flush_rewrite_rules_on_activation() {
-	// Ensure CPT and taxonomies are registered.
-	cob_register_compound_taxonomy();
-	cob_register_properties_cpt();
-	cob_properties_custom_rewrite();
-	flush_rewrite_rules();
-}
-register_activation_hook( __FILE__, 'cob_flush_rewrite_rules_on_activation' );
-
-/**
- * Flush rewrite rules on plugin deactivation.
- */
-function cob_flush_rewrite_rules_on_deactivation() {
-	flush_rewrite_rules();
-}
-register_deactivation_hook( __FILE__, 'cob_flush_rewrite_rules_on_deactivation' );
+add_filter( 'post_type_link', 'cob_properties_permalink', 10, 4 );

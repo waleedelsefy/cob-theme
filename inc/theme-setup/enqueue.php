@@ -51,7 +51,7 @@ if ( ! function_exists( 'cob_enqueue_assets' ) ) {
         wp_enqueue_style( 'font-awesome', $theme_uri . '/assets/css/fonts/fontawesome/css/all.css', array(), '6.4.2' );
 
         // Enqueue custom theme CSS files.
-        $css_files = array(
+	    $css_files = array(
             'animate'      => 'assets/css/animate.css',
             'contact'      => 'assets/css/contact.css',
             'areas'        => 'assets/css/areas.css',
@@ -69,14 +69,16 @@ if ( ! function_exists( 'cob_enqueue_assets' ) ) {
             'city'         => 'assets/css/city.css',
             'home'         => 'assets/css/home.css',
         );
+	    if ( ! is_robots() ) {
+		    foreach ( $css_files as $handle => $relative_path ) {
+			    $file_path = $theme_dir . '/' . $relative_path;
+			    if ( file_exists( $file_path ) ) {
+				    $version = cob_get_asset_version( $file_path );
+				    wp_enqueue_style( "cob-{$handle}", $theme_uri . '/' . $relative_path, array(), $version );
+			    }
+		    }
+	    }
 
-        foreach ( $css_files as $handle => $relative_path ) {
-            $file_path = $theme_dir . '/' . $relative_path;
-            if ( file_exists( $file_path ) ) {
-                $version = cob_get_asset_version( $file_path );
-                wp_enqueue_style( "cob-{$handle}", $theme_uri . '/' . $relative_path, array(), $version );
-            }
-        }
 
         // Enqueue the main theme stylesheet.
         $style_path = $theme_dir . '/style.css';

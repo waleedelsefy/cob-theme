@@ -1,6 +1,6 @@
 <?php
 function my_add_attached_images_meta_box() {
-    $screens = array( 'post', 'properties', 'factory', 'page' );
+    $screens = array( 'post', 'properties', 'lands', 'factory', 'page' );
     add_meta_box(
         'cob_gallery_images_meta_box',
         __( 'gallery Images', 'my_theme' ),
