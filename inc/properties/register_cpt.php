@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Custom Post Types and Taxonomies - Improved Version with Polylang Pro Support
+ * Register Custom Post Types and Taxonomies - Improved Version
  *
  * @package Capital_of_Business
  */
@@ -44,6 +44,7 @@ add_action( 'init', 'cob_register_compound_taxonomy' );
 
 /**
  * Register Properties Custom Post Type
+ *
  */
 function cob_register_properties_cpt() {
 	$labels = [
@@ -65,8 +66,7 @@ function cob_register_properties_cpt() {
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-building',
 		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		// Disable default rewrite to rely on custom rewrite rules.
-		'rewrite'       => false,
+		'rewrite'       => [ 'slug' => '', 'with_front' => false ],
 		'show_in_rest'  => true,
 		'hierarchical'  => false,
 	];
@@ -119,7 +119,6 @@ function cob_register_taxonomies() {
 		'show_in_rest'      => true,
 	];
 
-	// City taxonomy
 	register_taxonomy( 'city', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Cities', 'cob_theme' ),
@@ -139,7 +138,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'city' ],
 	] ) );
 
-	// Developer taxonomy
+	// Developer Taxonomy
 	register_taxonomy( 'developer', [ 'projects', 'properties', 'factory', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Developers', 'cob_theme' ),
@@ -159,7 +158,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'developer' ],
 	] ) );
 
-	// Finishing taxonomy
+	// Finishing Taxonomy
 	register_taxonomy( 'finishing', [ 'projects', 'properties' ], array_merge( $default_args, [
 		'labels' => [
 			'name'                       => __( 'Finishing Types', 'cob_theme' ),
@@ -177,7 +176,7 @@ function cob_register_taxonomies() {
 		'rewrite' => [ 'slug' => 'finishing' ],
 	] ) );
 
-	// Type taxonomy
+	// Type Taxonomy
 	register_taxonomy( 'type', [ 'projects', 'properties', 'posts' ], array_merge( $default_args, [
 		'labels' => [
 			'name'          => __( 'Types', 'cob_theme' ),
@@ -190,6 +189,7 @@ add_action( 'init', 'cob_register_taxonomies' );
 
 /**
  * Update Project Views with Rate Limiting
+ *
  */
 function cob_update_project_views() {
 	if ( is_admin() || ! is_singular( 'projects' ) ) {
@@ -213,6 +213,7 @@ function cob_update_project_views() {
 	setcookie( $cookie_name, 1, time() + HOUR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
 }
 add_action( 'template_redirect', 'cob_update_project_views' );
+
 
 /*-----------------------------------------
   CUSTOM PERMALINK STRUCTURE & REWRITE RULES
@@ -285,11 +286,6 @@ function cob_properties_permalink( $post_link, $post ) {
 	$replace = array( $city_slug, $compound_slug, $post->ID );
 	$custom_permalink = str_replace( $search, $replace, $structure );
 
-	// Use pll_home_url if Polylang Pro is active to include language prefix.
-	if ( function_exists( 'pll_home_url' ) ) {
-		return pll_home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
-	}
-
 	// Return the full URL.
 	return home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
 }
@@ -311,9 +307,6 @@ function cob_properties_custom_rewrite() {
 	$regex = str_replace( preg_quote('%compound%', '#'), '([^/]+)', $regex );
 	$regex = str_replace( preg_quote('%post_id%', '#'), '([0-9]+)', $regex );
 
-	// Prepend an optional language prefix (two lowercase letters followed by a slash) for Polylang Pro.
-	$regex = '^(?:[a-z]{2}/)?' . $regex;
-
 	// Determine the position of %post_id% to know which capturing group contains the post ID.
 	$parts = explode( '/', $structure );
 	$post_id_group_index = 0;
@@ -326,7 +319,7 @@ function cob_properties_custom_rewrite() {
 
 	// Add the rewrite rule.
 	add_rewrite_rule(
-		$regex . '/?$',
+		'^' . $regex . '/?$',
 		'index.php?post_type=properties&p=$matches[' . $post_id_group_index . ']',
 		'top'
 	);
