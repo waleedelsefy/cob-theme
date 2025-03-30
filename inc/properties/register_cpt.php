@@ -305,10 +305,6 @@ function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
 add_filter( 'post_type_link', 'cob_properties_permalink', 10, 4 );
 
 /**
- * Note: After making these changes, please flush the rewrite rules by visiting
- * Settings > Permalinks and clicking "Save Changes".
- */
-/**
  * Filter compound taxonomy term link to include the associated city slug.
  *
  * Desired URL structure:
@@ -335,3 +331,8 @@ function cob_compound_term_link( $termlink, $term, $taxonomy ) {
 	return $termlink;
 }
 add_filter( 'term_link', 'cob_compound_term_link', 10, 3 );
+
+/**
+ * Note: After making these changes, please flush the rewrite rules by visiting
+ * Settings > Permalinks and clicking "Save Changes".
+ */
