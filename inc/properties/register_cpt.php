@@ -308,3 +308,30 @@ add_filter( 'post_type_link', 'cob_properties_permalink', 10, 4 );
  * Note: After making these changes, please flush the rewrite rules by visiting
  * Settings > Permalinks and clicking "Save Changes".
  */
+/**
+ * Filter compound taxonomy term link to include the associated city slug.
+ *
+ * Desired URL structure:
+ *   domain/{city_slug}/{compound_slug}/
+ *
+ * This filter retrieves the 'compound_city' meta value from the compound term
+ * (which is assumed to store the city term ID) and then uses the city's slug.
+ */
+function cob_compound_term_link( $termlink, $term, $taxonomy ) {
+	if ( 'compound' === $taxonomy ) {
+		$compound_slug = $term->slug;
+		// Retrieve the associated city term ID from term meta.
+		// Make sure you are storing the city term ID as meta with key 'compound_city'.
+		$city_term_id = get_term_meta( $term->term_id, 'compound_city', true );
+		if ( $city_term_id ) {
+			$city_term = get_term( $city_term_id, 'city' );
+			if ( ! is_wp_error( $city_term ) && $city_term ) {
+				$city_slug = $city_term->slug;
+				// Build the new link: domain/{city_slug}/{compound_slug}/
+				$termlink = home_url( user_trailingslashit( $city_slug . '/' . $compound_slug ) );
+			}
+		}
+	}
+	return $termlink;
+}
+add_filter( 'term_link', 'cob_compound_term_link', 10, 3 );
