@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Add the property metabox to specified post types.
  */
 function cob_add_property_metabox() {
-    $post_types = array( 'properties', 'factory' );
+    $post_types = array( 'properties', 'lands', 'factory' );
     foreach ( $post_types as $post_type ) {
         add_meta_box(
             'cob_property_details',
