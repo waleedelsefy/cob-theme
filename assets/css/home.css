@@ -172,6 +172,7 @@ a:hover {
 .search-form svg:not(.bar) {
   position: absolute;
   left: 285px;
+  color: #a1aecb;
 }
 .nav-menu2 {
   display: flex;
