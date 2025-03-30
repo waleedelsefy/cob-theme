@@ -110,32 +110,70 @@ if (window.innerWidth >= 992) {
 window.lazySizesConfig = window.lazySizesConfig || {};
 window.lazySizesConfig.loadMode = 1;
 
+// document.addEventListener("DOMContentLoaded", function () {
+//   const dropdownContainer = document.querySelector(".dropdown-container");
+//   const mazedLink = document.querySelector(".mazed");
+
+//   // Ensure dropdown is hidden at the start
+//   dropdownContainer.classList.remove("active2");
+
+//   mazedLink.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     dropdownContainer.classList.toggle("active2");
+//   });
+
+//   // Close dropdown when clicking outside
+//   document.addEventListener("click", function (event) {
+//     if (
+//       !dropdownContainer.contains(event.target) &&
+//       !mazedLink.contains(event.target)
+//     ) {
+//       dropdownContainer.classList.remove("active2");
+//     }
+//   });
+// });
+// function toggleDetails(element) {
+//   const mazed = element.nextElementSibling;
+//   const dropDown = element.parentElement;
+
+//   mazed.style.display = mazed.style.display === "block" ? "none" : "block";
+//   dropDown.classList.toggle("active");
+// }
 document.addEventListener("DOMContentLoaded", function () {
-  const dropdownContainer = document.querySelector(".dropdown-container");
-  const mazedLink = document.querySelector(".mazed");
+  const dropdownContainers = document.querySelectorAll(".dropdown-container");
 
-  // Ensure dropdown is hidden at the start
-  dropdownContainer.classList.remove("active2");
+  dropdownContainers.forEach((container) => {
+    const link = container.querySelector("a");
+    const dropdown = container.querySelector(".dropdown");
 
-  mazedLink.addEventListener("click", function (event) {
-    event.preventDefault();
-    dropdownContainer.classList.toggle("active2");
+    if (!dropdown) return;
+
+    link.addEventListener("click", function (e) {
+      // On non-touch devices, let hover handle it
+      if (!("ontouchstart" in window) && window.innerWidth > 768) {
+        return;
+      }
+
+      e.preventDefault();
+
+      // Close other dropdowns
+      dropdownContainers.forEach((otherContainer) => {
+        if (otherContainer !== container) {
+          otherContainer.classList.remove("active");
+        }
+      });
+
+      // Toggle this dropdown
+      container.classList.toggle("active");
+    });
   });
 
-  // Close dropdown when clicking outside
-  document.addEventListener("click", function (event) {
-    if (
-      !dropdownContainer.contains(event.target) &&
-      !mazedLink.contains(event.target)
-    ) {
-      dropdownContainer.classList.remove("active2");
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".dropdown-container")) {
+      dropdownContainers.forEach((container) => {
+        container.classList.remove("active");
+      });
     }
   });
 });
-function toggleDetails(element) {
-  const mazed = element.nextElementSibling;
-  const dropDown = element.parentElement;
-
-  mazed.style.display = mazed.style.display === "block" ? "none" : "block";
-  dropDown.classList.toggle("active");
-}
