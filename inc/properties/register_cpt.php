@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Custom Post Types and Taxonomies - Improved Version with Polylang Pro Support
+ * Register Custom Post Types and Taxonomies - Improved Version with Custom Link Structure and Polylang Pro Support
  *
  * @package Capital_of_Business
  */
@@ -63,11 +63,11 @@ function cob_register_properties_cpt() {
 		'labels'             => $labels,
 		'public'             => true,
 		'has_archive'        => true,
-		'publicly_queryable' => true, // تأكد من إمكانية استعلام العرض للعامة.
+		'publicly_queryable' => true,
 		'menu_icon'          => 'dashicons-building',
 		'supports'           => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-		// نعطل إعادة الكتابة الافتراضية لنستخدم قواعدنا المخصصة.
-		'rewrite'            => false,
+		// نعطل إعادة الكتابة الافتراضية لنستخدم القواعد المخصصة.
+		'rewrite'            => [ 'slug' => '%city%/%compound%/%post_id%', 'with_front' => false ],
 		'show_in_rest'       => true,
 		'hierarchical'       => false,
 	];
@@ -219,45 +219,14 @@ add_action( 'template_redirect', 'cob_update_project_views' );
   CUSTOM PERMALINK STRUCTURE & REWRITE RULES
 -----------------------------------------*/
 /**
- * Add custom permalink structure field to the Permalinks settings page.
- */
-function cob_add_permalink_settings_field() {
-	// Register the setting for properties permalink structure.
-	register_setting( 'permalink', 'properties_permalink_structure', array(
-		'type'              => 'string',
-		'sanitize_callback' => 'sanitize_text_field',
-		'default'           => '%city%/%compound%/%post_id%',
-	) );
-
-	// Add the settings field in the "Optional" section of Permalinks settings.
-	add_settings_field(
-		'properties_permalink_structure',
-		__( 'Properties Permalink Structure', 'cob_theme' ),
-		'cob_properties_permalink_settings_field',
-		'permalink',
-		'optional'
-	);
-}
-add_action( 'admin_init', 'cob_add_permalink_settings_field' );
-
-/**
- * Output the custom permalink structure field.
- */
-function cob_properties_permalink_settings_field() {
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
-	echo '<input type="text" name="properties_permalink_structure" value="' . esc_attr( $structure ) . '" class="regular-text ltr" />';
-	echo '<p class="description">' . __( 'Use placeholders: %city%, %compound%, %post_id%.', 'cob_theme' ) . '</p>';
-}
-
-/**
  * Filter to generate custom permalink for the properties post type.
  *
- * Generates a URL based on the structure defined in the Permalinks settings.
- * Example structure: %city%/%compound%/%post_id%
+ * Generates a URL based on the rewrite slug that contains placeholders:
+ * %city%/%compound%/%post_id%
  *
  * Compatible with Polylang Pro.
  */
-function cob_properties_permalink( $post_link, $post ) {
+function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
 	if ( 'properties' !== $post->post_type ) {
 		return $post_link;
 	}
@@ -265,7 +234,7 @@ function cob_properties_permalink( $post_link, $post ) {
 	// Get the city term slug.
 	$city_terms = get_the_terms( $post->ID, 'city' );
 	if ( ! empty( $city_terms ) && ! is_wp_error( $city_terms ) ) {
-		$city_slug = $city_terms[0]->slug;
+		$city_slug = current( $city_terms )->slug;
 	} else {
 		$city_slug = 'no-city';
 	}
@@ -273,38 +242,38 @@ function cob_properties_permalink( $post_link, $post ) {
 	// Get the compound term slug.
 	$compound_terms = get_the_terms( $post->ID, 'compound' );
 	if ( ! empty( $compound_terms ) && ! is_wp_error( $compound_terms ) ) {
-		$compound_slug = $compound_terms[0]->slug;
+		$compound_slug = current( $compound_terms )->slug;
 	} else {
 		$compound_slug = 'no-compound';
 	}
 
-	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
+	// Get the post ID.
+	$post_id = $post->ID;
 
 	// Replace placeholders with actual values.
 	$search  = array( '%city%', '%compound%', '%post_id%' );
-	$replace = array( $city_slug, $compound_slug, $post->ID );
-	$custom_permalink = str_replace( $search, $replace, $structure );
+	$replace = array( $city_slug, $compound_slug, $post_id );
+	$post_link = str_replace( $search, $replace, $post_link );
 
 	// Use pll_home_url if Polylang Pro is active to include language prefix.
 	if ( function_exists( 'pll_home_url' ) ) {
-		return pll_home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
+		return pll_home_url( '/' . untrailingslashit( $post_link ) . '/' );
 	}
 
-	// Return the full URL.
-	return home_url( '/' . untrailingslashit( $custom_permalink ) . '/' );
+	return home_url( '/' . untrailingslashit( $post_link ) . '/' );
 }
-add_filter( 'post_type_link', 'cob_properties_permalink', 10, 2 );
+add_filter( 'post_type_link', 'cob_properties_permalink', 10, 4 );
 
 /**
  * Add custom rewrite rule for properties.
  *
- * Converts the custom permalink structure into a regular expression and maps it
+ * Converts the rewrite slug (with placeholders) into a regex and maps it
  * to the appropriate query variables.
  */
 function cob_properties_custom_rewrite() {
-	// Get the custom permalink structure from settings.
-	$structure = get_option( 'properties_permalink_structure', '%city%/%compound%/%post_id%' );
+	// The custom rewrite structure is defined in the CPT registration rewrite slug.
+	// We expect it to be: %city%/%compound%/%post_id%
+	$structure = '%city%/%compound%/%post_id%';
 
 	// Build the regex by replacing placeholders with regex patterns.
 	$regex = preg_quote( $structure, '#' );
@@ -315,15 +284,8 @@ function cob_properties_custom_rewrite() {
 	// Prepend an optional language prefix (two lowercase letters followed by a slash) for Polylang Pro.
 	$regex = '^(?:[a-z]{2}/)?' . $regex;
 
-	// Determine the position of %post_id% to know which capturing group contains the post ID.
-	$parts = explode( '/', $structure );
-	$post_id_group_index = 0;
-	foreach ( $parts as $i => $part ) {
-		if ( '%post_id%' === $part ) {
-			$post_id_group_index = $i + 1; // Capturing groups are 1-indexed.
-			break;
-		}
-	}
+	// Since our structure is fixed, %post_id% is the third placeholder => capturing group index 3.
+	$post_id_group_index = 3;
 
 	// Add the rewrite rule.
 	add_rewrite_rule(
