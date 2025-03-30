@@ -10,6 +10,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Register Rewrite Tag for Compound
+ *
+ * يسمح هذا الكود لووردبريس بفهم عنصر نائب %compound% في الروابط.
+ */
+function cob_add_rewrite_tags() {
+	add_rewrite_tag( '%compound%', '([^/]+)' );
+}
+add_action( 'init', 'cob_add_rewrite_tags' );
+
+/**
  * Register Compound Taxonomy
  */
 function cob_register_compound_taxonomy() {
@@ -44,7 +54,6 @@ add_action( 'init', 'cob_register_compound_taxonomy' );
 
 /**
  * Register Properties Custom Post Type
- *
  */
 function cob_register_properties_cpt() {
 	$labels = [
@@ -66,6 +75,7 @@ function cob_register_properties_cpt() {
 		'has_archive'   => true,
 		'menu_icon'     => 'dashicons-building',
 		'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
+		// يتم استخدام عنصر نائب %compound% في الرابط، والذي سيتم استبداله بلقب التصنيف
 		'rewrite'       => [ 'slug' => 'compound/%compound%/properties', 'with_front' => false ],
 		'show_in_rest'  => true,
 		'hierarchical'  => false,
@@ -107,7 +117,7 @@ function cob_register_factory_cpt() {
 add_action( 'init', 'cob_register_factory_cpt' );
 
 /**
- * Register Custom Taxonomies: City, Developer, Finishing, Type
+ * Register Lands Custom Post Type
  */
 function cob_register_land_cpt() {
 	$labels = [
@@ -137,6 +147,9 @@ function cob_register_land_cpt() {
 }
 add_action( 'init', 'cob_register_land_cpt' );
 
+/**
+ * Register Custom Taxonomies: City, Developer, Finishing, Type
+ */
 function cob_register_taxonomies() {
 	$default_args = [
 		'hierarchical'      => true,
@@ -217,7 +230,6 @@ add_action( 'init', 'cob_register_taxonomies' );
 
 /**
  * Update Project Views with Rate Limiting
- *
  */
 function cob_update_project_views() {
 	if ( is_admin() || ! is_singular( 'properties' ) ) {
@@ -241,6 +253,10 @@ function cob_update_project_views() {
 	setcookie( $cookie_name, 1, time() + HOUR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
 }
 add_action( 'template_redirect', 'cob_update_project_views' );
+
+/**
+ * تعديل الرابط الخاص بالـ Properties ليستبدل %compound% بـ slug التصنيف
+ */
 function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
 	if ( 'properties' === $post->post_type ) {
 		$terms = get_the_terms( $post->ID, 'compound' );
