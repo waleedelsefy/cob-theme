@@ -216,7 +216,7 @@ body {
 #popupZoom img,
 #PopupZoomOpety img {
   left: 20px;
-  right: inherit;
+  right: inherit !important;
 }
 .search-form svg:not(.bar) {
   right: 300px !important;
