@@ -2,8 +2,6 @@
 /**
  * Custom Post Types and Taxonomies Registration - Custom Permalink with Language/City/Compound/PostID structure.
  *
- * This version forces the language parameter (e.g., "ar") to appear in the URL even for the default language.
- *
  * @package Capital_of_Business
  */
 
@@ -60,8 +58,8 @@ add_action( 'init', 'cob_register_compound_taxonomy' );
  *
  * We disable the automatic rewrite rules by setting 'rewrite' => false.
  * The final URL structure will be:
- * /{language}/{city}/{compound}/{post-ID}
- * where the language parameter is forced even for the default language.
+ * /{city}/{compound}/{post-ID}
+ * Polylang will add the language prefix automatically.
  */
 function cob_register_properties_cpt() {
 	$labels = array(
@@ -97,15 +95,13 @@ add_action( 'init', 'cob_register_properties_cpt' );
  * Add Custom Rewrite Rule for Properties.
  *
  * This rule matches URLs of the form:
- * /{language}/{city}/{compound}/{post-ID}
+ * /{city}/{compound}/{post-ID}
  * and rewrites them to the appropriate query for the "properties" post type.
- *
- * The language parameter is expected to be a 2-letter code (e.g., "ar", "en").
  */
 function cob_custom_properties_rewrite_rule() {
 	add_rewrite_rule(
-		'^([a-z]{2})/([^/]+)/([^/]+)/([0-9]+)/?$',
-		'index.php?lang=$matches[1]&post_type=properties&p=$matches[4]',
+		'^([^/]+)/([^/]+)/([0-9]+)/?$',
+		'index.php?post_type=properties&p=$matches[3]',
 		'top'
 	);
 }
@@ -284,8 +280,8 @@ add_action( 'template_redirect', 'cob_update_project_views' );
 /**
  * Filter the permalink for Properties to include the city slug, compound slug, and post ID.
  *
- * Final URL: /{language}/{city}/{compound}/{post-ID}
- * This forces the language parameter even for the default language.
+ * Final URL: /{city}/{compound}/{post-ID}
+ * Polylang will add the language prefix automatically.
  */
 function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
 	if ( 'properties' === $post->post_type ) {
@@ -301,13 +297,8 @@ function cob_properties_permalink( $post_link, $post, $leavename, $sample ) {
 		if ( ! empty( $compound_terms ) && ! is_wp_error( $compound_terms ) ) {
 			$compound_slug = current( $compound_terms )->slug;
 		}
-		// Get the current language code via Polylang.
-		$lang_slug = function_exists( 'pll_current_language' ) ? pll_current_language() : '';
-		if ( $lang_slug ) {
-			$post_link = home_url( user_trailingslashit( "$lang_slug/$city_slug/$compound_slug/" . $post->ID ) );
-		} else {
-			$post_link = home_url( user_trailingslashit( "$city_slug/$compound_slug/" . $post->ID ) );
-		}
+		// Build the permalink as /{city}/{compound}/{post-ID}
+		$post_link = home_url( user_trailingslashit( "$city_slug/$compound_slug/" . $post->ID ) );
 	}
 	return $post_link;
 }
