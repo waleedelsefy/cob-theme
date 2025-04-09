@@ -74,7 +74,7 @@ function cob_contact_form_shortcode() {
             box-sizing: border-box;
         }
         .form-contain button {
-            background: #2A2C43;
+            /* background: #2A2C43; */
             color: #fff;
             border: none;
             padding: 10px 20px;

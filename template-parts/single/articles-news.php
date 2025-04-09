@@ -43,11 +43,12 @@ $articles_query = new WP_Query( $args );
                                 <div class="articles-info">
                                     <div class="date">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9.16699 10.832H13.3337M6.66699 10.832H6.67448M10.8337 14.1654H6.66699M13.3337 14.1654H13.3262" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M15 1.66797V3.33464M5 1.66797V3.33464" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M2.08301 10.2027C2.08301 6.57162 2.08301 4.75607 3.12644 3.62803C4.16987 2.5 5.84925 2.5 9.20801 2.5H10.7913C14.1501 2.5 15.8295 2.5 16.8729 3.62803C17.9163 4.75607 17.9163 6.57162 17.9163 10.2027V10.6307C17.9163 14.2617 17.9163 16.0773 16.8729 17.2053C15.8295 18.3333 14.1501 18.3333 10.7913 18.3333H9.20801C5.84925 18.3333 4.16987 18.3333 3.12644 17.2053C2.08301 16.0773 2.08301 14.2617 2.08301 10.6307V10.2027Z" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M2.5 6.66797H17.5" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+<path d="M9.16699 10.833H13.3337M6.66699 10.833H6.67448M10.8337 14.1663H6.66699M13.3337 14.1663H13.3262" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15 1.66699V3.33366M5 1.66699V3.33366" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.08301 10.2027C2.08301 6.57162 2.08301 4.75607 3.12644 3.62803C4.16987 2.5 5.84925 2.5 9.20801 2.5H10.7913C14.1501 2.5 15.8295 2.5 16.8729 3.62803C17.9163 4.75607 17.9163 6.57162 17.9163 10.2027V10.6307C17.9163 14.2617 17.9163 16.0773 16.8729 17.2053C15.8295 18.3333 14.1501 18.3333 10.7913 18.3333H9.20801C5.84925 18.3333 4.16987 18.3333 3.12644 17.2053C2.08301 16.0773 2.08301 14.2617 2.08301 10.6307V10.2027Z" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.5 6.66699H17.5" stroke="#707070" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
                                         <?php
                                         echo get_the_date( 'l d F Y - g:i a' );
                                         ?>
